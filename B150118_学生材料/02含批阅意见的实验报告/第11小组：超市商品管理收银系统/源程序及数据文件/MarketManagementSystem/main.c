@@ -4,7 +4,7 @@
 
 int main()
 {
-    login();
-    return 0;
-
+  //  login();
+   // return 0;
+    check();
 }

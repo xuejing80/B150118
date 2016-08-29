@@ -42,8 +42,8 @@ return 0;
 int check()
 {
     printf("hello word\n");
-    printf("hello word");
-
+    printf("hello word\n");
+     printf("hello world\n");
 
 
 }
