@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 //登录函数
 int login(){
 printf("欢迎进入超市商品净销存系统\n");
@@ -15,7 +16,25 @@ printf("请输入密码：");
        putchar('*');
   }
   user_password[i] = '\0';
-
+  char admin[] = "root";
+  char adminpassword[] = "123456";
+  char check[] = "check";
+  char checkpassword[] = "123456";
+if(!strcmp(user_name,admin)&& !strcmp(user_password,adminpassword))
+{
+    printf("\n管理员你好");
+}
+else{
+        if(!strcmp(user_name,check)&& !strcmp(user_password,checkpassword))
+        {
+            printf("\n收银员你好");
+        }
+        else{
+    printf("\n用户名或密码错误,请重新登录\n");
+     printf("\n");
+    login();
+        }
+}
 return 0;
 }
 
