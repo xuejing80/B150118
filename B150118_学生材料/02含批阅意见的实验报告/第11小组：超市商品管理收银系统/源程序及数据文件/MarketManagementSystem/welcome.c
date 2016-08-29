@@ -38,3 +38,11 @@ else{
 return 0;
 }
 
+//收银员函数
+int check()
+{
+    printf("hello word");
+
+
+}
+
