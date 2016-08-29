@@ -37,6 +37,7 @@
 		<Unit filename="welcome.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="welcome.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

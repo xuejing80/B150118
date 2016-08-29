@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "welcome.h"
 
 int main()
 {
-    printf("Hello world!\n");
+    login();
     return 0;
 }
