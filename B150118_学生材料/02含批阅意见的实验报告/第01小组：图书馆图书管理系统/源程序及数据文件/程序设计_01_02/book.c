@@ -58,14 +58,14 @@ void printBoo ( Book  *boo , int n)       /*输出所有图书记录的值*/
     int i;
 	for (i=0;i<n;i++)
 	{
-		printf("%ld\t",boo[i].num);
-		printf("%s\t", boo[i].name);
-		printf("%s\t", boo[i].writer);
-        printf("%s\t", boo[i].category);
-        printf("%ld\t",boo[i].location);
-		printf("%s\t",boo[i].information);
-	    printf("%s\t",boo[i].botime);
-		printf("%s\n",boo[i].retime);
+		printf("%ld",boo[i].num);
+		printf("%12s", boo[i].name);
+		printf("%14s", boo[i].writer);
+        printf("%15s", boo[i].category);
+        printf("%7ld",boo[i].location);
+		printf("%9s",boo[i].information);
+	    printf("%20s",boo[i].botime);
+		printf("%24s\n",boo[i].retime);
 
 	}
 }

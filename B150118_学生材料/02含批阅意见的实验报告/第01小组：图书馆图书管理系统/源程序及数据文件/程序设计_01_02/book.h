@@ -2,7 +2,7 @@
 #ifndef _BOOK             /*条件编译，防止重复包含的错误*/
 #define _BOOK
 #include <string.h>
-#define NUM 10                /*定义图书数量常量，此处可以根据实际需要修改常量值*/
+#define NUM 20                /*定义图书数量常量，此处可以根据实际需要修改常量值*/
 struct Book                   /*图书记录的数据域*/
 {
 		long num;
