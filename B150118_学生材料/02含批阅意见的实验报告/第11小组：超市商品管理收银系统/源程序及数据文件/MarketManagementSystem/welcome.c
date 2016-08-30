@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 //登录函数
 int login(){
 printf("欢迎进入超市商品净销存系统\n");
 printf("请登录！\n");
 printf("请输入用户名：");
-char user_name[20];
-char user_password[20];
+char user_name[200];
+char user_password[200];
 int c=0,i=0;
 scanf("%s",&user_name);
 printf("请输入密码：");
@@ -22,16 +23,21 @@ printf("请输入密码：");
   char checkpassword[] = "123456";
 if(!strcmp(user_name,admin)&& !strcmp(user_password,adminpassword))
 {
+        system("cls");
     printf("\n管理员你好");
 }
 else{
         if(!strcmp(user_name,check)&& !strcmp(user_password,checkpassword))
         {
+                system("cls");
             printf("\n收银员你好");
         }
         else{
-    printf("\n用户名或密码错误,请重新登录\n");
-     printf("\n");
+
+    printf("\n用户名或密码错误,请按回车重新登录\n");
+    getchar();
+    getchar();
+    system("cls");
     login();
         }
 }
@@ -39,26 +45,5 @@ return 0;
 }
 
 //收银员函数
-int check()
-{
-    char id,a[3]={'0','0','0'};
-    int number=0；
-    double p，total;
-    total=0；
-    while(!strcmp(id,a))
-    {
 
-        printf("欢迎进入收银员界面\n");
-        printf("请输入商品条形码（结束输入请输入000回车 ）")；
-        gets(id);
-        searchid();
-        printfgoods();
-        total=total+p;
-        number++
-
-    }
-        printf("商品总和：%d      合计：%f",number,total);
-
-
-}
 
