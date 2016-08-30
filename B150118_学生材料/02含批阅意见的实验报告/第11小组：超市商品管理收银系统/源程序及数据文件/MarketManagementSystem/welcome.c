@@ -41,9 +41,23 @@ return 0;
 //收银员函数
 int check()
 {
-    printf("hello word\n");
-    printf("hello word\n");
-     printf("hello world\n");
+    char id,a[3]={'0','0','0'};
+    int number=0；
+    double p，total;
+    total=0；
+    while(!strcmp(id,a))
+    {
+
+        printf("欢迎进入收银员界面\n");
+        printf("请输入商品条形码（结束输入请输入000回车 ）")；
+        gets(id);
+        searchid();
+        printfgoods();
+        total=total+p;
+        number++
+
+    }
+        printf("商品总和：%d      合计：%f",number,total);
 
 
 }
