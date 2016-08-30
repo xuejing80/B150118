@@ -13,7 +13,7 @@ int  createFile(Product pro[ ])              /*建立初始的数据文件*/
     	}
 	printf("input products\' information:\n");
 	n=readPro(pro,NUM);                /*调用product.h中的函数读数据*/
-fwrite(pro,sizePro,n,fp);                  /*将刚才读入的所有记录一次性写入文件*/
+    fwrite(pro,sizePro,n,fp);                  /*将刚才读入的所有记录一次性写入文件*/
  	fclose(fp);                             /*关闭文件*/
 	 return n;
 }
