@@ -73,6 +73,7 @@ int login()
         {
             system("cls");
             printf("\n收银员你好\n");
+            checkabc();
         }
         else
         {
@@ -86,6 +87,34 @@ int login()
     }
     return 0;
 }
+//收银员函数
+void checkabc(){
+ int command;
+    printf("欢迎进入收银员系统\n");
+    printf("1、收银\n2、本日收银报表\n");
+    do                  //检测是否输入正确的指令如果不是则重新输入
+    {
+        printf("请输入命令：");
+        scanf("%d",&command);
+         printf("\n");
+        if(command!=1&&command!=2)
+            printf("输入错误\n再次");
+
+    }
+    while(command!=1&&command!=2);
+    if(command==1)           //1、进入收银员界面  2、进入本日收银报表
+    {
+        printf("欢迎进入收银员界面");
+        checkcode();
+    }
+    else
+    {
+        printf("欢迎查看本日营销报表");
+    }
+    return 0;
+}
+
+
 // 录入函数
 void inputgoods()
 {printf("请分别输入货品信息：code、*以空格隔开*");
@@ -96,7 +125,35 @@ void inputgoods()
 }
 
 
-//收银员函数
+//收银函数
+int checkcode()
+{
+    char code[20],endcode[20]="end";
+    goods good[100];
+    int i=0;
+    double total=0.0;
+    printf("欢迎进入收银系统\n请输入商品条形码(输入end结束)：\n");
+    do
+    {
+        scanf("%s",code);
+        if(!strcmp(code,endcode))
+                break;
+        if(ifexist(code)){
+           good[i++] = readcode(code);
+           total = total+good[i-1].price;
+           printf("商品名称：%10s 价格：%10.2f元\n总价:%10.2f元\n",good[i-1].name,good[i-1].price,total);
+        }else{
+            continue;
+
+        }
+    }while(1);
+
+
+
+
+
+
+}
 
 
 

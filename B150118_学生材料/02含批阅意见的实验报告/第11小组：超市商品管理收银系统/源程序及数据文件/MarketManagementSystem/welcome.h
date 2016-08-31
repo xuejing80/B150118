@@ -11,5 +11,8 @@ typedef struct goods goods;
 //函数声明部分
 int login();
 void adminabc();
+void checkabc();
 struct goods readcode();
 void inputgoods();
+int checkcode();
+int ifexist();

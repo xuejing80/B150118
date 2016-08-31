@@ -2,6 +2,29 @@
 #include "welcome.h"
 #include<stdlib.h>
 #include <time.h>
+int ifexist(char code[])
+{
+    int a = 0;
+  goods read;
+    FILE *fp;
+    if(fp = fopen(".\\1.txt","r")){
+        while(!feof(fp)){
+            fscanf(fp,"%s %s %lf %lf %d",read.code,read.name,&read.price,&read.chengben,&read.num);
+            if(!strcmp(code,read.code))
+            {
+                fclose(fp);
+                a = 1;
+                break;
+            }
+        }
+    }
+    else{
+        printf("文件加载错误，请检查数据库文件");
+    }
+    if(a==0)
+        printf("条码不存在，请重新输入\n");
+    return a;
+}
 //扫码 返回查询到的条码信息
 struct goods readcode(char code[]){
     goods read;
@@ -15,7 +38,6 @@ struct goods readcode(char code[]){
                 break;
             }
         }
-        printf("没有这个条码的商品");
     }
     else{
         printf("文件加载错误，请检查数据库文件");
