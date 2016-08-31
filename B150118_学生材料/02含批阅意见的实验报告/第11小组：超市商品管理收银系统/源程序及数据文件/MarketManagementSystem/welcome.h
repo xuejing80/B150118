@@ -10,4 +10,6 @@ typedef struct goods goods;
 
 //函数声明部分
 int login();
+void adminabc();
 struct goods readcode();
+void inputgoods();
