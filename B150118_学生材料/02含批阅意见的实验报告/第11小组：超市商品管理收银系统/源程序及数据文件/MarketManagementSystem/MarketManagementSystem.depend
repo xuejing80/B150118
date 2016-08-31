@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1472562955 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.c
+1472613518 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
+	"welcome.h"
 
 1472610059 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\main.c
 	<stdio.h>

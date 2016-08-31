@@ -88,7 +88,18 @@ int login()
 }
 // 录入函数
 void inputgoods()
-{printf("请分别输入货品信息：code、*以空格隔开*");
+{   long code;
+    double price,chengben;char name[20];
+    int s;
+
+    do{
+    printf("请分别输入货品信息：条码、商品名称、价格、成本*以空格隔开*\n\n");
+    scanf("%ld%s%lf%lf",&code,&name,&price,&chengben);
+    printf("\n   code:%ld\n   name:%s\n   price:%lf\n   chengben:%f\n",code,name,price,chengben);
+    printf("\n是否继续 1是 or 2否\n\n");
+    scanf("%d",&s);
+    }
+    while (s==1);
 
 
 
