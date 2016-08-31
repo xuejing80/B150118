@@ -23,9 +23,10 @@ void adminabc()
     switch (a)
     {
     case 1:
+        inputgoods();
         break;
     case 2:
-        printf("dddd");
+       showgoods();
         break;
     case 3:
         printf("xxxx");
@@ -117,7 +118,24 @@ void checkabc(){
 
 // 录入函数
 void inputgoods()
-{printf("请分别输入货品信息：code、*以空格隔开*");
+{   char code[20];
+    double price,chengben;char name[20];
+    int s,num;
+
+    do{
+    printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
+    scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
+    printf("\n   条码:%s\n   名称:%s\n   价格:%lf\n   成本:%f\n  库存:%d\n",code,name,price,chengben,num);
+    if(addgoods(code,name,price,chengben,num))
+        printf("添加成功");
+    else
+        printf("添加失败");
+    printf("\n是否继续 1是 or 2否\n\n");
+    scanf("%d",&s);
+    if(s==2)
+        adminabc();
+    }
+    while (s==1);
 
 
 

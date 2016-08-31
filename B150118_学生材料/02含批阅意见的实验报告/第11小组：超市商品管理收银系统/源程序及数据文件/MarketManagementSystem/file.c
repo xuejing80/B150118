@@ -65,7 +65,7 @@ void showgoods(){
 int addgoods(char code[],char name[],double price,double chengben,int num){
         FILE *fp;
          if(fp = fopen(".\\1.txt","a+")){
-            fprintf(fp,"%s %s %lf %lf %d",code,name,price,chengben,num);
+            fprintf(fp,"%s %s %lf %lf %d\n",code,name,price,chengben,num);
             fclose(fp);
             return 1;
          }else{
