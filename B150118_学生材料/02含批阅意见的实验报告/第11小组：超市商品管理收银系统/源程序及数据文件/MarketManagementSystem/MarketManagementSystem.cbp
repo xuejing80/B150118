@@ -31,12 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="file.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="welcome.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="welcome.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
