@@ -10,7 +10,7 @@ void adminabc()
     do
     {
         printf("欢迎进入管理员页面\n\n");
-        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4最高盈利商品和最低盈利商品\n\n\n");
+        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4返回登录页面\n\n\n");
         printf("请输入命令：");
         scanf("%d",&a);
         if(a!=1&&a!=2&&a!=3&&a!=4)
@@ -29,10 +29,15 @@ void adminabc()
        showgoods();
         break;
     case 3:
-        printf("xxxx");
+        printf("总体利润是:%.2f",totalprofit());
+         printf("按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        adminabc();
         break;
     case 4:
-        printf("rrrr");
+        login();
         break    ;
     }
 
@@ -44,7 +49,7 @@ void adminabc()
 //登录函数
 int login()
 {
-    printf("欢迎进入超市商品净销存系统\n");
+    printf("欢迎进入超市商品进销存系统\n");
     printf("请登录！\n");
     printf("请输入用户名：");
     char user_name[200];
@@ -74,7 +79,7 @@ int login()
         {
             system("cls");
             printf("\n收银员你好\n");
-            checkabc();
+            checkabc(0,0.0,0.0);
         }
         else
         {
@@ -89,7 +94,7 @@ int login()
     return 0;
 }
 //收银员函数
-void checkabc(){
+void checkabc(int id,double total,double profit){
  int command;
     printf("欢迎进入收银员系统\n");
     printf("1、收银\n2、本日收银报表\n");
@@ -110,7 +115,12 @@ void checkabc(){
     }
     else
     {
-        printf("欢迎查看本日营销报表");
+        printf("欢迎查看本日营销报表\n本次订单号：%d总价格：%.2f%利润：%.2f\n",id,total,profit);
+         printf("按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        checkabc(id,total,profit);
     }
     return 0;
 }
@@ -169,7 +179,7 @@ void checkcode()
                 profit.profit = profit.profit + good[i-1].price-good[i-1].chengben;
                 profit.total = total;
                sale(good[i-1].code); //库存减一
-                printf("商品名称：%10s 价格：%10.2f元 存量:%d \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,good[i-1].num,total);
+                printf("商品名称：%10s 价格：%10.2f元 存量:%d \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,good[i-1].num-1,total);
             }
             else
             {
