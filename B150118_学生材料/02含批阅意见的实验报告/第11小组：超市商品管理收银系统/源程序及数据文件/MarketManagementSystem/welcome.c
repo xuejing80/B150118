@@ -105,8 +105,8 @@ void checkabc(){
     while(command!=1&&command!=2);
     if(command==1)           //1、进入收银员界面  2、进入本日收银报表
     {
-        printf("欢迎进入收银员界面");
-        checkcode();
+    system("cls");
+    checkcode();
     }
     else
     {
@@ -118,58 +118,73 @@ void checkabc(){
 
 // 录入函数
 void inputgoods()
-{   char code[20];
-    double price,chengben;char name[20];
+{
+    system("cls");
+    char code[20];
+    double price,chengben;
+    char name[20];
     int s,num;
 
-    do{
-    printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
-    scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
-    printf("\n   条码:%s\n   名称:%s\n   价格:%lf\n   成本:%f\n  库存:%d\n",code,name,price,chengben,num);
-    if(addgoods(code,name,price,chengben,num))
-        printf("添加成功");
-    else
-        printf("添加失败");
-    printf("\n是否继续 1是 or 2否\n\n");
-    scanf("%d",&s);
-    if(s==2)
-        adminabc();
+    do
+    {
+        printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
+        scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
+        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   成本:%10.2f\n  库存:%d\n",code,name,price,chengben,num);
+        if(addgoods(code,name,price,chengben,num))
+            printf("添加成功");
+        else
+            printf("添加失败");
+        printf("\n是否继续 1是 or 2否\n\n");
+        scanf("%d",&s);
+        if(s==2)
+        {
+            system("cls");
+            adminabc();
+        }
     }
     while (s==1);
-
-
-
-
 }
 
 
 //收银函数
-int checkcode()
+void checkcode()
 {
     char code[20],endcode[20]="end";
     goods good[100];
     int i=0;
     double total=0.0;
+    order profit;
     printf("欢迎进入收银系统\n请输入商品条形码(输入end结束)：\n");
     do
     {
         scanf("%s",code);
         if(!strcmp(code,endcode))
-                break;
-        if(ifexist(code)){
-           good[i++] = readcode(code);
-           total = total+good[i-1].price;
-           printf("商品名称：%10s 价格：%10.2f元\n总价:%10.2f元\n",good[i-1].name,good[i-1].price,total);
-        }else{
+            break;
+        if(ifexist(code))
+        {
+            good[i++] = readcode(code);
+            if(good[i-1].num>0)
+            {
+                total = total+good[i-1].price;
+                profit.profit = profit.profit + good[i-1].price-good[i-1].chengben;
+                profit.total = total;
+               sale(good[i-1].code); //库存减一
+                printf("商品名称：%10s 价格：%10.2f元 存量:%d \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,good[i-1].num,total);
+            }
+            else
+            {
+                printf("本商品已售罄，请重新输入");
+                continue;
+            }
+        }
+        else
+        {
             continue;
 
         }
-    }while(1);
-
-
-
-
-
+    }
+    while(1);
+    createorder(profit.total,profit.profit);
 
 }
 

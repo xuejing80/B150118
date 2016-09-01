@@ -8,11 +8,20 @@ struct goods{
     };
 typedef struct goods goods;
 
+struct order{
+    int id;
+    double total;
+    double profit;
+    };
+typedef struct order order;
 //函数声明部分
 int login();
 void adminabc();
 void checkabc();
 struct goods readcode();
 void inputgoods();
-int checkcode();
+void checkcode();
 int ifexist();
+void createorder();
+int neworder();
+void sale();
