@@ -1,3 +1,4 @@
+#include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -132,14 +133,14 @@ void inputgoods()
     system("cls");
     char code[20];
     double price,chengben;
-    char name[20];
+    char name[20],num[20];
     int s,num;
 
     do
     {
         printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
         scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
-        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   成本:%10.2f\n  库存:%d\n",code,name,price,chengben,num);
+        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   1成本:%10.2f\n",code,name,price,chengben,);
         if(addgoods(code,name,price,chengben,num))
             printf("添加成功");
         else
@@ -199,4 +200,20 @@ void checkcode()
 }
 
 
+//检查一维码是否合格函数
+int checknum(const char*num)
+{
+    int i;
+     for(i=0;i<20;i++)
+            {
+                if(num[i]=='\0') break;
+                if(!(num[i]>='0'&&num[i]<='9'||num[i]=='\0'))
+                   {//printf("%s",num);
+                    return 1;
+                    break;
+                   }
+            }
 
+     return 0;
+
+}

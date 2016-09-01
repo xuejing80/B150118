@@ -26,3 +26,4 @@ void createorder();
 int neworder();
 void sale();
 double totalprofit();
+int checknum();
