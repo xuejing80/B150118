@@ -11,12 +11,12 @@ printf("%4s%10s%6s%6s%10s%6s%10s%10s%8s%10s\n","±àÂë","Ò©Æ·Ãû³Æ","ÀàÐÍ","¹æ¸ñ","
 
 void menu( )         /*¶¥²ã²Ëµ¥º¯Êý*/
 {
-		printf("******** 1. Ò©Æ·¿â´æÐÅÏ¢ ********\n");
+		printf("******** 1. Ò©Æ·¿â´æÐÅÏ¢   ********\n");
 		printf("******** 2. Ò©Æ·½ø³ö¿â¼ÇÂ¼ ********\n");
 		printf("******** 3. Ò©Æ·½ø³ö¿â¹ÜÀí ********\n");
-		printf("******** 4. ÆäËûÐÅÏ¢ ********\n");
-        printf("******** 5. ¸ù¾ÝÌõ¼þ²éÑ¯ ********\n");
-		printf("******** 0. ÍË³ö         ********\n");
+		printf("******** 4. ÆäËûÐÅÏ¢       ********\n");
+        printf("******** 5. ¸ù¾ÝÌõ¼þ²éÑ¯   ********\n");
+		printf("******** 0. ÍË³ö           ********\n");
 }
 
 void menuBase( )     /*2¡¢Ò©Æ·½ø³ö¿â¼ÇÂ¼²Ëµ¥º¯Êý*/
@@ -28,10 +28,9 @@ void menuBase( )     /*2¡¢Ò©Æ·½ø³ö¿â¼ÇÂ¼²Ëµ¥º¯Êý*/
 
 void menuScore( )     /*3¡¢Ò©Æ·½ø³ö¿â¹ÜÀí²Ëµ¥º¯Êý*/
 {
-		printf("@@@@@@@@ 1. Ò©Æ·Èë¿â @@@@@@@@\n");
-		printf("@@@@@@@@ 2. Ò©Æ·³ö¿â @@@@@@@@\n");
-        printf("@@@@@@@@ 3. ÐÞ¸Ä¿â´æÐÅÏ¢ @@@@@@@@\n");
-        printf("@@@@@@@@ 4. É¾³ýÒ©Æ· @@@@@@@@\n");
+		printf("@@@@@@@@ 1. Ò©Æ·½ø³ö¿â     @@@@@@@@\n");
+        printf("@@@@@@@@ 2. ÐÞ¸Ä¿â´æÐÅÏ¢ @@@@@@@@\n");
+        printf("@@@@@@@@ 3. É¾³ýÒ©Æ·     @@@@@@@@\n");
 		printf("@@@@@@@@ 0. ·µ»ØÉÏ²ã²Ëµ¥ @@@@@@@@\n");
 }
  
@@ -47,59 +46,60 @@ void menuSearch()    /*5¡¢¸ù¾ÝÌõ¼þ²éÑ¯²Ëµ¥º¯Êý*/
 		printf("######## 1. °´Ò©Æ·Ãû³Æ²éÑ¯   ########\n");
 		printf("######## 2. °´Ò©Æ·ÀàÐÍ²éÑ¯   ########\n");
 		printf("######## 3. °´Èë¿âÊ±¼ä²éÑ¯   ########\n");
-		printf("######## 0. ·µ»ØÉÏ²ã²Ëµ¥ ########\n");
+		printf("######## 0. ·µ»ØÉÏ²ã²Ëµ¥     ########\n");
 }
 
 
-int baseManage(Medcine med[],int n)    	     /*¸Ãº¯ÊýÍê³É»ù±¾ÐÅÏ¢¹ÜÀí*/
+int scoreManage(Medcine med[],int n)    	     /*¸Ãº¯ÊýÍê³É»ù±¾ÐÅÏ¢¹ÜÀí*/
 /*°´Ñ§ºÅ½øÐÐ²åÈëÉ¾³ýÐÞ¸Ä£¬Ñ§ºÅ²»ÄÜÖØ¸´*/
 {  
-		int choice,t,find[COD];
-     Medcine s;
-do
-	    {   
-menuBase( );                  /*ÏÔÊ¾¶ÔÓ¦µÄ¶þ¼¶²Ëµ¥*/
-printf("choose one operation you want to do:\n");
-		     scanf("%d",&choice);	          /*¶ÁÈëÑ¡Ïî*/
-		     switch(choice)
-		     {
-			   case 1:	 readMed(&s,1);       /*¶ÁÈëÒ»Ìõ´ý²åÈëµÄÑ§Éú¼ÇÂ¼*/
-					 n=insertMed(med,n,s);   /*µ÷ÓÃº¯Êý²åÈëÑ§Éú¼ÇÂ¼*/
-					 break;
-			   case 2:  printf("Input the number deleted\n");
-					 scanf("%ld",&s.cod);  /*¶ÁÈëÒ»¸ö´ýÉ¾³ýµÄÑ§ÉúÑ§ºÅ*/
-					 n=deleteMed(med,n,s);   /*µ÷ÓÃº¯ÊýÉ¾³ýÖ¸¶¨Ñ§ºÅµÄÑ§Éú¼ÇÂ¼*/
-					 break;
-			   case 3:  printf("Input the number modified\n");
-					 scanf("%ld",&s.cod);  /*¶ÁÈëÒ»¸ö´ýÐÞ¸ÄµÄÑ§ÉúÑ§ºÅ*/
-				      t=searchMed(med,n,s,1,find) ; /*µ÷ÓÃº¯Êý²éÕÒÖ¸¶¨Ñ§ºÅµÄÑ§Éú¼ÇÂ¼*/
+	int choice,t,find[COD];
+	Medcine s;
+	do
+	{   
+		menuScore( );                  /*ÏÔÊ¾¶ÔÓ¦µÄ¶þ¼¶²Ëµ¥*/
+		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:\n");
+		scanf("%d",&choice);	          /*¶ÁÈëÑ¡Ïî*/
+		switch(choice)
+		{
+		case 1:	 readMed(&s,1);       /*¶ÁÈëÒ»Ìõ´ý²åÈëµÄÒ©Æ·¼ÇÂ¼*/
+				 n=insertMed(med,n,s);   /*µ÷ÓÃº¯Êý²åÈëÒ©Æ·½ø³ö¿â¼ÇÂ¼*/
+				 saveFile(med,n);
+				 break;
+		case 2:   printf("ÇëÊäÈë´ýÐÞ¸ÄµÄÒ©Æ·±àÂë\n");
+					 scanf("%ld",&s.cod);  /*¶ÁÈëÒ»¸ö´ýÐÞ¸ÄµÄÒ©Æ·±àÂë*/
+				      t=searchMed(med,n,s,1,find) ; /*µ÷ÓÃº¯Êý²éÕÒÖ¸¶¨Ò©Æ·µÄ¼ÇÂ¼*/
 				      if (t)                 /*Èç¹û¸ÃÑ§ºÅµÄ¼ÇÂ¼´æÔÚ*/
 					 {
-						  readMed(&s,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÑ§Éú¼ÇÂ¼ÐÅÏ¢*/
+						  readMed(&s,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÒ©Æ·¿â´æÐÅÏ¢*/
 					      med[find[0]]=s;    /*½«¸Õ¶ÁÈëµÄ¼ÇÂ¼¸³Öµ¸øÐèÒªÐÞ¸ÄµÄÊý×é¼ÇÂ¼*/ 					 
-					  }					 
-					 else                 /*Èç¹û¸ÃÑ§ºÅµÄ¼ÇÂ¼²»´æÔÚ*/ 
- printf("this medcine is not in,can not be modified.\n"); /*Êä³öÌáÊ¾ÐÅÏ¢*/
+					  }
+					  else                 /*Èç¹û¸ÃÒ©Æ·±àÂëµÄ¼ÇÂ¼²»´æÔÚ*/ 
+                     printf("¸ÃÒ©Æ·²»´æÔÚ£¬Äã²»ÄÜ¶ÔÆä½øÐÐ²Ù×÷\n"); /*Êä³öÌáÊ¾ÐÅÏ¢*/
+					  break;
+		case 3:   printf("ÇëÊäÈë´ýÉ¾³ýµÄÒ©Æ·±àÂë\n");
+					 scanf("%ld",&s.cod);  /*¶ÁÈëÒ»¸ö´ýÉ¾³ýµÄÒ©Æ·±àÂë*/
+					 n=deleteMed(med,n,s);   /*µ÷ÓÃº¯ÊýÉ¾³ýÖ¸¶¨Ò©Æ·±àÂëµÄÒ©Æ·¼ÇÂ¼*/
 					 break;
-			    case 0: break;
-		    }
+		case 0: break;
+		}
 	}while(choice);
-return n;                             /*·µ»Øµ±Ç°²Ù×÷½áÊøºóµÄÊµ¼Ê¼ÇÂ¼ÌõÊý*/
+	return n;                             /*·µ»Øµ±Ç°²Ù×÷½áÊøºóµÄÊµ¼Ê¼ÇÂ¼ÌõÊý*/
 }
 
-void scoreManage(Medcine med[],int n)          /*¸Ãº¯ÊýÍê³ÉÑ§Éú³É¼¨¹ÜÀí¹¦ÄÜ*/
+void baseManage(Medcine med[],int n)          /*¸Ãº¯ÊýÍê³ÉÑ§Éú³É¼¨¹ÜÀí¹¦ÄÜ*/
 {  
 	int choice;
 	do
 	{
-		menuScore( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶þ¼¶²Ëµ¥*/
-		printf("choose one operation you want to do:\n");
+		menuBase( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶þ¼¶²Ëµ¥*/
+		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:\n");
 		scanf("%d",&choice);	                 /*¶ÁÈë¶þ¼¶Ñ¡Ïî*/
 		switch(choice)
 		{
-			case 1:   calcuNum(med,n);         /*ÇóËùÓÐÑ§ÉúµÄ×Ü·Ö*/
-					  break;
-			case 2:   calcuIntime(med,n);         /*¸ù¾ÝËùÓÐÑ§ÉúµÄ×Ü·ÖÅÅÃû´Î*/
+			case 1:   readMed(med,n);         /*ÇóËùÓÐÑ§ÉúµÄ×Ü·Ö*/
+			          break;
+			case 2:   readMed(med,n);         /*¸ù¾ÝËùÓÐÑ§ÉúµÄ×Ü·ÖÅÅÃû´Î*/
 				      break;		
 			case 0:   break;
 		}
@@ -123,7 +123,7 @@ void countManage(Medcine med[],int n)               /*¸Ãº¯ÊýÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ
 		{
 			menuCount( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶þ¼¶²Ëµ¥*/
 			calcuMark(mark,med,n);                 /*µ÷ÓÃ´Ëº¯ÊýÇóÈýÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ùÖµ*/
-			printf("choose one operation you want to do:\n");
+			printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:\n");
 			scanf("%d",&choice);
 			switch(choice)
 			{
@@ -145,7 +145,7 @@ Medcine s;
 	   do
 {
 			menuSearch( );                         /*ÏÔÊ¾¶ÔÓ¦µÄ¶þ¼¶²Ëµ¥*/
-			printf("choose one operation you want to do:\n");
+			printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:\n");
 			scanf("%d",&choice);
 			switch(choice)
 			{
@@ -180,14 +180,14 @@ int runMain(Medcine med[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹
 		switch(choice)
 		{
 			case 1: printHead( );           /* 1. ÏÔÊ¾»ù±¾ÐÅÏ¢*/
-				 sortMed(med,n,1);         /*°´Ñ§ºÅÓÉÐ¡µ½´óµÄË³ÐòÅÅÐò¼ÇÂ¼*/ 
-          	 printMed(med,n);          /*°´Ñ§ºÅÓÉÐ¡µ½´óµÄË³ÐòÊä³öËùÓÐ¼ÇÂ¼*/
-					break;
-			case 2: n=baseManage(med,n);    /* 2. »ù±¾ÐÅÏ¢¹ÜÀí*/
+			     	sortMed(med,n,1);         /*°´±àÂëÓÉÐ¡µ½´óµÄË³ÐòÅÅÐò¼ÇÂ¼*/ 
+          	        printMed(med,n);          /*°´±àÂëÓÉÐ¡µ½´óµÄË³ÐòÊä³öËùÓÐ¼ÇÂ¼*/
+		 			break;
+			case 2: baseManage(med,n);    /* 2. ¼ÇÂ¼¹ÜÀí*/
+					break;	
+			case 3: n=scoreManage(med,n);   /* 3. Ò©Æ·½ø³ö¿â¹ÜÀí*/ 
 			   	     break;
-			case 3: scoreManage(med,n);     /* 3. Ñ§Éú³É¼¨¹ÜÀí*/
-					break;
-			case 4: countManage(med,n);     /* 4. ¿¼ÊÔ³É¼¨Í³¼Æ*/
+			case 4: countManage(med,n);     /* 4. ÆäËûÐÅÏ¢Í³¼Æ*/
 					break;
 			case 5: searchManage(med,n);     /* 5. ¸ù¾ÝÌõ¼þ²éÑ¯*/
 				     break;
@@ -208,12 +208,12 @@ int main( )
 	do
 	     {
 	         menu();                      /*ÏÔÊ¾Ö÷²Ëµ¥*/
-	         printf("Please input your choice: ");
+	         printf("ÇëÊäÈëÄãµÄÑ¡Ôñ: ");
 	         scanf("%d",&choice);
 	         if (choice>=0&&choice<=5)
 	              n=runMain(med,n,choice);    /*Í¨¹ýµ÷ÓÃ´Ëº¯Êý½øÐÐÒ»¼¶¹¦ÄÜÏîµÄÑ¡ÔñÖ´ÐÐ*/
 	         else 
-		          printf("error input,please input your choice again!\n");
+		          printf("ÊäÈë´íÎó,ÇëÖØÐÂÊäÈëÄãµÄÑ¡Ôñ!\n");
 	} while (choice);
 	sortMed(med,n,1);                   /*´æÈëÎÄ¼þÇ°°´Ñ§ºÅÓÉÐ¡µ½´óÅÅÐò*/ 
 	     saveFile(med,n);                   /*½«½á¹û´æÈëÎÄ¼þ*/
@@ -275,12 +275,12 @@ void printMed ( Medcine  *med , int n)       /*Êä³öËùÓÐÑ§Éú¼ÇÂ¼µÄÖµ*/
 		printf("%2ld", med[i].cod);
 		printf("%10s", med[i].name);
 		printf("%8s", med[i].type);
-		printf("%12s",med[i].spec);
-	    printf("%4ld",med[i].num);
-	    printf("%10f",med[i].price);
+		printf("%14s",med[i].spec);
+	    printf("%6ld",med[i].num);
+	    printf("%8.2f",med[i].price);
 		printf("%10ld",med[i].intime);
 	    printf("%4ld",med[i].outtime);
-	    printf("%6s",med[i].term);
+	    printf("%4s",med[i].term);
 	    printf("%10ld\n",med[i].outterm);
 	}
 }
@@ -437,7 +437,7 @@ int deleteMed(Medcine med[],int n,Medcine s)            /*´ÓÊý×éÖÐÉ¾³ýÖ¸¶¨Ñ§ºÅµÄ
 		if (equal(med[i],s,1))   break;            /*Èç¹ûÕÒµ½ÏàµÈÔªËØÔòÍË³öÑ­»·*/
 	if (i==n)                                 /*Èç¹ûÕÒ²»µ½´ýÉ¾³ýµÄÔªËØ*/
 	{
-		printf("This record does not exist!\n");    /*¸ø³öÌáÊ¾ÐÅÏ¢È»ºó·µ»Ø*/
+		printf("¸ÃÒ©Æ·±àÂë¼ÇÂ¼²»´æÔÚ£¡\n");    /*¸ø³öÌáÊ¾ÐÅÏ¢È»ºó·µ»Ø*/
 		return n;
 	}
 	for (j=i; j<n-1; j++)                        /*´Ë´¦Òþº¬Ìõ¼þÎªi<nÇÒequal(stu[i],s,1)³ÉÁ¢*/ 

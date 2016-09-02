@@ -8,7 +8,7 @@ struct Medcine                   /*学生记录的数据域*/
 		long cod;
 		char name[20];
 		char type[10];
-		char spec[10];
+		char spec[20];
 		long num;
                 double price;
 		long intime;
