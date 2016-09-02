@@ -38,6 +38,7 @@ void adminabc()
         adminabc();
         break;
     case 4:
+        system("cls");
         login();
         break    ;
     }
@@ -116,6 +117,7 @@ void checkabc(int id,double total,double profit){
     }
     else
     {
+        system("cls");
         printf("欢迎查看本日营销报表\n本次订单号：%d总价格：%.2f%利润：%.2f\n",id,total,profit);
          printf("按任意键返回上一层");
          getchar();
@@ -132,23 +134,34 @@ void inputgoods()
 {
     system("cls");
     char code[20];
-    double price,chengben;
-    char name[20],num[20];
-    int s,num;
+    char name[20],num[20],price[20],chengben[20],end[20] = "end";
+    int s;
 
     do
     {
-        printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
-        scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
-        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   1成本:%10.2f\n",code,name,price,chengben,);
-        if(addgoods(code,name,price,chengben,num))
+        printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开* \n输入end返回主菜单\n\n");
+        scanf("%s",code);
+        if(!strcmp(code,end)){
+                system("cls");
+            adminabc();
+        }
+        scanf("%s%s%s%s",name,price,chengben,num);
+        if(!checknum(num) && !checknum(code) && !checknum(chengben) && !checknum(price))
+            printf("\n   条码:%s\n   名称:%s\n   价格:%s\n   成本:%s\n",code,name,price,chengben);
+        else{
+            printf("您的输入有误，请重新输入。\n");
+             s = 1;
+            continue;
+
+            }
+       if(addgoods(code,name,price,chengben,num))
             printf("添加成功");
-        else
+       else
             printf("添加失败");
         printf("\n是否继续 1是 or 2否\n\n");
         scanf("%d",&s);
         if(s==2)
-        {
+       {
             system("cls");
             adminabc();
         }
@@ -169,8 +182,13 @@ void checkcode()
     do
     {
         scanf("%s",code);
-        if(!strcmp(code,endcode))
+                if(!strcmp(code,endcode))
             break;
+        if(checknum(code)){
+            printf("您的输入有误，请重新输入");
+            continue;
+        }
+
         if(ifexist(code))
         {
             good[i++] = readcode(code);
