@@ -1,3 +1,4 @@
+#include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -10,7 +11,7 @@ void adminabc()
     do
     {
         printf("欢迎进入管理员页面\n\n");
-        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4最高盈利商品和最低盈利商品\n\n\n");
+        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4返回登录页面\n\n\n");
         printf("请输入命令：");
         scanf("%d",&a);
         if(a!=1&&a!=2&&a!=3&&a!=4)
@@ -29,10 +30,15 @@ void adminabc()
        showgoods();
         break;
     case 3:
-        printf("xxxx");
+        printf("总体利润是:%.2f",totalprofit());
+         printf("按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        adminabc();
         break;
     case 4:
-        printf("rrrr");
+        login();
         break    ;
     }
 
@@ -44,7 +50,7 @@ void adminabc()
 //登录函数
 int login()
 {
-    printf("欢迎进入超市商品净销存系统\n");
+    printf("欢迎进入超市商品进销存系统\n");
     printf("请登录！\n");
     printf("请输入用户名：");
     char user_name[200];
@@ -74,7 +80,7 @@ int login()
         {
             system("cls");
             printf("\n收银员你好\n");
-            checkabc();
+            checkabc(0,0.0,0.0);
         }
         else
         {
@@ -89,7 +95,7 @@ int login()
     return 0;
 }
 //收银员函数
-void checkabc(){
+void checkabc(int id,double total,double profit){
  int command;
     printf("欢迎进入收银员系统\n");
     printf("1、收银\n2、本日收银报表\n");
@@ -110,7 +116,12 @@ void checkabc(){
     }
     else
     {
-        printf("欢迎查看本日营销报表");
+        printf("欢迎查看本日营销报表\n本次订单号：%d总价格：%.2f%利润：%.2f\n",id,total,profit);
+         printf("按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        checkabc(id,total,profit);
     }
     return 0;
 }
@@ -122,14 +133,14 @@ void inputgoods()
     system("cls");
     char code[20];
     double price,chengben;
-    char name[20];
+    char name[20],num[20];
     int s,num;
 
     do
     {
         printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
         scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
-        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   成本:%10.2f\n  库存:%d\n",code,name,price,chengben,num);
+        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   1成本:%10.2f\n",code,name,price,chengben,);
         if(addgoods(code,name,price,chengben,num))
             printf("添加成功");
         else
@@ -169,7 +180,7 @@ void checkcode()
                 profit.profit = profit.profit + good[i-1].price-good[i-1].chengben;
                 profit.total = total;
                sale(good[i-1].code); //库存减一
-                printf("商品名称：%10s 价格：%10.2f元 存量:%d \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,good[i-1].num,total);
+                printf("商品名称：%10s 价格：%10.2f元 存量:%d \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,good[i-1].num-1,total);
             }
             else
             {
@@ -189,4 +200,20 @@ void checkcode()
 }
 
 
+//检查一维码是否合格函数
+int checknum(const char*num)
+{
+    int i;
+     for(i=0;i<20;i++)
+            {
+                if(num[i]=='\0') break;
+                if(!(num[i]>='0'&&num[i]<='9'||num[i]=='\0'))
+                   {//printf("%s",num);
+                    return 1;
+                    break;
+                   }
+            }
 
+     return 0;
+
+}

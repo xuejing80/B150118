@@ -25,6 +25,26 @@ int ifexist(char code[])
         printf("条码不存在，请重新输入\n");
     return a;
 }
+//总利润
+double totalprofit(){
+    int id;
+    double total=0,profit=0,abc=0;
+    FILE *fp;
+    if(fp = fopen(".\\2.txt","r")){
+        while(!feof(fp)){
+            fscanf(fp,"%d %lf %lf\n",&id,&total,&profit);
+           abc = abc+profit;
+        }
+    }
+    else{
+        printf("文件加载错误，请检查数据库文件");
+    }
+    return total;
+}
+
+
+
+
 //扫码 返回查询到的条码信息
 struct goods readcode(char code[]){
     goods read;
@@ -86,7 +106,17 @@ void createorder(double price,double profit){
     add.id = neworder();
     add.total = price;
     add.profit = profit;
-    printf("\n%d %f %f",add.id,add.total,add.profit);
+    printf("订单创建完成\n");
+            FILE *fp;
+         if(fp = fopen(".\\2.txt","a+")){
+            fprintf(fp,"\n%d %.2f %.2f",neworder(),add.total,add.profit);
+            fclose(fp);
+            checkabc(add.id,add.total,add.profit);
+            return 1;
+         }else{
+        printf("文件加载错误，请检查数据库文件");
+        return 0;
+         }
 
 }
 //库存减一

@@ -17,7 +17,7 @@ typedef struct order order;
 //函数声明部分
 int login();
 void adminabc();
-void checkabc();
+void checkabc(int id,double total,double profit);
 struct goods readcode();
 void inputgoods();
 void checkcode();
@@ -25,3 +25,5 @@ int ifexist();
 void createorder();
 int neworder();
 void sale();
+double totalprofit();
+int checknum();
