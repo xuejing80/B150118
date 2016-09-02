@@ -1,24 +1,24 @@
-# Microsoft Developer Studio Project File - Name="medcine" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="medcine1" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Console Application" 0x0103
 
-CFG=medcine - Win32 Debug
+CFG=medcine1 - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "medcine.mak".
+!MESSAGE NMAKE /f "medcine1.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "medcine.mak" CFG="medcine - Win32 Debug"
+!MESSAGE NMAKE /f "medcine1.mak" CFG="medcine1 - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "medcine - Win32 Release" (based on "Win32 (x86) Console Application")
-!MESSAGE "medcine - Win32 Debug" (based on "Win32 (x86) Console Application")
+!MESSAGE "medcine1 - Win32 Release" (based on "Win32 (x86) Console Application")
+!MESSAGE "medcine1 - Win32 Debug" (based on "Win32 (x86) Console Application")
 !MESSAGE 
 
 # Begin Project
@@ -28,7 +28,7 @@ CFG=medcine - Win32 Debug
 CPP=cl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "medcine - Win32 Release"
+!IF  "$(CFG)" == "medcine1 - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -51,7 +51,7 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
 
-!ELSEIF  "$(CFG)" == "medcine - Win32 Debug"
+!ELSEIF  "$(CFG)" == "medcine1 - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -78,11 +78,15 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "medcine - Win32 Release"
-# Name "medcine - Win32 Debug"
+# Name "medcine1 - Win32 Release"
+# Name "medcine1 - Win32 Debug"
 # Begin Source File
 
-SOURCE=.\medcine.c
+SOURCE=.\file.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\medcine1.c
 # End Source File
 # End Target
 # End Project

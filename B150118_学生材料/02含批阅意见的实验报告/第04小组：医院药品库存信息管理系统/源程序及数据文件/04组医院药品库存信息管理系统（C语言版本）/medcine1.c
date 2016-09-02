@@ -2,11 +2,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"file.h"
-#include"student.h"
+#include"medcine.h"
 
-void printHead( )      /*´òÓ¡Ñ§ÉúĞÅÏ¢µÄ±íÍ·*/
+void printHead( )      /*´òÓ¡Ò©Æ·ĞÅÏ¢µÄ±íÍ·*/
 {
-printf("%6s%10s%6s%10s%6s%10s%12s%16s\n","Ò©Æ·Ãû³Æ","Ò©Æ·ÀàĞÍ","¹æ¸ñ","¿â´æÊıÁ¿","¼Û¸ñ","Èë¿âÊ±¼ä","Ò©Æ·±£ÖÊÆÚ","±£ÖÊÆÚµ½ÆÚÊ±¼ä");
+printf("%4s%10s%6s%6s%10s%6s%10s%10s%8s%10s\n","±àÂë","Ò©Æ·Ãû³Æ","ÀàĞÍ","¹æ¸ñ","¿â´æÊıÁ¿","¼Û¸ñ","Èë¿âÊ±¼ä","³ö¿âÊ±¼ä","±£ÖÊÆÚ","µ½ÆÚÊ±¼ä");
 }
 
 void menu( )         /*¶¥²ã²Ëµ¥º¯Êı*/
@@ -51,11 +51,11 @@ void menuSearch()    /*5¡¢¸ù¾İÌõ¼ş²éÑ¯²Ëµ¥º¯Êı*/
 }
 
 
-int baseManage(Student stu[],int n)    	     /*¸Ãº¯ÊıÍê³É»ù±¾ĞÅÏ¢¹ÜÀí*/
+int baseManage(Medcine med[],int n)    	     /*¸Ãº¯ÊıÍê³É»ù±¾ĞÅÏ¢¹ÜÀí*/
 /*°´Ñ§ºÅ½øĞĞ²åÈëÉ¾³ıĞŞ¸Ä£¬Ñ§ºÅ²»ÄÜÖØ¸´*/
 {  
-		int choice,t,find[NUM];
-     Student s;
+		int choice,t,find[COD];
+     Medcine s;
 do
 	    {   
 menuBase( );                  /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
@@ -63,23 +63,23 @@ printf("choose one operation you want to do:\n");
 		     scanf("%d",&choice);	          /*¶ÁÈëÑ¡Ïî*/
 		     switch(choice)
 		     {
-			   case 1:	 readStu(&s,1);       /*¶ÁÈëÒ»Ìõ´ı²åÈëµÄÑ§Éú¼ÇÂ¼*/
-					 n=insertStu(stu,n,s);   /*µ÷ÓÃº¯Êı²åÈëÑ§Éú¼ÇÂ¼*/
+			   case 1:	 readMed(&s,1);       /*¶ÁÈëÒ»Ìõ´ı²åÈëµÄÑ§Éú¼ÇÂ¼*/
+					 n=insertMed(med,n,s);   /*µ÷ÓÃº¯Êı²åÈëÑ§Éú¼ÇÂ¼*/
 					 break;
 			   case 2:  printf("Input the number deleted\n");
-					 scanf("%ld",&s.num);  /*¶ÁÈëÒ»¸ö´ıÉ¾³ıµÄÑ§ÉúÑ§ºÅ*/
-					 n=deleteStu(stu,n,s);   /*µ÷ÓÃº¯ÊıÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÑ§Éú¼ÇÂ¼*/
+					 scanf("%ld",&s.cod);  /*¶ÁÈëÒ»¸ö´ıÉ¾³ıµÄÑ§ÉúÑ§ºÅ*/
+					 n=deleteMed(med,n,s);   /*µ÷ÓÃº¯ÊıÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÑ§Éú¼ÇÂ¼*/
 					 break;
 			   case 3:  printf("Input the number modified\n");
-					 scanf("%ld",&s.num);  /*¶ÁÈëÒ»¸ö´ıĞŞ¸ÄµÄÑ§ÉúÑ§ºÅ*/
-				      t=searchStu(stu,n,s,1,find) ; /*µ÷ÓÃº¯Êı²éÕÒÖ¸¶¨Ñ§ºÅµÄÑ§Éú¼ÇÂ¼*/
+					 scanf("%ld",&s.cod);  /*¶ÁÈëÒ»¸ö´ıĞŞ¸ÄµÄÑ§ÉúÑ§ºÅ*/
+				      t=searchMed(med,n,s,1,find) ; /*µ÷ÓÃº¯Êı²éÕÒÖ¸¶¨Ñ§ºÅµÄÑ§Éú¼ÇÂ¼*/
 				      if (t)                 /*Èç¹û¸ÃÑ§ºÅµÄ¼ÇÂ¼´æÔÚ*/
 					 {
-						  readStu(&s,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÑ§Éú¼ÇÂ¼ĞÅÏ¢*/
-					      stu[find[0]]=s;    /*½«¸Õ¶ÁÈëµÄ¼ÇÂ¼¸³Öµ¸øĞèÒªĞŞ¸ÄµÄÊı×é¼ÇÂ¼*/ 					 
+						  readMed(&s,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÑ§Éú¼ÇÂ¼ĞÅÏ¢*/
+					      med[find[0]]=s;    /*½«¸Õ¶ÁÈëµÄ¼ÇÂ¼¸³Öµ¸øĞèÒªĞŞ¸ÄµÄÊı×é¼ÇÂ¼*/ 					 
 					  }					 
 					 else                 /*Èç¹û¸ÃÑ§ºÅµÄ¼ÇÂ¼²»´æÔÚ*/ 
- printf("this student is not in,can not be modified.\n"); /*Êä³öÌáÊ¾ĞÅÏ¢*/
+ printf("this medcine is not in,can not be modified.\n"); /*Êä³öÌáÊ¾ĞÅÏ¢*/
 					 break;
 			    case 0: break;
 		    }
@@ -87,7 +87,7 @@ printf("choose one operation you want to do:\n");
 return n;                             /*·µ»Øµ±Ç°²Ù×÷½áÊøºóµÄÊµ¼Ê¼ÇÂ¼ÌõÊı*/
 }
 
-void scoreManage(Student stu[],int n)          /*¸Ãº¯ÊıÍê³ÉÑ§Éú³É¼¨¹ÜÀí¹¦ÄÜ*/
+void scoreManage(Medcine med[],int n)          /*¸Ãº¯ÊıÍê³ÉÑ§Éú³É¼¨¹ÜÀí¹¦ÄÜ*/
 {  
 	int choice;
 	do
@@ -97,9 +97,9 @@ void scoreManage(Student stu[],int n)          /*¸Ãº¯ÊıÍê³ÉÑ§Éú³É¼¨¹ÜÀí¹¦ÄÜ*/
 		scanf("%d",&choice);	                 /*¶ÁÈë¶ş¼¶Ñ¡Ïî*/
 		switch(choice)
 		{
-			case 1:   calcuTotal(stu,n);         /*ÇóËùÓĞÑ§ÉúµÄ×Ü·Ö*/
+			case 1:   calcuNum(med,n);         /*ÇóËùÓĞÑ§ÉúµÄ×Ü·Ö*/
 					  break;
-			case 2:   calcuRank(stu,n);         /*¸ù¾İËùÓĞÑ§ÉúµÄ×Ü·ÖÅÅÃû´Î*/
+			case 2:   calcuIntime(med,n);         /*¸ù¾İËùÓĞÑ§ÉúµÄ×Ü·ÖÅÅÃû´Î*/
 				      break;		
 			case 0:   break;
 		}
@@ -115,14 +115,14 @@ int i;
 	   printf("\n");
 }
 
-void countManage(Student stu[],int n)               /*¸Ãº¯ÊıÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ*/
+void countManage(Medcine med[],int n)               /*¸Ãº¯ÊıÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ*/
 {
 		int choice;
 		double mark[3][3];
 		do
 		{
 			menuCount( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
-			calcuMark(mark,stu,n);                 /*µ÷ÓÃ´Ëº¯ÊıÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ùÖµ*/
+			calcuMark(mark,med,n);                 /*µ÷ÓÃ´Ëº¯ÊıÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ùÖµ*/
 			printf("choose one operation you want to do:\n");
 			scanf("%d",&choice);
 			switch(choice)
@@ -138,10 +138,10 @@ void countManage(Student stu[],int n)               /*¸Ãº¯ÊıÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ
 		}while (choice);
 }
 
-void searchManage(Student stu[],int n)               /*¸Ãº¯ÊıÍê³É¸ù¾İÌõ¼ş²éÑ¯¹¦ÄÜ*/
+void searchManage(Medcine med[],int n)               /*¸Ãº¯ÊıÍê³É¸ù¾İÌõ¼ş²éÑ¯¹¦ÄÜ*/
 {
-    int i,choice,findnum,f[NUM];
-Student s;
+    int i,choice,findcod,f[COD];
+Medcine s;
 	   do
 {
 			menuSearch( );                         /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
@@ -150,24 +150,24 @@ Student s;
 			switch(choice)
 			{
 				case 1:   printf("Input a student\'s num will be searched:\n");
-				      scanf("%ld",&s.num);         /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄÑ§ºÅ*/
+				      scanf("%ld",&s.cod);         /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄÑ§ºÅ*/
 					  break;
 				case 2:   printf("Input a student\'s name will be searched:\n");
 				      scanf("%s",s.name);	          /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄĞÕÃû*/		  
 				      break;   
 				case 3:   printf("Input a rank will be searched:\n");
-				      scanf("%d",&s.rank);          /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄÃû´Î*/
+				      scanf("%d",&s.intime);          /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄÃû´Î*/
 					  break;
 				case 0:   break;
 			}
 		 	if (choice>=1&&choice<=3)
 			{ 
-				findnum=searchStu(stu,n,s,choice,f);    /*²éÕÒµÄ·ûºÏÌõ¼şÔªËØµÄÏÂ±ê´æÓÚfÊı×éÖĞ*/
-				if (findnum)				     /*Èç¹û²éÕÒ³É¹¦*/
+				findcod=searchMed(med,n,s,choice,f);    /*²éÕÒµÄ·ûºÏÌõ¼şÔªËØµÄÏÂ±ê´æÓÚfÊı×éÖĞ*/
+				if (findcod)				     /*Èç¹û²éÕÒ³É¹¦*/
 				{
 			   		 printHead( );                  /*´òÓ¡±íÍ·*/
-					 for (i=0;i<findnum;i++)         /*Ñ­»·¿ØÖÆfÊı×éµÄÏÂ±ê*/
-	      	 printStu(&stu[f[i]],1);      /*Ã¿´ÎÊä³öÒ»Ìõ¼ÇÂ¼*/
+					 for (i=0;i<findcod;i++)         /*Ñ­»·¿ØÖÆfÊı×éµÄÏÂ±ê*/
+	      	 printMed(&med[f[i]],1);      /*Ã¿´ÎÊä³öÒ»Ìõ¼ÇÂ¼*/
 				}
 		    		else
 			    	    printf("this record does not exist!\n"); /*Èç¹û²éÕÒ²»µ½ÔªËØ£¬ÔòÊä³öÌáÊ¾ĞÅÏ¢*/
@@ -175,21 +175,21 @@ Student s;
 	    }while (choice);
 }
 
-int runMain(Student stu[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹¦ÄÜÑ¡ÔñÖ´ĞĞ*/
+int runMain(Medcine med[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹¦ÄÜÑ¡ÔñÖ´ĞĞ*/
 {
 		switch(choice)
 		{
 			case 1: printHead( );           /* 1. ÏÔÊ¾»ù±¾ĞÅÏ¢*/
-				 sortStu(stu,n,1);         /*°´Ñ§ºÅÓÉĞ¡µ½´óµÄË³ĞòÅÅĞò¼ÇÂ¼*/ 
-          	 printStu(stu,n);          /*°´Ñ§ºÅÓÉĞ¡µ½´óµÄË³ĞòÊä³öËùÓĞ¼ÇÂ¼*/
+				 sortMed(med,n,1);         /*°´Ñ§ºÅÓÉĞ¡µ½´óµÄË³ĞòÅÅĞò¼ÇÂ¼*/ 
+          	 printMed(med,n);          /*°´Ñ§ºÅÓÉĞ¡µ½´óµÄË³ĞòÊä³öËùÓĞ¼ÇÂ¼*/
 					break;
-			case 2: n=baseManage(stu,n);    /* 2. »ù±¾ĞÅÏ¢¹ÜÀí*/
+			case 2: n=baseManage(med,n);    /* 2. »ù±¾ĞÅÏ¢¹ÜÀí*/
 			   	     break;
-			case 3: scoreManage(stu,n);     /* 3. Ñ§Éú³É¼¨¹ÜÀí*/
+			case 3: scoreManage(med,n);     /* 3. Ñ§Éú³É¼¨¹ÜÀí*/
 					break;
-			case 4: countManage(stu,n);     /* 4. ¿¼ÊÔ³É¼¨Í³¼Æ*/
+			case 4: countManage(med,n);     /* 4. ¿¼ÊÔ³É¼¨Í³¼Æ*/
 					break;
-			case 5: searchManage(stu,n);     /* 5. ¸ù¾İÌõ¼ş²éÑ¯*/
+			case 5: searchManage(med,n);     /* 5. ¸ù¾İÌõ¼ş²éÑ¯*/
 				     break;
           case 0: break;
 		}
@@ -198,12 +198,12 @@ int runMain(Student stu[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹
 
 int main( )
 {
-		Student stu[NUM];                /*¶¨ÒåÊµ²ÎÒ»Î¬Êı×é´æ´¢Ñ§Éú¼ÇÂ¼*/
+		Medcine med[COD];                /*¶¨ÒåÊµ²ÎÒ»Î¬Êı×é´æ´¢Ñ§Éú¼ÇÂ¼*/
       int choice,n;
-	 n=readFile(stu);                  /*Ê×ÏÈ¶ÁÈ¡ÎÄ¼ş£¬¼ÇÂ¼ÌõÊı·µ»Ø¸³Öµ¸øn*/
+	 n=readFile(med);                  /*Ê×ÏÈ¶ÁÈ¡ÎÄ¼ş£¬¼ÇÂ¼ÌõÊı·µ»Ø¸³Öµ¸øn*/
 	 if (!n)                          /*Èç¹ûÔ­À´µÄÎÄ¼şÎª¿Õ*/
 	     {
-		    n=createFile(stu);              /*ÔòÊ×ÏÈÒª½¨Á¢ÎÄ¼ş£¬´Ó¼üÅÌÉÏ¶ÁÈëÒ»ÏµÁĞ¼ÇÂ¼´æÓÚÎÄ¼ş*/
+		    n=createFile(med);              /*ÔòÊ×ÏÈÒª½¨Á¢ÎÄ¼ş£¬´Ó¼üÅÌÉÏ¶ÁÈëÒ»ÏµÁĞ¼ÇÂ¼´æÓÚÎÄ¼ş*/
 }	 	 
 	do
 	     {
@@ -211,12 +211,12 @@ int main( )
 	         printf("Please input your choice: ");
 	         scanf("%d",&choice);
 	         if (choice>=0&&choice<=5)
-	              n=runMain(stu,n,choice);    /*Í¨¹ıµ÷ÓÃ´Ëº¯Êı½øĞĞÒ»¼¶¹¦ÄÜÏîµÄÑ¡ÔñÖ´ĞĞ*/
+	              n=runMain(med,n,choice);    /*Í¨¹ıµ÷ÓÃ´Ëº¯Êı½øĞĞÒ»¼¶¹¦ÄÜÏîµÄÑ¡ÔñÖ´ĞĞ*/
 	         else 
 		          printf("error input,please input your choice again!\n");
 	} while (choice);
-	sortStu(stu,n,1);                   /*´æÈëÎÄ¼şÇ°°´Ñ§ºÅÓÉĞ¡µ½´óÅÅĞò*/ 
-	     saveFile(stu,n);                   /*½«½á¹û´æÈëÎÄ¼ş*/
+	sortMed(med,n,1);                   /*´æÈëÎÄ¼şÇ°°´Ñ§ºÅÓÉĞ¡µ½´óÅÅĞò*/ 
+	     saveFile(med,n);                   /*½«½á¹û´æÈëÎÄ¼ş*/
       return 0;
 }
 
@@ -224,164 +224,182 @@ int main( )
 
 
 
-/*¢Ústudent.cÎÄ¼şµÄÍêÕûÄÚÈİ*/
-#include "student.h"
+
+
+
+
+
+
+
+
+/*¢Úmedcine.cÎÄ¼şµÄÍêÕûÄÚÈİ*/
+#include "medcine.h"
 #include <stdio.h>
 
-int readStu(Student  *stu , int n)          /*¶ÁÈëÑ§Éú¼ÇÂ¼Öµ£¬Ñ§ºÅÎª0»ò¶ÁÂú¹æ¶¨ÌõÊı¼ÇÂ¼Ê±Í£Ö¹*/
+int readMed(Medcine  *med , int n)          /*¶ÁÈëÑ§Éú¼ÇÂ¼Öµ£¬Ñ§ºÅÎª0»ò¶ÁÂú¹æ¶¨ÌõÊı¼ÇÂ¼Ê±Í£Ö¹*/
 {
 	int i,j;
 	for (i=0;i<n;i++)
 	{
-		printf("Input one medcine\'s information\n");
-		printf("num:  ");
-	     scanf("%ld", &stu[i].num);
-		if (stu[i].num==0) break;
-		printf("name: ");
-		scanf("%s",stu[i].name);	
-		printf("sex:  ");
-		scanf("%s",stu[i].sex);
-    	     stu[i].total=0;                /*×Ü·ÖĞèÒª¼ÆËãÇóµÃ£¬³õÖµÖÃÎª0*/
-		printf("Input three courses of the student:\n");
-		for (j=0;j<3;j++)
-	    {
-		    scanf("%d",&stu[i].score[j]);	
-		}
-		stu[i].rank=0;                 /*Ãû´ÎĞèÒª¸ù¾İ×Ü·ÖÀ´¼ÆËã£¬³õÖµÖÃÎª0*/
+		printf("ÊäÈëÒ©Æ·ĞÅÏ¢\n");
+		printf("Ò©Æ·±àÂë:  ");
+	     scanf("%ld", &med[i].cod);
+		if (med[i].cod==0) break;
+		printf("Ò©Æ·Ãû³Æ: ");
+		scanf("%s",&med[i].name);	
+		printf("Ò©Æ·ÀàĞÍ:  ");
+		scanf("%s",&med[i].type);
+		printf("¹æ¸ñ:\n");
+		scanf("%s",&med[i].spec);
+		printf("ÊıÁ¿: ");
+		scanf("%ld",&med[i].num);	
+		printf("¼Û¸ñ: ");
+		scanf("%lf",&med[i].price);	
+		printf("Èë¿âÊ±¼ä:  ");
+		scanf("%ld",&med[i].intime);
+		printf("³ö¿âÊ±¼ä: ");
+		scanf("%ld",&med[i].outtime);	
+		printf("±£ÖÊÆÚ:  ");
+		scanf("%s",&med[i].term);
+		printf("±£ÖÊÆÚµ½ÆÚÊ±¼ä:  ");
+		scanf("%ld",&med[i].outterm);
 	}
 	return i;                         /*·µ»ØÊµ¼Ê¶ÁÈëµÄ¼ÇÂ¼ÌõÊı*/
 }
 
-void printStu ( Student  *stu , int n)       /*Êä³öËùÓĞÑ§Éú¼ÇÂ¼µÄÖµ*/
+void printMed ( Medcine  *med , int n)       /*Êä³öËùÓĞÑ§Éú¼ÇÂ¼µÄÖµ*/
 {
     int i,j;
 	for (i=0;i<n;i++)
 	{
-		printf("%8ld  ", stu[i].num);
-		printf("%8s", stu[i].name);
-		printf("%8s", stu[i].sex);
-		for (j=0;j<3;j++)
-		   printf("%6d",stu[i].score[j]);
-	    printf("%7d",stu[i].total);
-	    printf("%5d\n",stu[i].rank);
+		printf("%2ld", med[i].cod);
+		printf("%10s", med[i].name);
+		printf("%8s", med[i].type);
+		printf("%12s",med[i].spec);
+	    printf("%4ld",med[i].num);
+	    printf("%10f",med[i].price);
+		printf("%10ld",med[i].intime);
+	    printf("%4ld",med[i].outtime);
+	    printf("%6s",med[i].term);
+	    printf("%10ld\n",med[i].outterm);
 	}
 }
 
-int equal(Student s1,Student s2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öStudent¼ÇÂ¼ÏàµÈ*/
+int equal(Medcine s1,Medcine s2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öStudent¼ÇÂ¼ÏàµÈ*/
 {
 	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½ÏÑ§ºÅ*/
-		return s1.num==s2.num;
+		return s1.cod==s2.cod;
 	else if (condition==2)                /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½ÏĞÕÃû*/
      {
 	     if (strcmp(s1.name,s2.name)==0) 	return 1;
 		else return 0;
      }
  else if (condition==3)                /*Èç¹û²ÎÊıconditionµÄÖµÎª3£¬Ôò±È½ÏÃû´Î*/
-	     return s1.rank==s2.rank;
+	     return s1.intime==s2.intime;
  else if (condition==4)                /*Èç¹û²ÎÊıconditionµÄÖµÎª4£¬Ôò±È½Ï×Ü·Ö*/
-		return s1.total==s2.total;
+		return s1.num==s2.num;
 	else return 1;                       /*ÆäÓàÇé¿ö·µ»Ø1*/
 } 
 
-int larger(Student s1,Student s2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öStudent¼ÇÂ¼µÄ´óĞ¡*/
+int larger(Medcine s1,Medcine s2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öStudent¼ÇÂ¼µÄ´óĞ¡*/
 {
 	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½ÏÑ§ºÅ*/
-		return s1.num>s2.num;
+		return s1.cod>s2.cod;
 	if (condition==2)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½Ï×Ü·Ö*/
-		return s1.total>s2.total;	
+		return s1.num>s2.num;	
 	else return 1; /*ÆäÓàÇé¿ö·µ»Ø1*/
 }
 
-void reverse(Student stu[],int n)             /*Êı×éÔªËØÄæÖÃ*/
+void reverse(Medcine med[],int n)             /*Êı×éÔªËØÄæÖÃ*/
 {
 	int i;
-	Student temp;
+	Medcine temp;
 	for (i=0;i<n/2;i++)                   /*Ñ­»·´ÎÊıÎªÔªËØÊıÁ¿µÄÒ»°ë*/
 	{
-		temp=stu[i];
-		stu[i]=stu[n-1-i];
-		stu[n-1-i]=temp;
+		temp=med[i];
+		med[i]=med[n-1-i];
+		med[n-1-i]=temp;
 	}
 }
 
-void calcuTotal(Student stu[],int n)         /*¼ÆËãËùÓĞÑ§ÉúµÄ×Ü·Ö*/
+void calcuNum(Medcine med[],int n)         /*¼ÆËãËùÓĞÑ§ÉúµÄ×Ü·Ö*/
 {
 	int i,j;
 	for (i=0;i<n;i++)                    /*Íâ²ãÑ­»·¿ØÖÆËùÓĞÑ§Éú¼ÇÂ¼*/
 	{
-		stu[i].total =0;
+		med[i].cod =0;
 		for (j=0;j<3;j++)               /*ÄÚ²ãÑ­»·¿ØÖÆÈıÃÅ¹¦¿Î*/
-			stu[i].total +=stu[i].score[j];
+			med[i].cod +=med[i].spec[j];
 	}	
 }
 
-void calcuRank(Student stu[],int n)          /*¸ù¾İ×Ü·Ö¼ÆËãËùÓĞÑ§ÉúµÄÅÅÃû£¬³É¼¨ÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
+void calcuIntime(Medcine med[],int n)          /*¸ù¾İ×Ü·Ö¼ÆËãËùÓĞÑ§ÉúµÄÅÅÃû£¬³É¼¨ÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
 {
 	int i ;                       
-	sortStu(stu,n,2);                     /*ÏÈµ÷ÓÃsortStuËã·¨£¬°´×Ü·ÖÓÉĞ¡µ½´óÅÅĞò*/
-	reverse(stu,n);                      /*ÔÙÄæÖÃ£¬Ôò°´×Ü·ÖÓÉ´óµ½Ğ¡ÅÅĞòÁË*/
-	stu[0].rank=1;                      /*µÚÒ»Ìõ¼ÇÂ¼µÄÃû´ÎÒ»¶¨ÊÇ1*/
+	sortMed(med,n,2);                     /*ÏÈµ÷ÓÃsortStuËã·¨£¬°´×Ü·ÖÓÉĞ¡µ½´óÅÅĞò*/
+	reverse(med,n);                      /*ÔÙÄæÖÃ£¬Ôò°´×Ü·ÖÓÉ´óµ½Ğ¡ÅÅĞòÁË*/
+	med[0].intime=1;                      /*µÚÒ»Ìõ¼ÇÂ¼µÄÃû´ÎÒ»¶¨ÊÇ1*/
 	for (i=1;i<n;i++)                     /*´ÓµÚ¶şÌõ¼ÇÂ¼Ò»Ö±µ½×îºóÒ»Ìõ½øĞĞÑ­»·*/
 	{
-		if (equal(stu[i],stu[i-1],4))         /*µ±Ç°¼ÇÂ¼ÓëÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Èç¹û×Ü·ÖÏàµÈ*/
-			stu[i].rank=stu[i-1].rank;     /*µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Ãû´Î*/ 
+		if (equal(med[i],med[i-1],4))         /*µ±Ç°¼ÇÂ¼ÓëÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Èç¹û×Ü·ÖÏàµÈ*/
+			med[i].intime=med[i-1].intime;     /*µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Ãû´Î*/ 
 	    else
-			stu[i].rank=i+1;             /*²»ÏàµÈÊ±µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏÂ±êºÅ+1*/
+			med[i].intime=i+1;             /*²»ÏàµÈÊ±µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏÂ±êºÅ+1*/
 	}
 }
 
-void calcuMark(double m[3][3],Student stu[],int n) /*ÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
+void calcuMark(double m[3][3],Medcine med[],int n) /*ÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
 /*ÆäÖĞĞÎÊ½²ÎÊı¶şÎ¬Êı×émµÄµÚÒ»Î¬´ú±íÈıÃÅ¿Î£¬µÚ¶şÎ¬´ú±í×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
 {
 	int i,j;
 	for (i=0;i<3;i++)                 /*ÇóÈıÃÅ¿ÎµÄ×î¸ß·Ö*/		
 	{ 
-		m[i][0]=stu[0].score[i];     
+		m[i][0]=med[0].spec[i];     
 		for (j=1;j<n;j++)
-			if (m[i][0]<stu[j].score[i])
-				m[i][0]=stu[j].score[i];
+			if (m[i][0]<med[j].spec[i])
+				m[i][0]=med[j].spec[i];
 	}
 	for (i=0;i<3;i++)                  /*ÇóÈıÃÅ¿ÎµÄ×îµÍ·Ö*/
 	{ 
-		m[i][1]=stu[0].score[i];      
+		m[i][1]=med[0].spec[i];      
 		for (j=1;j<n;j++)
-			if (m[i][1]>stu[j].score[i])
-				m[i][1]=stu[j].score[i];
+			if (m[i][1]>med[j].spec[i])
+				m[i][1]=med[j].spec[i];
 	}
 	for (i=0;i<3;i++)                 /*ÇóÈıÃÅ¿ÎµÄÆ½¾ù·Ö*/
 	{ 
-		m[i][2]=stu[0].score[i];     
+		m[i][2]=med[0].spec[i];     
 		for (j=1;j<n;j++)
-			m[i][2]+=stu[j].score[i];
+			m[i][2]+=med[j].spec[i];
 		m[i][2]/=n;
 	}
 }
 
-void sortStu(Student stu[],int n,int condition)  /*Ñ¡Ôñ·¨ÅÅĞò£¬°´conditionÌõ¼şÓÉĞ¡µ½´óÅÅĞò*/
+void sortMed(Medcine med[],int n,int condition)  /*Ñ¡Ôñ·¨ÅÅĞò£¬°´conditionÌõ¼şÓÉĞ¡µ½´óÅÅĞò*/
 {
 	int i,j,minpos;                      /*minposÓÃÀ´´æ´¢±¾ÌË×îĞ¡ÔªËØËùÔÚµÄÏÂ±ê*/
-	Student t;
+	Medcine t;
 	for (i=0;i<n-1;i++)                  /*¿ØÖÆÑ­»·µÄn-1ÌË*/
 	{
 		minpos=i;
 		for (j=i+1;j<n;j++)             /*Ñ°ÕÒ±¾ÌË×îĞ¡ÔªËØËùÔÚµÄÏÂ±ê*/
-			if (larger(stu[minpos],stu[j],condition))
+			if (larger(med[minpos],med[j],condition))
 				minpos=j;
 		if (i!=minpos)                 /*±£Ö¤±¾ÌË×îĞ¡ÔªËØµ½´ïÏÂ±êÎªiµÄÎ»ÖÃ*/
 		{
-			t=stu[i];
-			stu[i]=stu[minpos];
-			stu[minpos]=t;
+			t=med[i];
+			med[i]=med[minpos];
+			med[minpos]=t;
 		}
 	}
 }
 
-int searchStu(Student stu[],int n,Student s,int condition,int f[ ])  /*ÔÚstuÊı×éÖĞÒÀconditionÌõ¼ş²éÕÒ*/
+int searchMed(Medcine med[],int n,Medcine s,int condition,int f[ ])  /*ÔÚstuÊı×éÖĞÒÀconditionÌõ¼ş²éÕÒ*/
 /*ÓësÏàÍ¬µÄÔªËØ£¬ÓÉÓÚ²»Ö¹Ò»Ìõ¼ÇÂ¼·ûºÏÌõ¼ş£¬Òò´Ë½«ÕâĞ©ÔªËØµÄÏÂ±êÖÃÓÚ fÊı×éÖĞ*/
 {
 	int i,j=0,find=0;
 	for (i=0;i<n;i++)                                 /*´ı²éÕÒµÄÔªËØ*/
-		if (equal(stu[i],s,condition))  
+		if (equal(med[i],s,condition))  
 		{
 			f[j++]=i;                          /*ÕÒµ½ÁËÏàµÈµÄÔªËØ£¬½«ÆäÏÂ±ê·Åµ½fÊı×éÖĞ*/
 			find++;	                        /*Í³¼ÆÕÒµ½µÄÔªËØ¸öÊı*/                              
@@ -389,13 +407,13 @@ int searchStu(Student stu[],int n,Student s,int condition,int f[ ])  /*ÔÚstuÊı×é
 	 return find;                                /*·µ»Øfind£¬ÆäÖµÎª0Ôò±íÊ¾Ã»ÕÒµ½*/ 
 }
 
-int insertStu(Student stu[],int n,Student s)              /*ÏòstuÊı×éÖĞÒÀÑ§ºÅµİÔö²åÈëÒ»¸öÔªËØs*/
+int insertMed(Medcine med[],int n,Medcine s)              /*ÏòstuÊı×éÖĞÒÀÑ§ºÅµİÔö²åÈëÒ»¸öÔªËØs*/
 {
 	int i;
-	sortStu(stu,n,1);                              /*ÏÈ°´Ñ§ºÅÅÅĞò*/
+	sortMed(med,n,1);                              /*ÏÈ°´Ñ§ºÅÅÅĞò*/
 	for (i=0;i<n;i++)
 	{
-		if (equal(stu[i],s,1))                      /*Ñ§ºÅÏàÍ¬²»ÔÊĞí²åÈë£¬±£Ö¤Ñ§ºÅµÄÎ¨Ò»ĞÔ*/
+		if (equal(med[i],s,1))                      /*Ñ§ºÅÏàÍ¬²»ÔÊĞí²åÈë£¬±£Ö¤Ñ§ºÅµÄÎ¨Ò»ĞÔ*/
 		{
 		    printf("this record exist,can not insert again!\n");
 		    return n;
@@ -403,29 +421,34 @@ int insertStu(Student stu[],int n,Student s)              /*ÏòstuÊı×éÖĞÒÀÑ§ºÅµİÔ
 	}
 	for (i=n-1;i>=0;i--)                          /*°´Ñ§ºÅ´ÓĞ¡µ½´óÓĞĞò*/
 	{
-		if (!larger(stu[i],s,1))                    /*Èç¹ûs´óÓÚµ±Ç°ÔªËØstu[i]£¬ÔòÍË³öÑ­»·*/
+		if (!larger(med[i],s,1))                    /*Èç¹ûs´óÓÚµ±Ç°ÔªËØstu[i]£¬ÔòÍË³öÑ­»·*/
 		break;
-		stu[i+1]=stu[i];                         /*·ñÔòÔªËØstu[i]ºóÒÆÒ»¸öÎ»ÖÃ*/
+		med[i+1]=med[i];                         /*·ñÔòÔªËØstu[i]ºóÒÆÒ»¸öÎ»ÖÃ*/
 	}
-	stu[i+1]=s;                                /*ÔÚÏÂ±êi+1´¦²åÈëÔªËØs*/                                   
+	med[i+1]=s;                                /*ÔÚÏÂ±êi+1´¦²åÈëÔªËØs*/                                   
 	n++;                                     /*ÔªËØ¸öÊıÔö¼Ó1*/
 	return n;                                  /*·µ»ØÏÖÓĞÔªËØ¸öÊı*/
 }
 
-int deleteStu(Student stu[],int n,Student s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÒ»¸öÔªËØ*/
+int deleteMed(Medcine med[],int n,Medcine s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÒ»¸öÔªËØ*/
 {
 	int i,j;
 	for (i=0;i<n;i++)                           /*Ñ°ÕÒ´ıÉ¾³ıµÄÔªËØ*/
-		if (equal(stu[i],s,1))   break;            /*Èç¹ûÕÒµ½ÏàµÈÔªËØÔòÍË³öÑ­»·*/
+		if (equal(med[i],s,1))   break;            /*Èç¹ûÕÒµ½ÏàµÈÔªËØÔòÍË³öÑ­»·*/
 	if (i==n)                                 /*Èç¹ûÕÒ²»µ½´ıÉ¾³ıµÄÔªËØ*/
 	{
 		printf("This record does not exist!\n");    /*¸ø³öÌáÊ¾ĞÅÏ¢È»ºó·µ»Ø*/
 		return n;
 	}
 	for (j=i; j<n-1; j++)                        /*´Ë´¦Òşº¬Ìõ¼şÎªi<nÇÒequal(stu[i],s,1)³ÉÁ¢*/ 
-		stu[j]=stu[j+1];                       /*Í¨¹ıÒÆ¶¯¸²¸ÇÉ¾³ıÏÂ±êÎªiµÄÔªËØ*/
+		med[j]=med[j+1];                       /*Í¨¹ıÒÆ¶¯¸²¸ÇÉ¾³ıÏÂ±êÎªiµÄÔªËØ*/
                                                                             
 	n--;                                      /*ÔªËØ¸öÊı¼õÉÙ¼Ó1*/
 	return n;                                  /*·µ»ØÏÖÓĞ¸öÊı*/
 }
+
+
+
+
+
 
