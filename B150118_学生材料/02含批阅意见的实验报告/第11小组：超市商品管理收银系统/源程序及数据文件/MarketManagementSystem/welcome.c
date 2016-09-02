@@ -10,9 +10,12 @@ void adminabc()
     char b;
     do
     {
-        printf("欢迎进入管理员页面\n\n");
-        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4返回登录页面\n\n\n");
-        printf("请输入命令：");
+        printf("       ******************************\n");
+        printf("            欢迎进入管理员页面\n");
+        printf("       ******************************\n");
+        printf("  \t**    1商品信息录入       **\n  \t**    2商品库存情况列表   **\n  \t**    3总体利润报表       **\n  \t**    4返回登录页面       **\n");
+        printf("        ****************************\n\n\n");
+        printf("\t**请输入命令：");
         scanf("%d",&a);
         if(a!=1&&a!=2&&a!=3&&a!=4)
         {
@@ -72,7 +75,7 @@ int login()
     if(!strcmp(user_name,admin)&& !strcmp(user_password,adminpassword))
     {
         system("cls");
-        printf("\n管理员你好\n");
+        printf("\n管理员你好\n\n");
         adminabc();
     }
     else
@@ -139,7 +142,11 @@ void inputgoods()
 
     do
     {
-        printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开* \n输入end返回主菜单\n\n");
+        printf("\n\n*************************************************************\n");
+        printf("\t请分别输入货品信息(以空格隔开，输入end结束输入)\n");
+        printf("*************************************************************\n\n");
+        printf("\t****条码***商品名称***价格***成本***库存****\n\n");
+        printf("\t");
         scanf("%s",code);
         if(!strcmp(code,end)){
                 system("cls");
@@ -147,7 +154,11 @@ void inputgoods()
         }
         scanf("%s%s%s%s",name,price,chengben,num);
         if(!checknum(num) && !checknum(code) && !checknum(chengben) && !checknum(price))
-            printf("\n   条码:%s\n   名称:%s\n   价格:%s\n   成本:%s\n",code,name,price,chengben);
+            {
+             printf("\n\t\t\t***********************");
+             printf("\n\t\t\t      条码:%s88\n\t\t\t      名称:%s\n\t\t\t      价格:%s       \n\t\t\t      成本:%s\n",code,name,price,chengben);
+              printf("\t\t\t***********************\n");
+            }
         else{
             printf("您的输入有误，请重新输入。\n");
              s = 1;
@@ -155,7 +166,7 @@ void inputgoods()
 
             }
        if(addgoods(code,name,price,chengben,num))
-            printf("添加成功");
+            printf("\t*8添加成功**");
        else
             printf("添加失败");
         printf("\n是否继续 1是 or 2否\n\n");
@@ -225,7 +236,7 @@ int checknum(const char*num)
      for(i=0;i<20;i++)
             {
                 if(num[i]=='\0') break;
-                if(!(num[i]>='0'&&num[i]<='9'||num[i]=='\0'))
+                if(!(num[i]>='0'&&num[i]<='9'||num[i]=='.'))
                    {//printf("%s",num);
                     return 1;
                     break;
