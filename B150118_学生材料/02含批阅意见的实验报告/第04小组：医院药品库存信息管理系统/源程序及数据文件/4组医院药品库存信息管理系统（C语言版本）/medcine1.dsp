@@ -82,10 +82,6 @@ LINK32=link.exe
 # Name "medcine1 - Win32 Debug"
 # Begin Source File
 
-SOURCE=.\file.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\medcine1.c
 # End Source File
 # End Target
