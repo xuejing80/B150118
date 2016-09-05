@@ -6,16 +6,16 @@
 
 void printHead( )      /*´òÓ¡Ô±¹¤ĞÅÏ¢µÄ±íÍ·*/
 {
-printf("%8s%10s%8s%6s%6s%8s%6s%6s\n","¹¤ºÅ","ĞÕÃû","ĞÔ±ğ","»ù±¾¹¤×Ê","Ë°ÂÊ","½±½ğ","×Ü¹¤×Ê","Ãû´Î");
+printf("%8s%10s%8s%6s%6s%8s%6s%6s\n","¹¤ºÅ","ĞÕÃû","ĞÔ±ğ","Ë°·Ñ","»ù±¾¹¤×Ê","½±½ğ","×Ü¹¤×Ê","Ãû´Î");
 }
 
 void menu( )         /*¶¥²ã²Ëµ¥º¯Êı*/
 {
 		printf("******** 1. ÏÔÊ¾»ù±¾ĞÅÏ¢ ********\n");
 		printf("******** 2. »ù±¾ĞÅÏ¢¹ÜÀí ********\n");
-		printf("******** 3. Ô±¹¤¼¨Ğ§¹ÜÀí ********\n");
+		printf("******** 3. Ô±¹¤¹¤×Ê¹ÜÀí ********\n");
 		printf("******** 4. ¹¤×ÊÍ³¼Æ·ÖÎö ********\n");
-        printf("******** 5. ¸ù¾İÌõ¼ş²éÑ¯ ********\n");
+     printf("******** 5. ¸ù¾İÌõ¼ş²éÑ¯ ********\n");
 		printf("******** 0. ÍË³ö         ********\n");
 }
 
@@ -29,16 +29,14 @@ void menuBase( )     /*2¡¢»ù±¾ĞÅÏ¢¹ÜÀí²Ëµ¥º¯Êı*/
 
 void menuScore( )     /*3¡¢Ô±¹¤¹¤×Ê¹ÜÀí²Ëµ¥º¯Êı*/
 {
-		printf("@@@@@@@@ 1. ¼ÆËãÔ±¹¤¹¤×Ê @@@@@@@@\n");
-		printf("@@@@@@@@ 2. ¸ù¾İ¹¤×ÊÅÅÃû @@@@@@@@\n");
+		printf("@@@@@@@ 1. ¼ÆËãÔ±¹¤×Ü¹¤×Ê @@@@@@@\n");
+		printf("@@@@@@@ 2. ¸ù¾İ×Ü¹¤×ÊÅÅÃû @@@@@@@@\n");
 		printf("@@@@@@@@ 0. ·µ»ØÉÏ²ã²Ëµ¥ @@@@@@@@\n");
 }
  
-void menuCount( )    /*4¡¢¹¤×ÊÍ³¼Æ·ÖÎö²Ëµ¥º¯Êı*/
+void menuCount( )    /*4¡¢¹¤×ÊÍ³¼Æ²Ëµ¥º¯Êı*/
 {
-		printf("&&&&&&&& 1. Çó×Ü¹¤×ÊË°·Ñ &&&&&&&&\n");
-		printf("&&&&&&&& 2. Çó×Ü»ù±¾¹¤×Ê &&&&&&&&\n");
-		printf("&&&&&&&& 3. Çó×Ü½±½ğ½ğ¶î &&&&&&&&\n");
+		printf("&&&&&&&& 1. Çó×ÜË°·Ñ¡¢×Ü»ù±¾¹¤×Ê¡¢×Ü½±½ğ &&&&&&&&\n");
 		printf("&&&&&&&& 0. ·µ»ØÉÏ²ã²Ëµ¥ &&&&&&&&\n");
 }
 
@@ -51,10 +49,10 @@ void menuSearch()    /*5¡¢¸ù¾İÌõ¼ş²éÑ¯²Ëµ¥º¯Êı*/
 }
 
 int baseManage(Employee emp[],int n)    	     /*¸Ãº¯ÊıÍê³É»ù±¾ĞÅÏ¢¹ÜÀí*/
-/*°´¹¤ºÅ½øĞĞ²åÈëÉ¾³ıĞŞ¸Ä£¬¹¤ºÅ²»ÄÜÖØ¸´*/
+/*°´Ñ§ºÅ½øĞĞ²åÈëÉ¾³ıĞŞ¸Ä£¬¹¤ºÅ²»ÄÜÖØ¸´*/
 {  
 		int choice,t,find[NUM];
-     Employee s;
+     Employee e;
 do
 	    {   
 menuBase( );                  /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
@@ -62,20 +60,20 @@ printf("choose one operation you want to do:\n");
 		     scanf("%d",&choice);	          /*¶ÁÈëÑ¡Ïî*/
 		     switch(choice)
 		     {
-			   case 1:	 readEmp(&s,1);       /*¶ÁÈëÒ»Ìõ´ı²åÈëµÄÔ±¹¤¼ÇÂ¼*/
-					 n=insertEmp(emp,n,s);   /*µ÷ÓÃº¯Êı²åÈëÔ±¹¤¼ÇÂ¼*/
+			   case 1:	 readEmp(&e,1);       /*¶ÁÈëÒ»Ìõ´ı²åÈëµÄÔ±¹¤¼ÇÂ¼*/
+					 n=insertEmp(emp,n,e);   /*µ÷ÓÃº¯Êı²åÈëÔ±¹¤¼ÇÂ¼*/
 					 break;
 			   case 2:  printf("Input the number deleted\n");
-					 scanf("%ld",&s.num);  /*¶ÁÈëÒ»¸ö´ıÉ¾³ıµÄÔ±¹¤¹¤ºÅ*/
-					 n=deleteStu(emp,n,s);   /*µ÷ÓÃº¯ÊıÉ¾³ıÖ¸¶¨¹¤ºÅµÄÔ±¹¤¼ÇÂ¼*/
+					 scanf("%ld",&e.num);  /*¶ÁÈëÒ»¸ö´ıÉ¾³ıµÄÔ±¹¤¹¤ºÅ*/
+					 n=deleteEmp(emp,n,e);   /*µ÷ÓÃº¯ÊıÉ¾³ıÖ¸¶¨¹¤ºÅµÄÔ±¹¤¼ÇÂ¼*/
 					 break;
 			   case 3:  printf("Input the number modified\n");
-					 scanf("%ld",&s.num);  /*¶ÁÈëÒ»¸ö´ıĞŞ¸ÄµÄÔ±¹¤¹¤ºÅ*/
-				      t=searchEmp(emp,n,s,1,find) ; /*µ÷ÓÃº¯Êı²éÕÒÖ¸¶¨¹¤ºÅµÄÔ±¹¤¼ÇÂ¼*/
+					 scanf("%ld",&e.num);  /*¶ÁÈëÒ»¸ö´ıĞŞ¸ÄµÄÔ±¹¤¹¤ºÅ*/
+				      t=searchEmp(emp,n,e,1,find) ; /*µ÷ÓÃº¯Êı²éÕÒÖ¸¶¨¹¤ºÅµÄÔ±¹¤¼ÇÂ¼*/
 				      if (t)                 /*Èç¹û¸Ã¹¤ºÅµÄ¼ÇÂ¼´æÔÚ*/
 					 {
-						  readEmp(&s,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÔ±¹¤¼ÇÂ¼ĞÅÏ¢*/
-					      emp[find[0]]=s;    /*½«¸Õ¶ÁÈëµÄ¼ÇÂ¼¸³Öµ¸øĞèÒªĞŞ¸ÄµÄÊı×é¼ÇÂ¼*/ 					 
+						  readEmp(&e,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÔ±¹¤¼ÇÂ¼ĞÅÏ¢*/
+					      emp[find[0]]=e;    /*½«¸Õ¶ÁÈëµÄ¼ÇÂ¼¸³Öµ¸øĞèÒªĞŞ¸ÄµÄÊı×é¼ÇÂ¼*/ 					 
 					  }					 
 					 else                 /*Èç¹û¸Ã¹¤ºÅµÄ¼ÇÂ¼²»´æÔÚ*/ 
  printf("this employee is not in,can not be modified.\n"); /*Êä³öÌáÊ¾ĞÅÏ¢*/
@@ -96,19 +94,19 @@ void scoreManage(Employee emp[],int n)          /*¸Ãº¯ÊıÍê³ÉÔ±¹¤¹¤×Ê¹ÜÀí¹¦ÄÜ*/
 		scanf("%d",&choice);	                 /*¶ÁÈë¶ş¼¶Ñ¡Ïî*/
 		switch(choice)
 		{
-			case 1:   calcuTotal(emp,n);         /*ÇóËùÓĞÔ±¹¤µÄ¹¤×Ê*/
+			case 1:   calcuTotal(emp,n);         /*ÇóÔ±¹¤µÄ×Ü¹¤×Ê*/
 					  break;
-			case 2:   calcuRank(emp,n);         /*¸ù¾İËùÓĞÔ±¹¤µÄ¹¤×ÊÅÅÃû´Î*/
+			case 2:   calcuRank(emp,n);         /*¸ù¾İËùÓĞÔ±¹¤µÄ×Ü¹¤×ÊÅÅÃû´Î*/
 				      break;		
 			case 0:   break;
 		}
 	}while(choice);
 }
 
-void printMarkCourse(char *s,double m[3][3],int k)   /*´òÓ¡·ÖÊıÍ¨ÓÃº¯Êı£¬±»countManage µ÷ÓÃ*/
-{                 /*ĞÎÊ½²ÎÊık´ú±íÊä³ö²»Í¬µÄÄÚÈİ£¬0¡¢1¡¢2·Ö±ğ¶ÔÓ¦×Ü¹¤×ÊË°·Ñ¡¢×Ü»ù±¾¹¤×Ê¡¢×Ü½±½ğ½ğ¶î*/
+void printMarkCourse(char *e,double m[3][3],int k)   /*´òÓ¡·ÖÊıÍ¨ÓÃº¯Êı£¬±»countManage µ÷ÓÃ*/
+{                 /*ĞÎÊ½²ÎÊık´ú±íÊä³ö²»Í¬µÄÄÚÈİ£¬0¡¢1¡¢2·Ö±ğ¶ÔÓ¦×ÜË°·Ñ¡¢×Ü»ù±¾¹¤×Ê¡¢×Ü½±½ğ*/
 int i;
-    printf(s);                                  /*ÕâÀïµÄs´«ÈëµÄÊÇÊä³ö¹¤×ÊµÄÌáÊ¾ĞÅÏ¢*/
+    printf(e);                                  /*ÕâÀïµÄe´«ÈëµÄÊÇÊä³ö¹¤×ÊµÄÌáÊ¾ĞÅÏ¢*/
     for (i=0;i<3;i++)                           /*i¿ØÖÆÄÄÒ»ÃÅ¿Î*/
 		  printf("%10.2lf",m[i][k]);
 	   printf("\n");
@@ -121,16 +119,12 @@ void countManage(Employee emp[],int n)               /*¸Ãº¯ÊıÍê³É¹¤×ÊÍ³¼Æ·ÖÎö¹¦Ä
 		do
 		{
 			menuCount( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
-			calcuMark(mark,emp,n);                 /*µ÷ÓÃ´Ëº¯ÊıÇó×Ü¹¤×ÊË°·Ñ¡¢×Ü»ù±¾¹¤×Ê¡¢×Ü½±½ğ½ğ¶î*/
+			calcuMark(mark,emp,n);                 /*µ÷ÓÃ´Ëº¯ÊıÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ùÖµ*/
 			printf("choose one operation you want to do:\n");
 			scanf("%d",&choice);
 			switch(choice)
 			{
-				case 1:   printMarkCourse("Ô±¹¤×Ü¹¤×ÊË°·ÑÊÇ:\n",mark,0);  /*Êä³ö×ÜË°·Ñ*/
-				      break;
-				case 2:   printMarkCourse("Ô±¹¤×Ü»ù±¾¹¤×ÊÊÇ:\n",mark,1);  /*Êä³ö×Ü»ù±¾¹¤×Ê*/
-				      break;
-				case 3:   printMarkCourse("Ô±¹¤×Ü½±½ğ½ğ¶îÊÇ:\n",mark,2);  /*Êä³ö×Ü½±½ğ*/
+			    case 1:   printMarkCourse("ËùÓĞÔ±¹¤×ÜË°·Ñ¡¢×Ü»ù±¾¹¤×Ê¡¢×Ü½±½ğÊÇ:\n",mark,2);  /*Êä³ö×Ü½±½ğ*/
 				      break;
 				case 0:   break;
 			}
@@ -140,7 +134,7 @@ void countManage(Employee emp[],int n)               /*¸Ãº¯ÊıÍê³É¹¤×ÊÍ³¼Æ·ÖÎö¹¦Ä
 void searchManage(Employee emp[],int n)               /*¸Ãº¯ÊıÍê³É¸ù¾İÌõ¼ş²éÑ¯¹¦ÄÜ*/
 {
     int i,choice,findnum,f[NUM];
-Employee s;
+    Employee e;
 	   do
 {
 			menuSearch( );                         /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
@@ -149,19 +143,19 @@ Employee s;
 			switch(choice)
 			{
 				case 1:   printf("Input a employee\'s num will be searched:\n");
-				      scanf("%ld",&s.num);         /*ÊäÈë´ı²éÑ¯Ô±¹¤µÄ¹¤ºÅ*/
+				      scanf("%ld",&e.num);         /*ÊäÈë´ı²éÑ¯Ô±¹¤µÄÑ§ºÅ*/
 					  break;
 				case 2:   printf("Input a employee\'s name will be searched:\n");
-				      scanf("%s",s.name);	          /*ÊäÈë´ı²éÑ¯Ô±¹¤µÄĞÕÃû*/		  
+				      scanf("%s",e.name);	          /*ÊäÈë´ı²éÑ¯Ô±¹¤µÄĞÕÃû*/		  
 				      break;   
 				case 3:   printf("Input a rank will be searched:\n");
-				      scanf("%d",&s.rank);          /*ÊäÈë´ı²éÑ¯Ô±¹¤µÄÃû´Î*/
+				      scanf("%d",&e.rank);          /*ÊäÈë´ı²éÑ¯Ô±¹¤µÄ¹¤×ÊÃû´Î*/
 					  break;
 				case 0:   break;
 			}
 		 	if (choice>=1&&choice<=3)
 			{ 
-				findnum=searchEmp(emp,n,s,choice,f);    /*²éÕÒµÄ·ûºÏÌõ¼şÔªËØµÄÏÂ±ê´æÓÚfÊı×éÖĞ*/
+				findnum=searchEmp(emp,n,e,choice,f);    /*²éÕÒµÄ·ûºÏÌõ¼şÔªËØµÄÏÂ±ê´æÓÚfÊı×éÖĞ*/
 				if (findnum)				     /*Èç¹û²éÕÒ³É¹¦*/
 				{
 			   		 printHead( );                  /*´òÓ¡±íÍ·*/
@@ -180,7 +174,7 @@ int runMain(Employee emp[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷
 		{
 			case 1: printHead( );           /* 1. ÏÔÊ¾»ù±¾ĞÅÏ¢*/
 				 sortEmp(emp,n,1);         /*°´¹¤ºÅÓÉĞ¡µ½´óµÄË³ĞòÅÅĞò¼ÇÂ¼*/ 
-          	 printStu(emp,n);          /*°´¹¤ºÅÓÉĞ¡µ½´óµÄË³ĞòÊä³öËùÓĞ¼ÇÂ¼*/
+          	 printEmp(emp,n);          /*°´Ñ§ºÅÓÉĞ¡µ½´óµÄË³ĞòÊä³öËùÓĞ¼ÇÂ¼*/
 					break;
 			case 2: n=baseManage(emp,n);    /* 2. »ù±¾ĞÅÏ¢¹ÜÀí*/
 			   	     break;
@@ -217,208 +211,4 @@ int main( )
 	sortEmp(emp,n,1);                   /*´æÈëÎÄ¼şÇ°°´¹¤ºÅÓÉĞ¡µ½´óÅÅĞò*/ 
 	     saveFile(emp,n);                   /*½«½á¹û´æÈëÎÄ¼ş*/
       return 0;
-}
-/*¢Ústudent.cÎÄ¼şµÄÍêÕûÄÚÈİ*/
-#include "employee.h"
-#include <stdio.h>
-
-int readEmp(Emlpoyee  *emp, int n)          /*¶ÁÈëÑ§Éú¼ÇÂ¼Öµ£¬Ñ§ºÅÎª0»ò¶ÁÂú¹æ¶¨ÌõÊı¼ÇÂ¼Ê±Í£Ö¹*/
-{
-	int i,j;
-	for (i=0;i<n;i++)
-	{
-		printf("Input one employee\'s information\n");
-		printf("num:  ");
-	     scanf("%ld", &emp[i].num);
-		if (emp[i].num==0) break;
-		printf("name: ");
-		scanf("%s",emp[i].name);	
-		printf("sex:  ");
-		scanf("%s",emp[i].sex);
-    	     emp[i].total=0;                /*×Ü·ÖĞèÒª¼ÆËãÇóµÃ£¬³õÖµÖÃÎª0*/
-		printf("Input three courses of the employee:\n");
-		for (j=0;j<3;j++)
-	    {
-		    scanf("%d",&emp[i].score[j]);	
-		}
-		emp[i].rank=0;                 /*Ãû´ÎĞèÒª¸ù¾İ×Ü·ÖÀ´¼ÆËã£¬³õÖµÖÃÎª0*/
-	}
-	return i;                         /*·µ»ØÊµ¼Ê¶ÁÈëµÄ¼ÇÂ¼ÌõÊı*/
-}
-
-void printEmp ( Employee  *emp , int n)       /*Êä³öËùÓĞÑ§Éú¼ÇÂ¼µÄÖµ*/
-{
-    int i,j;
-	for (i=0;i<n;i++)
-	{
-		printf("%8ld  ", emp[i].num);
-		printf("%8s", emp[i].name);
-		printf("%8s", emp[i].sex);
-		for (j=0;j<3;j++)
-		   printf("%6d",emp[i].score[j]);
-	    printf("%7d",emp[i].total);
-	    printf("%5d\n",emp[i].rank);
-	}
-}
-
-int equal(Employee s1,Employee s2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öStudent¼ÇÂ¼ÏàµÈ*/
-{
-	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½ÏÑ§ºÅ*/
-		return s1.num==s2.num;
-	else if (condition==2)                /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½ÏĞÕÃû*/
-     {
-	     if (strcmp(s1.name,s2.name)==0) 	return 1;
-		else return 0;
-     }
- else if (condition==3)                /*Èç¹û²ÎÊıconditionµÄÖµÎª3£¬Ôò±È½ÏÃû´Î*/
-	     return s1.rank==s2.rank;
- else if (condition==4)                /*Èç¹û²ÎÊıconditionµÄÖµÎª4£¬Ôò±È½Ï×Ü·Ö*/
-		return s1.total==s2.total;
-	else return 1;                       /*ÆäÓàÇé¿ö·µ»Ø1*/
-} 
-
-int larger(Employee s1,Employee s2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öStudent¼ÇÂ¼µÄ´óĞ¡*/
-{
-	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½ÏÑ§ºÅ*/
-		return s1.num>s2.num;
-	if (condition==2)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½Ï×Ü·Ö*/
-		return s1.total>s2.total;	
-	else return 1; /*ÆäÓàÇé¿ö·µ»Ø1*/
-}
-
-void reverse(Employee emp[],int n)             /*Êı×éÔªËØÄæÖÃ*/
-{
-	int i;
-	Employee temp;
-	for (i=0;i<n/2;i++)                   /*Ñ­»·´ÎÊıÎªÔªËØÊıÁ¿µÄÒ»°ë*/
-	{
-		temp=emp[i];
-		emp[i]=emp[n-1-i];
-		emp[n-1-i]=temp;
-	}
-}
-
-void calcuTotal(Employee emp[],int n)         /*¼ÆËãËùÓĞÑ§ÉúµÄ×Ü·Ö*/
-{
-	int i,j;
-	for (i=0;i<n;i++)                    /*Íâ²ãÑ­»·¿ØÖÆËùÓĞÑ§Éú¼ÇÂ¼*/
-	{
-		emp[i].total =0;
-		for (j=0;j<3;j++)               /*ÄÚ²ãÑ­»·¿ØÖÆÈıÃÅ¹¦¿Î*/
-			emp[i].total +=emp[i].score[j];
-	}	
-}
-
-void calcuRank(Employee emp[],int n)          /*¸ù¾İ×Ü·Ö¼ÆËãËùÓĞÑ§ÉúµÄÅÅÃû£¬³É¼¨ÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
-{
-	int i ;                       
-	sortEmp(emp,n,2);                     /*ÏÈµ÷ÓÃsortStuËã·¨£¬°´×Ü·ÖÓÉĞ¡µ½´óÅÅĞò*/
-	reverse(emp,n);                      /*ÔÙÄæÖÃ£¬Ôò°´×Ü·ÖÓÉ´óµ½Ğ¡ÅÅĞòÁË*/
-	emp[0].rank=1;                      /*µÚÒ»Ìõ¼ÇÂ¼µÄÃû´ÎÒ»¶¨ÊÇ1*/
-	for (i=1;i<n;i++)                     /*´ÓµÚ¶şÌõ¼ÇÂ¼Ò»Ö±µ½×îºóÒ»Ìõ½øĞĞÑ­»·*/
-	{
-		if (equal(emp[i],emp[i-1],4))         /*µ±Ç°¼ÇÂ¼ÓëÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Èç¹û×Ü·ÖÏàµÈ*/
-			emp[i].rank=emp[i-1].rank;     /*µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Ãû´Î*/ 
-	    else
-			emp[i].rank=i+1;             /*²»ÏàµÈÊ±µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏÂ±êºÅ+1*/
-	}
-}
-
-void calcuMark(double m[3][3],Employee emp[],int n) /*ÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
-/*ÆäÖĞĞÎÊ½²ÎÊı¶şÎ¬Êı×émµÄµÚÒ»Î¬´ú±íÈıÃÅ¿Î£¬µÚ¶şÎ¬´ú±í×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
-{
-	int i,j;
-	for (i=0;i<3;i++)                 /*ÇóÈıÃÅ¿ÎµÄ×î¸ß·Ö*/		
-	{ 
-		m[i][0]=emp[0].score[i];     
-		for (j=1;j<n;j++)
-			if (m[i][0]<emp[j].score[i])
-				m[i][0]=emp[j].score[i];
-	}
-	for (i=0;i<3;i++)                  /*ÇóÈıÃÅ¿ÎµÄ×îµÍ·Ö*/
-	{ 
-		m[i][1]=emp[0].score[i];      
-		for (j=1;j<n;j++)
-			if (m[i][1]>emp[j].score[i])
-				m[i][1]=emp[j].score[i];
-	}
-	for (i=0;i<3;i++)                 /*ÇóÈıÃÅ¿ÎµÄÆ½¾ù·Ö*/
-	{ 
-		m[i][2]=emp[0].score[i];     
-		for (j=1;j<n;j++)
-			m[i][2]+=emp[j].score[i];
-		m[i][2]/=n;
-	}
-}
-
-void sortEmp(Employee emp[],int n,int condition)  /*Ñ¡Ôñ·¨ÅÅĞò£¬°´conditionÌõ¼şÓÉĞ¡µ½´óÅÅĞò*/
-{
-	int i,j,minpos;                      /*minposÓÃÀ´´æ´¢±¾ÌË×îĞ¡ÔªËØËùÔÚµÄÏÂ±ê*/
-	Employee t;
-	for (i=0;i<n-1;i++)                  /*¿ØÖÆÑ­»·µÄn-1ÌË*/
-	{
-		minpos=i;
-		for (j=i+1;j<n;j++)             /*Ñ°ÕÒ±¾ÌË×îĞ¡ÔªËØËùÔÚµÄÏÂ±ê*/
-			if (larger(emp[minpos],emp[j],condition))
-				minpos=j;
-		if (i!=minpos)                 /*±£Ö¤±¾ÌË×îĞ¡ÔªËØµ½´ïÏÂ±êÎªiµÄÎ»ÖÃ*/
-		{
-			t=emp[i];
-			emp[i]=emp[minpos];
-			emp[minpos]=t;
-		}
-	}
-}
-
-int searchEmp(Employee emp[],int n,Employee s,int condition,int f[ ])  /*ÔÚstuÊı×éÖĞÒÀconditionÌõ¼ş²éÕÒ*/
-/*ÓësÏàÍ¬µÄÔªËØ£¬ÓÉÓÚ²»Ö¹Ò»Ìõ¼ÇÂ¼·ûºÏÌõ¼ş£¬Òò´Ë½«ÕâĞ©ÔªËØµÄÏÂ±êÖÃÓÚ fÊı×éÖĞ*/
-{
-	int i,j=0,find=0;
-	for (i=0;i<n;i++)                                 /*´ı²éÕÒµÄÔªËØ*/
-		if (equal(emp[i],s,condition))  
-		{
-			f[j++]=i;                          /*ÕÒµ½ÁËÏàµÈµÄÔªËØ£¬½«ÆäÏÂ±ê·Åµ½fÊı×éÖĞ*/
-			find++;	                        /*Í³¼ÆÕÒµ½µÄÔªËØ¸öÊı*/                              
-		}
-	 return find;                                /*·µ»Øfind£¬ÆäÖµÎª0Ôò±íÊ¾Ã»ÕÒµ½*/ 
-}
-
-int insertEmp(Employee emp[],int n,Employee s)              /*ÏòstuÊı×éÖĞÒÀÑ§ºÅµİÔö²åÈëÒ»¸öÔªËØs*/
-{
-	int i;
-	sortEmp(emp,n,1);                              /*ÏÈ°´Ñ§ºÅÅÅĞò*/
-	for (i=0;i<n;i++)
-	{
-		if (equal(emp[i],s,1))                      /*Ñ§ºÅÏàÍ¬²»ÔÊĞí²åÈë£¬±£Ö¤Ñ§ºÅµÄÎ¨Ò»ĞÔ*/
-		{
-		    printf("this record exist,can not insert again!\n");
-		    return n;
-		}
-	}
-	for (i=n-1;i>=0;i--)                          /*°´Ñ§ºÅ´ÓĞ¡µ½´óÓĞĞò*/
-	{
-		if (!larger(emp[i],s,1))                    /*Èç¹ûs´óÓÚµ±Ç°ÔªËØstu[i]£¬ÔòÍË³öÑ­»·*/
-		break;
-		emp[i+1]=emp[i];                         /*·ñÔòÔªËØstu[i]ºóÒÆÒ»¸öÎ»ÖÃ*/
-	}
-	emp[i+1]=s;                                /*ÔÚÏÂ±êi+1´¦²åÈëÔªËØs*/                                   
-	n++;                                     /*ÔªËØ¸öÊıÔö¼Ó1*/
-	return n;                                  /*·µ»ØÏÖÓĞÔªËØ¸öÊı*/
-}
-
-int deleteEmp(Employee emp[],int n,Employee s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÒ»¸öÔªËØ*/
-{
-	int i,j;
-	for (i=0;i<n;i++)                           /*Ñ°ÕÒ´ıÉ¾³ıµÄÔªËØ*/
-		if (equal(emp[i],s,1))   break;            /*Èç¹ûÕÒµ½ÏàµÈÔªËØÔòÍË³öÑ­»·*/
-	if (i==n)                                 /*Èç¹ûÕÒ²»µ½´ıÉ¾³ıµÄÔªËØ*/
-	{
-		printf("This record does not exist!\n");    /*¸ø³öÌáÊ¾ĞÅÏ¢È»ºó·µ»Ø*/
-		return n;
-	}
-	for (j=i; j<n-1; j++)                        /*´Ë´¦Òşº¬Ìõ¼şÎªi<nÇÒequal(stu[i],s,1)³ÉÁ¢*/ 
-		emp[j]=emp[j+1];                       /*Í¨¹ıÒÆ¶¯¸²¸ÇÉ¾³ıÏÂ±êÎªiµÄÔªËØ*/
-                                                                            
-	n--;                                      /*ÔªËØ¸öÊı¼õÉÙ¼Ó1*/
-	return n;                                  /*·µ»ØÏÖÓĞ¸öÊı*/
 }
