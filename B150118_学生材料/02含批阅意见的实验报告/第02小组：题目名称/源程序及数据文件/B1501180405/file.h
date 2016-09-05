@@ -18,7 +18,7 @@ fwrite(pro,sizePro,n,fp);                  /*将刚才读入的所有记录一次性写入文件*
 	 return n;
 }
 
-int readFile(Product pro[ ] )                     /*将文件中的内容读出置于结构体数组stu中*/
+int readFile(Product pro[ ] )                     /*将文件中的内容读出置于结构体数组pro中*/
 {
    	FILE *fp;
 	int i=0;
