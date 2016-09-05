@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "zhibo.h"
-
+FILE *fp;
 int  createFile(zhubo  zhu[ ])
 {
-	FILE *fp;
 	int n;
-   	if((fp=fopen("D:\zhubo.dat", "wb")) == NULL)
+   	if((fp=fopen("zhubo.dat", "w")) == NULL)
 	{
 	    printf("can not open file !\n");
 	    exit(0);
@@ -20,9 +19,8 @@ fwrite(zhu,sizezhu,n,fp);
 
 int readFile(zhubo zhu[ ] )
 {
-   	FILE *fp;
 	int i=0;
-	if((fp=fopen("D:\zhubo.dat", "rb")) == NULL)
+	if((fp=fopen("zhubo.dat", "r")) == NULL)
 	{
 	    printf("file does not exist,create it first:\n");
 	    return 0;
@@ -39,15 +37,14 @@ int readFile(zhubo zhu[ ] )
 
 void saveFile(zhubo zhu[],int n)
 {
-  	FILE *fp;
-   	if((fp=fopen("D:\zhubo.dat", "wb")) == NULL)
+   	if((fp=fopen("zhubo.dat", "w")) == NULL)
 	{
 		printf("can not open file !\n");
 		exit(0);
 	}
 	fwrite(zhu,sizezhu,n,fp);
 	fclose(fp);
-
+}
 }
 
 
