@@ -1,0 +1,118 @@
+# depslib dependency file v1.0
+1473055910 source:d:\1823\zhuboxinxi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"student.h"
+
+1473055960 d:\1823\zhuboxinxi\file.h
+	<stdio.h>
+	<stdlib.h>
+	"student.h"
+
+1473055910 d:\1823\zhuboxinxi\student.h
+	<string.h>
+
+1473056082 source:d:\1823\zhuboxinxi\li12_1.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"student.h"
+
+1473056245 source:d:\1823\zhuboxinxi\student.c
+	"student.h"
+	<stdio.h>
+
+1473136925 source:c:\users\administrator\desktop\作业\程序设计\zhuboxinxi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"zhubo.h"
+
+1473061734 c:\users\administrator\desktop\作业\程序设计\zhuboxinxi\file.h
+	<stdio.h>
+	<stdlib.h>
+	"zhubo.h"
+
+1473059861 c:\users\administrator\desktop\作业\程序设计\zhuboxinxi\student.h
+	<string.h>
+
+1473056245 source:c:\users\administrator\desktop\作业\程序设计\zhuboxinxi\student.c
+	"student.h"
+	<stdio.h>
+
+1473136611 source:c:\users\administrator\desktop\作业\程序设计\zhuboxinxi\zhubo.c
+	"zhubo.h"
+	<stdio.h>
+
+1473136611 c:\users\administrator\desktop\作业\程序设计\zhuboxinxi\zhubo.h
+	<string.h>
+
+1473139780 source:i:\zhuboxinxi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"zhubo.h"
+
+1473061734 i:\zhuboxinxi\file.h
+	<stdio.h>
+	<stdlib.h>
+	"zhubo.h"
+
+1473139780 i:\zhuboxinxi\zhubo.h
+	<string.h>
+
+1473139746 source:i:\zhuboxinxi\zhubo.c
+	"zhubo.h"
+	<stdio.h>
+
+1473139780 source:e:\zhuboxinxi\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"zhubo.h"
+
+1473061734 e:\zhuboxinxi\file.h
+	<stdio.h>
+	<stdlib.h>
+	"zhubo.h"
+
+1473139780 e:\zhuboxinxi\zhubo.h
+	<string.h>
+
+1473139746 source:e:\zhuboxinxi\zhubo.c
+	"zhubo.h"
+	<stdio.h>
+
+1473144231 source:c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：题目名称\源程序及数据文件\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"zhubo.h"
+
+1473061734 c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：题目名称\源程序及数据文件\file.h
+	<stdio.h>
+	<stdlib.h>
+	"zhubo.h"
+
+1473144229 c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：题目名称\源程序及数据文件\zhubo.h
+	<string.h>
+
+1473143605 source:c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：题目名称\源程序及数据文件\zhubo.c
+	"zhubo.h"
+	<stdio.h>
+
+1473144231 source:c:\users\administrator\desktop\作业\程序设计\18  09\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"zhubo.h"
+
+1473061734 c:\users\administrator\desktop\作业\程序设计\18  09\file.h
+	<stdio.h>
+	<stdlib.h>
+	"zhubo.h"
+
+1473144229 c:\users\administrator\desktop\作业\程序设计\18  09\zhubo.h
+	<string.h>
+

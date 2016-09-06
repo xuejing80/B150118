@@ -1,131 +1,45 @@
-#include"zhibo.h"
-#include<stdio.h>
-#include <stdlib.h>
+#include "zhubo.h"
+#include <stdio.h>
 
-FILE *fp;
-int readzhu(zhubo *zhu , int n)
-{
-   int i;
-   for(i=0;i<n;i++)
-   {
-       printf("ÇëÊäÈëÖ÷²¥ĞÅÏ¢\n");
-       printf("ĞÕÃû:  ");
-         scanf("%s",&zhu[i].name);
-       printf("ĞÔ±ğ:  ");
-         scanf("%s",&zhu[i].sex);
-       printf("ÊäÈë·¿¼äºÅ");
-         scanf("%d",&zhu[i].num);
-       printf("ÊäÈë¹Û¿´ÈËÊı");
-         scanf("%d",&zhu[i].people);
-       printf("Ã¿ÖÜÖ±²¥×ÜÊ±¼ä");
-         scanf("%d",&zhu[i].Time);
-       pirntf("Ö±²¥ÓÎÏ·Ãû³Æ");
-         scanf("&c",&zhu[i].game);
-       zhu[i].rank=0;
-   }
-   return i;
-}
-
-void printzhu( zhubo *zhu , int n)
-{
-    int i;
-    for(i=0;i<n;i++)
-    {
-        printf("%8s",zhu[i].name);
-        printf("%8s",zhu[i].sex);
-        printf("%8d",zhu[i].num);
-        printf("%8d",zhu[i].people);
-        printf("%8d",zhu[i].Time);
-        printf("%8s",zhu[i].game);
-        printf("%7d",zhu[i].time);
-        printf("%7d",zhu[i].rank);
-    }
-}
-
-int  calcuTotal(zhubo zhu[],int n)
-{
-    int i,sum;
-    sum==0;
-    for(i=0;i<n;i++)
-        {
-            sum+=zhu[i].Time;
-        }
-    return sum;
-}
-
-int deletezhu(zhubo zhu[],int n ,zhubo  z)
+int readzhu(zhubo  *zhu , int n)          /*¶ÁÈëÖ÷²¥¼ÇÂ¼Öµ£¬¶ÁÂú¹æ¶¨ÌõÊı¼ÇÂ¼Ê±Í£Ö¹*/
 {
 	int i,j;
 	for (i=0;i<n;i++)
-		if (equal(zhu[i],z,1))   break;
-	if (i==n)
 	{
-		printf("This record does not exist!\n");
-		return n;
-	}
-	for (j=i; j<n-1; j++)
-		zhu[j]=zhu[j+1];
-
-	n--;
-	return n;
-}
-
-int searchzhu(zhubo zhu[],int n,zhubo z,int condition,int f[ ])
-
-{
-	int i,j=0,find=0;
-	for (i=0;i<n;i++)
-		if (equal(zhu[i],z,condition))
-		{
-			f[j++]=i;
-			find++;
+		printf("Input one zhubo\'s information\n");
+		printf("name: ");
+		scanf("%s",zhu[i].name);
+		printf("sex:  ");
+		scanf("%s",zhu[i].sex);
+		printf("num:  ");
+        scanf("%ld", zhu[i].num);
+		printf("game: ");
+		scanf("%s",zhu[i].game);
+		printf("Input time of the zhubo:\n");
+		for (j=0;j<7;j++)
+	    {
+		    scanf("%d",&zhu[i].time[j]);
 		}
-	 return find;
+
+	}
+	return i;                         /*·µ»ØÊµ¼Ê¶ÁÈëµÄ¼ÇÂ¼ÌõÊı*/
 }
 
-int insertzhu(zhubo zhu[],int n,zhubo z)
+void printzhu ( zhubo  *zhu , int n)       /*Êä³öËùÓĞÖ÷²¥¼ÇÂ¼µÄÖµ*/
 {
-	int i;
-	sortzhu(zhu,n,1);
+    int i,j;
 	for (i=0;i<n;i++)
 	{
-		if (equal(zhu[i],z,1))
-		{
-		    printf("this record exist,can not insert again!\n");
-		    return n;
-		}
+		printf("%8s", zhu[i].name);
+		printf("%8s", zhu[i].sex);
+		printf("%8ld", zhu[i].num);
+		printf("%8s", zhu[i].game);
+		printf("%8d\n", zhu[i].total);
 	}
-	for (i=n-1;i>=0;i--)
-	{
-		if (!larger(zhu[i],z,1))
-		break;
-		zhu[i+1]=zhu[i];
-	}
-	zhu[i+1]=z;
-	n++;
-	return n;
+	    printf("%5d\n",zhu[i].rank);
 }
 
-void sortzhu(zhubo zhu[],int n,int condition)
-{
-	int i,j,minpos;
-	zhubo z;
-	for (i=0;i<n-1;i++)
-	{
-		minpos=i;
-		for (j=i+1;j<n;j++)
-			if (larger(zhu[minpos],zhu[j],condition))
-				minpos=j;
-		if (i!=minpos)
-		{
-			z=zhu[i];
-			zhu[i]=zhu[minpos];
-			zhu[minpos]=z;
-		}
-	}
-}
-
-int equal(zhubo z1,zhubo z2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öStudent¼ÇÂ¼ÏàµÈ*/
+int equal(zhubo z1,zhubo z2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öÖ÷²¥¼ÇÂ¼ÏàµÈ*/
 {
 	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½Ï·¿¼äºÅ*/
 		return z1.num==z2.num;
@@ -134,18 +48,16 @@ int equal(zhubo z1,zhubo z2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öStudent¼ÇÂ¼ÏàµÈ*/
 	     if (strcmp(z1.name,z2.name)==0) 	return 1;
 		else return 0;
      }
- else if (condition==3)                /*Èç¹û²ÎÊıconditionµÄÖµÎª3£¬Ôò±È½ÏÓÎÏ·*/
-	     return z1.game==z2.game;
 
 	else return 1;                       /*ÆäÓàÇé¿ö·µ»Ø1*/
 }
 
-int larger(zhubo z1,zhubo z2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öStudent¼ÇÂ¼µÄ´óĞ¡*/
+int larger(zhubo z1,zhubo  z2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öÖ÷²¥¼ÇÂ¼µÄ´óĞ¡*/
 {
 	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½Ï·¿¼äºÅ*/
 		return z1.num>z2.num;
 	if (condition==2)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½Ï×ÜÊ±¼ä*/
-		return z1.Time>z2.Time;
+		return z1.total>z2.total;
 	else return 1; /*ÆäÓàÇé¿ö·µ»Ø1*/
 }
 
@@ -161,7 +73,18 @@ void reverse(zhubo zhu[],int n)             /*Êı×éÔªËØÄæÖÃ*/
 	}
 }
 
-void calcuRank(zhubo zhu[],int n)          /*¸ù¾İ×ÜÊ±¼ä¼ÆËãËùÓĞÑ§ÉúµÄÅÅÃû£¬Ê±¼äÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
+void calcuTotal(zhubo zhu[],int n)         /*¼ÆËãËùÓĞÑ§ÉúµÄ×ÜÊ±¼ä*/
+{
+	int i,j;
+	for (i=0;i<n;i++)                    /*Íâ²ãÑ­»·¿ØÖÆËùÓĞÖ÷²¥¼ÇÂ¼*/
+	{
+		zhu[i].total =0;
+		for (j=0;j<7;j++)               /*ÄÚ²ãÑ­»·¿ØÖÆÆßÌìµÄÊ±¼ä*/
+			zhu[i].total +=zhu[i].time[j];
+	}
+}
+
+void calcuRank(zhubo zhu[],int n)          /*¸ù¾İ×ÜÊ±¼ä¼ÆËãËùÓĞÖ÷²¥µÄÅÅÃû£¬Ê±¼äÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
 {
 	int i ;
 	sortzhu(zhu,n,2);                     /*ÏÈµ÷ÓÃsortStuËã·¨£¬°´×Ü·ÖÓÉĞ¡µ½´óÅÅĞò*/
@@ -176,58 +99,102 @@ void calcuRank(zhubo zhu[],int n)          /*¸ù¾İ×ÜÊ±¼ä¼ÆËãËùÓĞÑ§ÉúµÄÅÅÃû£¬Ê±¼äÏ
 	}
 }
 
+void calcuMark(double m[7][3],zhubo zhu[],int n) /*ÇóÆßÌìµÄ×î³¤¡¢×î¶Ì¡¢Æ½¾ù*/
 
-int calcumax(int m[NUM], zhubo zhu[] ,int n)  /*ÇóÖ±²¥Ê±¼ä×î³¤*/
 {
-   int i,j,max;
-   max=zhu[0].Time ;
-   for(i=0;i<NUM;i++)
-   {
-       m[i]=zhu[i].Time;
-       if(m[i]<m[i+1])
-       {
-           max=zhu[i+1].Time;
-       }
-       else
-       {
-           max=zhu[i].Time;
-       }
-   }
-   return max;
+	int i,j;
+	for (i=0;i<20;i++)
+	{
+		m[i][0]=zhu[0].time[i];
+		for (j=1;j<n;j++)
+			if (m[i][0]<zhu[j].time[i])
+				m[i][0]=zhu[j].time[i];
+	}
+	for (i=0;i<20;i++)
+	{
+		m[i][1]=zhu[0].time[i];
+		for (j=1;j<n;j++)
+			if (m[i][1]>zhu[j].time[i])
+				m[i][1]=zhu[j].time[i];
+	}
+	for (i=0;i<20;i++)
+		m[i][2]=zhu[0].time[i];
+		for (j=1;j<n;j++)
+			m[i][2]+=zhu[j].time[i];
+		m[i][2]/=n;
 }
 
 
-int calcumost(int m[NUM], zhubo zhu[] ,int n)  /*ÇóÖ±²¥ÈËÊı×î¶à*/
+
+void sortzhu(zhubo zhu[],int n,int condition)  /*Ñ¡Ôñ·¨ÅÅĞò£¬°´conditionÌõ¼şÓÉĞ¡µ½´óÅÅĞò*/
 {
-   int i,j,most;
-   most=zhu[0].people ;
-   for(i=0;i<NUM;i++)
-   {
-       m[i]=zhu[i].Time;
-       if(m[i]<m[i+1])
-       {
-           most=zhu[i+1].people;
-       }
-       else
-       {
-           most=zhu[i].people;
-       }
-   }
-   return most;
+	int i,j,minpos;                      /*minposÓÃÀ´´æ´¢±¾ÌË×îĞ¡ÔªËØËùÔÚµÄÏÂ±ê*/
+	zhubo t;
+	for (i=0;i<n-1;i++)                  /*¿ØÖÆÑ­»·µÄn-1ÌË*/
+	{
+		minpos=i;
+		for (j=i+1;j<n;j++)             /*Ñ°ÕÒ±¾ÌË×îĞ¡ÔªËØËùÔÚµÄÏÂ±ê*/
+			if (larger(zhu[minpos],zhu[j],condition))
+				minpos=j;
+		if (i!=minpos)                 /*±£Ö¤±¾ÌË×îĞ¡ÔªËØµ½´ïÏÂ±êÎªiµÄÎ»ÖÃ*/
+		{
+			t=zhu[i];
+			zhu[i]=zhu[minpos];
+			zhu[minpos]=t;
+		}
+	}
 }
 
-
-int calcupj(int m[NUM], zhubo zhu[] ,int n)  /*ÇóÖ±²¥Æ½¾ùÊ±¼ä*/
+int searchzhu(zhubo zhu[],int n,zhubo z,int condition,int f[ ])  /*ÔÚstuÊı×éÖĞÒÀconditionÌõ¼ş²éÕÒ*/
+/*ÓëzÏàÍ¬µÄÔªËØ£¬ÓÉÓÚ²»Ö¹Ò»Ìõ¼ÇÂ¼·ûºÏÌõ¼ş£¬Òò´Ë½«ÕâĞ©ÔªËØµÄÏÂ±êÖÃÓÚ fÊı×éÖĞ*/
 {
-   int i,j,pj,sum;
-   sum=0;
-   for(i=0;i<NUM;i++)
-   {
-      m[i]=zhu[i].Time;
-      sum+sum+m[i];
-   }
-   pj=sum/NUM;
-   return pj;
+	int i,j=0,find=0;
+	for (i=0;i<n;i++)                                 /*´ı²éÕÒµÄÔªËØ*/
+		if (equal(zhu[i],z,condition))
+		{
+			f[j++]=i;                          /*ÕÒµ½ÁËÏàµÈµÄÔªËØ£¬½«ÆäÏÂ±ê·Åµ½fÊı×éÖĞ*/
+			find++;	                        /*Í³¼ÆÕÒµ½µÄÔªËØ¸öÊı*/
+		}
+	 return find;                                /*·µ»Øfind£¬ÆäÖµÎª0Ôò±íÊ¾Ã»ÕÒµ½*/
 }
 
+int insertzhu(zhubo zhu[],int n,zhubo z)              /*ÏòzhuÊı×éÖĞÒÀÑ§ºÅµİÔö²åÈëÒ»¸öÔªËØs*/
+{
+	int i;
+	sortzhu(zhu,n,1);                              /*ÏÈ°´·¿¼äºÅºÅÅÅĞò*/
+	for (i=0;i<n;i++)
+	{
+		if (equal(zhu[i],z,1))                      /*·¿¼äºÅÏàÍ¬²»ÔÊĞí²åÈë£¬±£Ö¤·¿¼äºÅµÄÎ¨Ò»ĞÔ*/
+		{
+		    printf("this record exist,can not insert again!\n");
+		    return n;
+		}
+	}
+	for (i=n-1;i>=0;i--)                          /*°´·¿¼äºÅ´ÓĞ¡µ½´óÓĞĞò*/
+	{
+		if (!larger(zhu[i],z,1))                    /*Èç¹ûz´óÓÚµ±Ç°ÔªËØzhu[i]£¬ÔòÍË³öÑ­»·*/
+		break;
+		zhu[i+1]=zhu[i];                         /*·ñÔòÔªËØzhu[i]ºóÒÆÒ»¸öÎ»ÖÃ*/
+	}
+	zhu[i+1]=z;                                /*ÔÚÏÂ±êi+1´¦²åÈëÔªËØs*/
+	n++;                                     /*ÔªËØ¸öÊıÔö¼Ó1*/
+	return n;                                  /*·µ»ØÏÖÓĞÔªËØ¸öÊı*/
+}
+
+int deletezhu(zhubo zhu[],int n,zhubo z)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÒ»¸öÔªËØ*/
+{
+	int i,j;
+	for (i=0;i<n;i++)                           /*Ñ°ÕÒ´ıÉ¾³ıµÄÔªËØ*/
+		if (equal(zhu[i],z,1))   break;            /*Èç¹ûÕÒµ½ÏàµÈÔªËØÔòÍË³öÑ­»·*/
+	if (i==n)                                 /*Èç¹ûÕÒ²»µ½´ıÉ¾³ıµÄÔªËØ*/
+	{
+		printf("This record does not exist!\n");    /*¸ø³öÌáÊ¾ĞÅÏ¢È»ºó·µ»Ø*/
+		return n;
+	}
+	for (j=i; j<n-1; j++)                        /*´Ë´¦Òşº¬Ìõ¼şÎªi<nÇÒequal(zhu[i],s,1)³ÉÁ¢*/
+		zhu[j]=zhu[j+1];                       /*Í¨¹ıÒÆ¶¯¸²¸ÇÉ¾³ıÏÂ±êÎªiµÄÔªËØ*/
+
+	n--;                                      /*ÔªËØ¸öÊı¼õÉÙ¼Ó1*/
+	return n;                                  /*·µ»ØÏÖÓĞ¸öÊı*/
+}
 
