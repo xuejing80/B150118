@@ -69,7 +69,7 @@ int login()
         putchar('*');
     }
     user_password[i] = '\0';
-    char admin[] = "root";
+    char admin[] = "admin";
     char adminpassword[] = "123456";
     char check[] = "check";
     char checkpassword[] = "123456";
