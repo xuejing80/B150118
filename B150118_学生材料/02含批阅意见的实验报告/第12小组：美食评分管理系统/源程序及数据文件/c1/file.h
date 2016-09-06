@@ -12,13 +12,13 @@ int  createFile(Food foo[ ])              /*建立初始的数据文件*/
 	    exit(0);                           /*然后退出*/
     	}
 	printf("input food\' information:\n");
-	n=readFoo(foo,NUM);                /*调用student.h中的函数读数据*/
+	n=readFoo(foo,NUM);                /*调用food.h中的函数读数据*/
 fwrite(foo,sizeFoo,n,fp);                  /*将刚才读入的所有记录一次性写入文件*/
  	fclose(fp);                             /*关闭文件*/
 	 return n;
 }
 
-int readFile(Food foo[ ] )                     /*将文件中的内容读出置于结构体数组stu中*/
+int readFile(Food foo[ ] )                     /*将文件中的内容读出置于结构体数组foo中*/
 {
    	FILE *fp;
 	int i=0;

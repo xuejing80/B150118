@@ -1,4 +1,4 @@
-/*②student.c文件的完整内容*/
+/*②food.c文件的完整内容*/
 #include "food.h"
 #include <stdio.h>
 
@@ -13,13 +13,15 @@ int readFoo(Food  *foo , int n)          /*读入菜品记录值，序号为0或读满规定条数
 		if (foo[i].num==0) break;
 		printf("name: ");
 		scanf("%s",foo[i].name);	
-		printf("from:  ");
-		scanf("%s",foo[i].from);
-    	     foo[i].total=0;                /*总分需要计算求得，初值置为0*/
+		printf("style:  ");
+		scanf("%s",foo[i].style);
+		printf("taste:  ");
+		scanf("%s",foo[i].taste);
+    	foo[i].total=0;                /*总分需要计算求得，初值置为0*/
 		printf("Input three mark of the food:\n");
 		for (j=0;j<3;j++)
 	    {
-		    scanf("%d",&foo[i].score[j]);	
+		    scanf("%lf",&foo[i].score[j]);	
 		}
 		foo[i].rank=0;                 /*名次需要根据总分来计算，初值置为0*/
 	}
@@ -31,13 +33,15 @@ void printFoo ( Food   *foo , int n)       /*输出所有菜品记录的值*/
     int i,j;
 	for (i=0;i<n;i++)
 	{
-		printf("%8ld  ", foo[i].num);
+		printf("%6ld  ", foo[i].num);
 		printf("%8s", foo[i].name);
-		printf("%8s", foo[i].from);
+		printf("%8s", foo[i].style);
+		printf("%4s",foo[i].taste);
 		for (j=0;j<3;j++)
-		   printf("%6d",foo[i].score[j]);
-	    printf("%7d",foo[i].total);
-	    printf("%5d\n",foo[i].rank);
+		   printf("       %3.1f",foo[i].score[j]);
+		printf("   ");
+	    printf("  %3.1f",foo[i].total);
+	    printf("%7d\n",foo[i].rank);
 	}
 }
 
@@ -54,8 +58,13 @@ int equal(Food s1,Food s2,int condition)  /*如何判断两个菜品记录相等*/
 	     return s1.rank==s2.rank;
  else if (condition==4)                /*如果参数condition的值为4，则比较总分*/
 		return s1.total==s2.total;
+ else if(condition==5)                 /*如果参数condition的值为5，则比较口味*/
+	    {
+	     if (strcmp(s1.taste,s2.taste)==0) 	return 1;
+		else return 0;
+     }
 	else return 1;                       /*其余情况返回1*/
-} 
+}
 
 int larger(Food s1,Food s2,int condition)  /*根据condition条件比较两个菜品记录的大小*/
 {
@@ -81,15 +90,15 @@ void reverse(Food foo[],int n)             /*数组元素逆置*/
 void calcuTotal(Food foo[],int n)         /*计算所有菜品的总分*/
 {
 	int i,j;
-	for (i=0;i<n;i++)                    /*外层循环控制所有学生记录*/
+	for (i=0;i<n;i++)                    /*外层循环控制所有菜品记录*/
 	{
 		foo[i].total =0;
-		for (j=0;j<3;j++)               /*内层循环控制三门功课*/
+		for (j=0;j<3;j++)               /*内层循环控制三个评分项目*/
 			foo[i].total +=foo[i].score[j];
 	}	
 }
 
-void calcuRank(Food foo[],int n)          /*根据总分计算所有菜品的排名，成绩相同者名次相同*/
+void calcuRank(Food foo[],int n)          /*根据总分计算所有菜品的排名，总分相同者名次相同*/
 {
 	int i ;                       
 	sortFoo(foo,n,2);                     /*先调用sortFoo算法，按总分由小到大排序*/
@@ -163,7 +172,8 @@ int searchFoo(Food foo[],int n,Food s,int condition,int f[ ])  /*在foo数组中依co
 	 return find;                                /*返回find，其值为0则表示没找到*/ 
 }
 
-int insertFoo(Food foo[],int n,Food s)              /*向foo数组中依学号递增插入一个元素s*/
+
+int insertFoo(Food foo[],int n,Food s)              /*向foo数组中依序号递增插入一个元素s*/
 {
 	int i;
 	sortFoo(foo,n,1);                              /*先按序号排序*/
@@ -202,21 +212,3 @@ int deleteFoo(Food foo[],int n,Food f)            /*从数组中删除指定序号的一个元
 	n--;                                      /*元素个数减少加1*/
 	return n;                                  /*返回现有个数*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
