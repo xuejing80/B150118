@@ -1,3 +1,4 @@
+#include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -9,9 +10,12 @@ void adminabc()
     char b;
     do
     {
-        printf("欢迎进入管理员页面\n\n");
-        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4最高盈利商品和最低盈利商品\n\n\n");
-        printf("请输入命令：");
+        printf("       ******************************\n");
+        printf("            欢迎进入管理员页面\n");
+        printf("       ******************************\n");
+        printf("  \t**    1商品信息录入       **\n  \t**    2商品库存情况列表   **\n  \t**    3总体利润报表       **\n  \t**    4返回登录页面       **\n");
+        printf("        ****************************\n\n\n");
+        printf("\t**请输入命令：");
         scanf("%d",&a);
         if(a!=1&&a!=2&&a!=3&&a!=4)
         {
@@ -29,10 +33,16 @@ void adminabc()
        showgoods();
         break;
     case 3:
-        printf("xxxx");
+        printf("总体利润是:%.2f",totalprofit());
+         printf("按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        adminabc();
         break;
     case 4:
-        printf("rrrr");
+        system("cls");
+        login();
         break    ;
     }
 
@@ -44,14 +54,15 @@ void adminabc()
 //登录函数
 int login()
 {
-    printf("欢迎进入超市商品净销存系统\n");
-    printf("请登录！\n");
-    printf("请输入用户名：");
+    printf("\t\t\t***************************\n");
+    printf("\t\t\t欢迎登录超市商品进销存系统\n");
+    printf("\t\t\t***************************\n");
+    printf("\t\t\t请输入用户名：");
     char user_name[200];
     char user_password[200];
     int c=0,i=0;
     scanf("%s",&user_name);
-    printf("请输入密码：");
+    printf("\t\t\t请输入密码：");
     while ((c=getch()) != '\r') //使密码输入的时候显示*号
     {
         user_password[i++] = c;
@@ -65,7 +76,7 @@ int login()
     if(!strcmp(user_name,admin)&& !strcmp(user_password,adminpassword))
     {
         system("cls");
-        printf("\n管理员你好\n");
+        printf("\n\t\t\t\t管理员你好\n");
         adminabc();
     }
     else
@@ -73,13 +84,14 @@ int login()
         if(!strcmp(user_name,check)&& !strcmp(user_password,checkpassword))
         {
             system("cls");
-            printf("\n收银员你好\n");
-            checkabc();
+            printf("\t\t\t************************\n");
+            printf("\t\t\t\t收银员你好\n");
+            checkabc(0,0.0,0.0);
         }
         else
         {
 
-            printf("\n用户名或密码错误,请按回车重新登录\n");
+            printf("\n\t\t\t用户名或密码错误,请按回车重新登录\n");
             getchar();
             getchar();
             system("cls");
@@ -89,20 +101,21 @@ int login()
     return 0;
 }
 //收银员函数
-void checkabc(){
+void checkabc(int id,double total,double profit){
  int command;
-    printf("欢迎进入收银员系统\n");
-    printf("1、收银\n2、本日收银报表\n");
+    printf("\t\t\t    欢迎进入收银员系统\n");
+    printf("\t\t\t************************\n\n\n");
+    printf("\t\t        1收银\n\t\t        2本日收银报表\n\t\t        3返回主界面\n\n\n");
     do                  //检测是否输入正确的指令如果不是则重新输入
     {
-        printf("请输入命令：");
+        printf("\t\t\t\t请输入命令：");
         scanf("%d",&command);
          printf("\n");
         if(command!=1&&command!=2)
-            printf("输入错误\n再次");
+            printf("\t\t\t\t输入错误\n再次");
 
     }
-    while(command!=1&&command!=2);
+    while(command!=1&&command!=2&&command!=3);
     if(command==1)           //1、进入收银员界面  2、进入本日收银报表
     {
     system("cls");
@@ -110,7 +123,24 @@ void checkabc(){
     }
     else
     {
-        printf("欢迎查看本日营销报表");
+
+
+        if(command==3)
+        {
+        system("cls");
+        login();
+        }
+        else
+        {
+        system("cls");
+        printf("\t\t\t\t**********************\n");
+        printf("\t\t\t\t 欢迎查看本日营销报表\n\t\t\t\t**********************\n本次订单号：%d\n 总价格：%.2f%\n  利润：%.2f\n",id,total,profit);
+         printf("\n\n\n按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        checkabc(id,total,profit);
+        }
     }
     return 0;
 }
@@ -121,23 +151,42 @@ void inputgoods()
 {
     system("cls");
     char code[20];
-    double price,chengben;
-    char name[20];
-    int s,num;
+    char name[20],num[20],price[20],chengben[20],end[20] = "end";
+    int s;
 
     do
     {
-        printf("请分别输入货品信息：条码、商品名称、价格、成本、库存*以空格隔开*\n\n");
-        scanf("%s%s%lf%lf%d",code,name,&price,&chengben,&num);
-        printf("\n   条码:%s\n   名称:%s\n   价格:%10.2f\n   成本:%10.2f\n  库存:%d\n",code,name,price,chengben,num);
-        if(addgoods(code,name,price,chengben,num))
-            printf("添加成功");
-        else
+        printf("\n\n*************************************************************\n");
+        printf("\t请分别输入货品信息(以空格隔开，输入end结束输入)\n");
+        printf("*************************************************************\n\n");
+        printf("\t****条码***商品名称***价格***成本***库存****\n\n");
+        printf("\t");
+        scanf("%s",code);
+        if(!strcmp(code,end)){
+                system("cls");
+            adminabc();
+        }
+        scanf("%s%s%s%s",name,price,chengben,num);
+        if(!checknum(num) && !checknum(code) && !checknum(chengben) && !checknum(price))
+            {
+             printf("\n\t\t\t***********************");
+             printf("\n\t\t\t      条码:%s\n\t\t\t      名称:%s\n\t\t\t      价格:%s       \n\t\t\t      成本:%s       \n\t\t\t      库存:%s\n",code,name,price,chengben,num);
+              printf("\t\t\t***********************\n");
+            }
+        else{
+            printf("您的输入有误，请重新输入。\n");
+             s = 1;
+            continue;
+
+            }
+       if(addgoods(code,name,price,chengben,num))
+            printf("\t**添加成功**");
+       else
             printf("添加失败");
         printf("\n是否继续 1是 or 2否\n\n");
         scanf("%d",&s);
         if(s==2)
-        {
+       {
             system("cls");
             adminabc();
         }
@@ -154,12 +203,18 @@ void checkcode()
     int i=0;
     double total=0.0;
     order profit;
-    printf("欢迎进入收银系统\n请输入商品条形码(输入end结束)：\n");
+     printf("\t\t\t        *****************\n");
+   printf("\t\t\t\t欢迎进入收银系统\n\t\t\t        *****************\n请输入商品条形码(输入end结束):");
     do
     {
         scanf("%s",code);
-        if(!strcmp(code,endcode))
+                if(!strcmp(code,endcode))
             break;
+        if(checknum(code)){
+            printf("您的输入有误，请重新输入");
+            continue;
+        }
+
         if(ifexist(code))
         {
             good[i++] = readcode(code);
@@ -169,11 +224,11 @@ void checkcode()
                 profit.profit = profit.profit + good[i-1].price-good[i-1].chengben;
                 profit.total = total;
                sale(good[i-1].code); //库存减一
-                printf("商品名称：%10s 价格：%10.2f元 存量:%d \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,good[i-1].num,total);
+                printf("\n\n\t\t\t\t商品名称：%s \n\t\t\t\t 价格：%2f元 \n\t\t\t\t 存量:%d \n\t\t\t\t 总价:%2f元\n",good[i-1].name,good[i-1].price,good[i-1].num-1,total);
             }
             else
             {
-                printf("本商品已售罄，请重新输入");
+                printf("\t\t\t\t本商品已售罄，请重新输入");
                 continue;
             }
         }
@@ -189,4 +244,20 @@ void checkcode()
 }
 
 
+//检查一维码是否合格函数
+int checknum(const char*num)
+{
+    int i;
+     for(i=0;i<20;i++)
+            {
+                if(num[i]=='\0') break;
+                if(!(num[i]>='0'&&num[i]<='9'||num[i]=='.'))
+                   {//printf("%s",num);
+                    return 1;
+                    break;
+                   }
+            }
 
+     return 0;
+
+}
