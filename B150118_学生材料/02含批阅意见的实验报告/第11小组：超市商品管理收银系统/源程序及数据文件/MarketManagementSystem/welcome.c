@@ -3,17 +3,22 @@
 #include<string.h>
 #include<stdlib.h>
 #include"welcome.h"
+
+
+
+
 //登录函数
 int login()
 {
-    printf("欢迎进入超市商品进销存系统\n"); //登录UI加载
-    printf("请登录！\n");
-    printf("请输入用户名：");
+    printf("\t\t\t***************************\n");
+    printf("\t\t\t欢迎登录超市商品进销存系统\n");
+    printf("\t\t\t***************************\n");
+    printf("\t\t\t请输入用户名：");
     char user_name[200];
     char user_password[200];
     int c=0,i=0;
     scanf("%s",&user_name);
-    printf("请输入密码：");
+    printf("\t\t\t请输入密码：");
     while ((c=getch()) != '\r') //使密码输入的时候显示*号
     {
         user_password[i++] = c;
@@ -27,7 +32,7 @@ int login()
     if(!strcmp(user_name,admin)&& !strcmp(user_password,adminpassword))
     {
         system("cls");
-        printf("\n管理员你好\n");
+        printf("\n\t\t\t\t管理员你好\n");
         adminabc();
     }
     else
@@ -35,13 +40,13 @@ int login()
         if(!strcmp(user_name,check)&& !strcmp(user_password,checkpassword))
         {
             system("cls");
-            printf("\n收银员你好\n");
+            printf("\t\t\t************************\n");
+            printf("\t\t\t\t收银员你好\n");
             checkabc(0,0.0,0.0);
         }
         else
         {
-
-            printf("\n用户名或密码错误,请按回车重新登录\n"); //密码错误后显示递归调用
+            printf("\n\t\t\t用户名或密码错误,请按回车重新登录\n");
             getchar();
             getchar();
             system("cls");
@@ -54,39 +59,44 @@ int login()
 void checkabc(int id,double total,double profit)
 {
     int command;
-    printf("欢迎进入收银员系统\n");
-    printf("1、收银\n2、本日收银报表\n3、返回登录页面\nW");
+    printf("\t\t\t    欢迎进入收银员系统\n");
+    printf("\t\t\t************************\n\n\n");
+    printf("\t\t        1收银\n\t\t        2本日收银报表\n\t\t        3返回主界面\n\n\n");
     do                  //检测是否输入正确的指令如果不是则重新输入
     {
-        printf("请输入命令：");
+        printf("\t\t\t\t请输入命令：");
         scanf("%d",&command);
         printf("\n");
         if(command!=1&&command!=2)
-            printf("输入错误\n再次输入");
+            printf("\t\t\t\t输入错误\n再次");
 
     }
     while(command!=1&&command!=2&&command!=3);
-    if(command==1)           //1、进入收银员界面  2、进入本日收银报表3.返回登录页面
+    if(command==1)           //1、进入收银员界面  2、进入本日收银报表
     {
         system("cls");
         checkcode();
     }
     else
-    { //本次订单的报表
-        if(command == 3) //检测到三就回到登录页面
+    {
+        if(command==3)
         {
             system("cls");
             login();
         }
-        system("cls");
-        printf("欢迎查看本日营销报表\n本次订单号：%d总价格：%.2f%利润：%.2f\n",id,total,profit);  //输出本次的营销报表
-        printf("按任意键返回上一层");
-        getchar();
-        getchar();
-        system("cls");
-        checkabc(id,total,profit); //把利润等信息发回收银员主函数，调回主函数
+        else
+        {
+            //本次订单的报表
+            system("cls");
+            printf("欢迎查看本日营销报表\n本次订单号：%d总价格：%.2f%利润：%.2f\n",id,total,profit);  //输出本次的营销报表
+            printf("按任意键返回上一层");
+            getchar();
+            getchar();
+            system("cls");
+            checkabc(id,total,profit); //把利润等信息发回收银员主函数，调回主函数
+        }
+        return 0;
     }
-    return 0;
 }
 
 //收银函数
@@ -201,7 +211,7 @@ void checkcode()
             }
             else
             {
-                printf("本商品已售罄，请重新输入");
+                printf("\t\t\t\t本商品已售罄，请重新输入");
                 continue;
             }
         }
@@ -219,14 +229,16 @@ void checkcode()
 // 管理员入口函数
 void adminabc()
 {
-    int month;
     int a;
     char b;
     do
     {
-        printf("欢迎进入管理员页面\n\n"); //UI初始化
-        printf("  1商品信息录入\n  2商品库存情况列表\n  3总体利润报表\n  4返回登录页面\n\n\n");
-        printf("请输入命令：");
+        printf("       ******************************\n");
+        printf("            欢迎进入管理员页面\n");
+        printf("       ******************************\n");
+        printf("  \t**    1商品信息录入       **\n  \t**    2商品库存情况列表   **\n  \t**    3总体利润报表       **\n  \t**    4返回登录页面       **\n");
+        printf("        ****************************\n\n\n");
+        printf("\t**请输入命令：");
         scanf("%d",&a);
         if(a!=1&&a!=2&&a!=3&&a!=4)
         {
@@ -235,7 +247,7 @@ void adminabc()
     }
     while(a!=1&&a!=2&&a!=3&&a!=4);
 
-    switch (a) //根据命令进入入口函数
+    switch (a)
     {
     case 1:
         inputgoods();
@@ -244,21 +256,6 @@ void adminabc()
         showgoods();
         break;
     case 3:
-        printf("\t\t\t\t请输入查询月份：");
-        scanf("%d",&month);
-        while(month!=1&&month!=2&&month!=3&&month!=4&&month!=5&&month!=6&&month!=7&&month!=8&&month!=9&&month!=10&&month!=111&&month!=12)   //检验输入的是否为合法月份
-        {
-            printf("\t\t\t\t输入有误，请重新输入！");
-            scanf("%d",&month);
-        }
-
-        printf ("\n\n\t\t\t\t********************\n");
-        printf ("\t\t\t\t欢迎查看%d月营销报表\n",month);
-        printf ("\t\t\t\t********************\n");
-
-        printf("\n\n\t\t  本月订单清单:");
-
-        printf("\n\n\n\n\t\t 本月零售总额:");
         printf("总体利润是:%.2f",totalprofit());
         printf("按任意键返回上一层");
         getchar();
@@ -325,7 +322,7 @@ int checknum(const char*num)
     for(i=0; i<20; i++)
     {
         if(num[i]=='\0') break;
-        if(!(num[i]>='0'&&num[i]<='9'||num[i]=='\0'))
+        if(!(num[i]>='0'&&num[i]<='9'||num[i]=='\0'||num[i]== '.'))
         {
             //printf("%s",num);
             return 1;
