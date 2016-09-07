@@ -3,12 +3,11 @@
 #include<stdlib.h>
 #include"file.h"
 #include"product.h"
-
 int baseManage(Product pro[],int n);
 
 void printHead( )      /*´òÓ¡ÉÌÆ·ĞÅÏ¢µÄ±íÍ·*/
 {
-printf("%4s%4s%8s%8s%8s%10s%9s\n","","ÉÌÆ·±àºÅ","Ãû³Æ","Æ·ÅÆ","¼Û¸ñ","¿â´æ","ÅÅÃû");
+printf("%4s%4s%12s%8s%8s%10s%9s\n","","ÉÌÆ·±àºÅ","Ãû³Æ","Æ·ÅÆ","¼Û¸ñ","¿â´æ","ÅÅÃû");
 }
 
 void menu( )         /*¶¥²ã²Ëµ¥º¯Êı*/
@@ -73,7 +72,7 @@ void priceManage(Product pro[],int n)          /*¸Ãº¯ÊıÍê³ÉÉÌÆ·¼Û¸ñ¹ÜÀí¹¦ÄÜ*/
 void printMarkCourse(char *s,int m[2],int k)   /*´òÓ¡¿â´æÍ¨ÓÃº¯Êı£¬±»countManage µ÷ÓÃ*/
 {                 /*ĞÎÊ½²ÎÊık´ú±íÊä³ö²»Í¬µÄÄÚÈİ£¬0¡¢1·Ö±ğ¶ÔÓ¦¿â´æ½Ï¶à¡¢½ÏÉÙ*/
 
-          printf(s);                                  /*ÕâÀïµÄs´«ÈëµÄÊÇÊä³ö·ÖÊıµÄÌáÊ¾ĞÅÏ¢*/
+          printf(s);                                  /*ÕâÀïµÄs´«ÈëµÄÊÇÊä³ö¿â´æµÄÌáÊ¾ĞÅÏ¢*/
 		  printf("%10d",m[k]);
 	      printf("\n");
 }
@@ -81,7 +80,7 @@ void printMarkCourse(char *s,int m[2],int k)   /*´òÓ¡¿â´æÍ¨ÓÃº¯Êı£¬±»countManage
 void countManage(Product pro[],int n)               /*¸Ãº¯ÊıÍê³ÉÉÌÆ·¿â´æÍ³¼Æ¹¦ÄÜ*/
 {
 	
-		int mark[1000][2];
+		int mark[2];
 		int choice;
 		do
 		{
@@ -254,7 +253,7 @@ void printPro ( Product  *pro , int n)       /*Êä³öËùÓĞÉÌÆ·¼ÇÂ¼µÄÖµ*/
 	{
 		printf("%8ld  ", pro[i].num);
 		printf("%10s", pro[i].name);
-		printf("%7s", pro[i].brand);
+		printf("%12s", pro[i].brand);
 		printf("%10.2f",pro[i].price);
     	printf("%8d",pro[i].count);
 		printf("%9d\n",pro[i].rank);
@@ -275,8 +274,8 @@ int equal(Product s1,Product s2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öProduct¼ÇÂ¼ÏàµÈ*/
 	     if (strcmp(s1.brand,s2.brand)==0) 	return 1;
 		else return 0;
      }
- else if (condition==4)                /*Èç¹û²ÎÊıconditionµÄÖµÎª4£¬Ôò±È½Ï¿â´æ*/
-		return s1.count==s2.count;
+ else if (condition==4)                /*Èç¹û²ÎÊıconditionµÄÖµÎª4£¬Ôò±È½Ï¼Û¸ñ*/
+		return s1.price==s2.price;
 	else return 1;                       /*ÆäÓàÇé¿ö·µ»Ø1*/
 } 
 
@@ -390,7 +389,7 @@ int deletePro(Product pro[],int n,Product s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨±àºÅµÄ
 	n--;                                      /*ÔªËØ¸öÊı¼õÉÙ¼Ó1*/
 	return n;                                  /*·µ»ØÏÖÓĞ¸öÊı*/
 }
-void calcuRank(Product pro[],int n,Product s)          /*¸ù¾İ¼Û¸ñ¼ÆËãËùÓĞÉÌÆ·µÄÅÅÃû£¬¼Û¸ñÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
+void calcuRank(Product pro[],int n)          /*¸ù¾İ¼Û¸ñ¼ÆËãËùÓĞÉÌÆ·µÄÅÅÃû£¬¼Û¸ñÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
 {
 	int i;	
 	sortPro(pro,n,2);                     /*ÏÈµ÷ÓÃsortProËã·¨£¬°´¼Û¸ñÓÉĞ¡µ½´óÅÅĞò*/
@@ -398,7 +397,7 @@ void calcuRank(Product pro[],int n,Product s)          /*¸ù¾İ¼Û¸ñ¼ÆËãËùÓĞÉÌÆ·µÄÅ
 	pro[0].rank=1; /*µÚÒ»Ìõ¼ÇÂ¼µÄÃû´ÎÒ»¶¨ÊÇ1*/
 		for (i=1;i<n;i++)                     /*´ÓµÚ¶şÌõ¼ÇÂ¼Ò»Ö±µ½×îºóÒ»Ìõ½øĞĞÑ­»·*/
 	{
-		if (equal(pro[i],pro[i-1],4))         /*µ±Ç°¼ÇÂ¼ÓëÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Èç¹û×Ü·ÖÏàµÈ*/
+		if (equal(pro[i],pro[i-1],4))         /*µ±Ç°¼ÇÂ¼ÓëÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Èç¹û¼Û¸ñÏàµÈ*/
 			pro[i].rank=pro[i-1].rank;     /*µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Ãû´Î*/ 
 	    else
 			pro[i].rank=i+1;             /*²»ÏàµÈÊ±µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏÂ±êºÅ+1*/
@@ -409,14 +408,14 @@ void calcuMark(int m[2],Product pro[],int n)
 {
 	int i;
 	m[0]=pro[0].count;
-	for (i=1;i<n;i++)                 /*Çó¿â´æ½Ï¸ß*/		
+	for (i=1;i<n;i++)                 /*Çó¿â´æ½Ï¶à*/		
 	{   
 	    if (m[0]<pro[i].count)
 				m[0]=pro[i].count;
 
 	}
     m[1]=pro[0].count;
-	for (i=1;i<n;i++)                 /*Çó¿â´æ½Ï¸ß*/		
+	for (i=1;i<n;i++)                 /*Çó¿â´æ½ÏÉÙ*/		
 	{   
 		if (m[1]>pro[i].count)
 				m[1]=pro[i].count;
