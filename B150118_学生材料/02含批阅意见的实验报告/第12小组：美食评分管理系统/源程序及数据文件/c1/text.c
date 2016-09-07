@@ -6,7 +6,7 @@
 
 void printHead( )      /*打印菜品信息的表头*/
 {
-printf("%8s%10s%8s%6s%6s%8s%6s%6s\n","序号","菜名","菜系","色","香","味","总分","名次");
+printf("%8s%8s%8s%6s%10s%9s%9s%9s%9s\n","序号","菜名","菜系","口味","色","香","味","总分","名次");
 }
 
 void menu( )         /*顶层菜单函数*/
@@ -47,7 +47,17 @@ void menuSearch()    /*5、根据条件查询菜单函数*/
 		printf("######## 1. 按序号查询   ########\n");
 		printf("######## 2. 按菜名查询   ########\n");
 		printf("######## 3. 按名次查询   ########\n");
+        printf("######## 5. 按口味查询   ########\n");
 		printf("######## 0. 返回上层菜单 ########\n");
+}
+
+void menuOrder()
+{
+        printf("$$$$$$$$ 1. 甜   $$$$$$$$\n");
+        printf("$$$$$$$$ 2. 辣   $$$$$$$$\n");
+        printf("$$$$$$$$ 3. 酸   $$$$$$$$\n");
+        printf("$$$$$$$$ 4. 鲜   $$$$$$$$\n");
+        printf("$$$$$$$$ 0. 返回主菜单 $$$$$$$$\n");
 }
 
 int baseManage(Food foo[],int n)    	     /*该函数完成基本信息管理*/
@@ -126,11 +136,11 @@ void countManage(Food foo[],int n)               /*该函数完成项目评分统计功能*/
 			scanf("%d",&choice);
 			switch(choice)
 			{
-				case 1:   printMarkCourse("三门课的最高分分别是:\n",mark,0);  /*输出最高分*/
+				case 1:   printMarkCourse("三个评分项目的最高分分别是:\n",mark,0);  /*输出最高分*/
 				      break;
-				case 2:   printMarkCourse("三门课的最低分分别是:\n",mark,1);  /*输出最低分*/
+				case 2:   printMarkCourse("三个评分项目的最低分分别是:\n",mark,1);  /*输出最低分*/
 				      break;
-				case 3:   printMarkCourse("三门课的平均分分别是:\n",mark,2);  /*输出平均分*/
+				case 3:   printMarkCourse("三个评分项目的平均分分别是:\n",mark,2);  /*输出平均分*/
 				      break;
 				case 0:   break;
 			}
@@ -140,6 +150,7 @@ void countManage(Food foo[],int n)               /*该函数完成项目评分统计功能*/
 void searchManage(Food foo[],int n)               /*该函数完成根据条件查询功能*/
 {
     int i,choice,findnum,f[NUM];
+	char ch;
 Food s;
 	   do
 {
@@ -157,9 +168,13 @@ Food s;
 				case 3:   printf("Input a rank will be searched:\n");
 				      scanf("%d",&s.rank);          /*输入待查询菜品的名次*/
 					  break;
+				case 5:   menuOrder( );
+					  printf("Input a taste will be searched:\n");
+					  scanf("%s",s.taste);
+					  break;
 				case 0:   break;
 			}
-		 	if (choice>=1&&choice<=3)
+		 	if (choice>=1&&choice<=5)
 			{ 
 				findnum=searchFoo(foo,n,s,choice,f);    /*查找的符合条件元素的下标存于f数组中*/
 				if (findnum)				     /*如果查找成功*/
@@ -168,11 +183,16 @@ Food s;
 					 for (i=0;i<findnum;i++)         /*循环控制f数组的下标*/
 	      	 printFoo(&foo[f[i]],1);      /*每次输出一条记录*/
 				}
-		    		else
+		    	else
+			    	 printf("this record does not exist!\n"); /*如果查找不到元素，则输出提示信息*/
+		     }
+			
+		    	else
 			    	    printf("this record does not exist!\n"); /*如果查找不到元素，则输出提示信息*/
-		     }		
-	    }while (choice);
+		     }
+	    while (choice);
 }
+
 
 int runMain(Food foo[],int n,int choice)    /*主控模块，对应于一级菜单其下各功能选择执行*/
 {
@@ -190,7 +210,7 @@ int runMain(Food foo[],int n,int choice)    /*主控模块，对应于一级菜单其下各功能
 					break;
 			case 5: searchManage(foo,n);     /* 5. 根据条件查询*/
 				     break;
-          case 0: break;
+            case 0: break;
 		}
 		return n;
 }
