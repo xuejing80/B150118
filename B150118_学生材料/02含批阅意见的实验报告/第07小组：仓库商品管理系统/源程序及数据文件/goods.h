@@ -1,12 +1,12 @@
 #ifndef _GOODS
 #define _GOODS
 #include<string.h>
-#define NUM 2
+#define NUM 20
 struct Goods
 {
 	long num;
 	char name[20];
-    char  brand[10];
+    char  brand[20];
 	int  changes[2];
 	int  stock;
 	int  rank;
