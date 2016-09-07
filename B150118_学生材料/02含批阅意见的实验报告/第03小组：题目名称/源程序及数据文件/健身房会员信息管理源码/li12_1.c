@@ -47,8 +47,6 @@ void menuSearch()    /*5、根据条件查询菜单函数*/
 		printf("######## 1. 按会员号查询   ########\n");
 		printf("######## 2. 按姓名查询   ########\n");
 		printf("######## 3. 按次数排序查询   ########\n");
-		printf("######## 4. 按年龄查询    #######\n");
-		printf("######## 4. 按入会日期查询    #######\n");
 		printf("######## 0. 返回上层菜单 ########\n");
 }
 
@@ -88,7 +86,7 @@ printf("choose one operation you want to do:\n");
 return n;                             /*返回当前操作结束后的实际记录条数*/
 }
 
-void scoreManage(Vvip vip[],int n)          /*该函数完成会员健身次数信息管理功能*/
+void timeManage(Vvip vip[],int n)          /*该函数完成会员健身次数信息管理功能*/
 {  
 	int choice;
 	do
@@ -158,9 +156,9 @@ Vvip v;
 				      break;   
 				case 3:   printf("Input a rank will be searched:\n");
 				      scanf("%d",&v.rank);          /*输入待查询会员的名次*/
-					  break;
-				case 0:   break;
-			}
+				      break;
+                        case 0:   break;
+ 			}
 		 	if (choice>=1&&choice<=3)
 			{ 
 				findnum=searchVip(vip,n,v,choice,f);    /*查找的符合条件元素的下标存于f数组中*/
@@ -186,7 +184,7 @@ int runMain(Vvip vip[],int n,int choice)    /*主控模块，对应于一级菜单其下各功能
 					break;
 			case 2: n=baseManage(vip,n);    /* 2. 基本信息管理*/
 			   	     break;
-			case 3: scoreManage(vip,n);     /* 3. 会员健身次数管理*/
+			case 3: timeManage(vip,n);     /* 3. 会员健身次数管理*/
 					break;
 			case 4: countManage(vip,n);     /* 4. 会员健身次数统计*/
 					break;

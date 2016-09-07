@@ -6,7 +6,7 @@ int  createFile(Vvip vip[ ])              /*½¨Á¢³õÊ¼µÄÊı¾İÎÄ¼ş*/
 {
 	FILE *fp;
 	int n;
-   	if((fp=fopen("D:\\È«²¿¸Ä¹ıµÄ - ¸±±¾\\vvip.dat", "wb")) == NULL) /*Ö¸¶¨ºÃÎÄ¼şÃû£¬ÒÔĞ´Èë·½Ê½´ò¿ª*/
+   	if((fp=fopen("D:\\vvip.dat", "wb")) == NULL) /*Ö¸¶¨ºÃÎÄ¼şÃû£¬ÒÔĞ´Èë·½Ê½´ò¿ª*/
 	{
 	    printf("can not open file !\n");         /*Èô´ò¿ªÊ§°Ü£¬Êä³öÌáÊ¾ĞÅÏ¢*/
 	    exit(0);                           /*È»ºóÍË³ö*/
@@ -22,7 +22,7 @@ int readFile(Vvip vip[ ] )                     /*½«ÎÄ¼şÖĞµÄÄÚÈİ¶Á³öÖÃÓÚ½á¹¹ÌåÊı×
 {
    	FILE *fp;
 	int i=0;
-	if((fp=fopen("D:\\È«²¿¸Ä¹ıµÄ - ¸±±¾\\vvip.dat", "rb")) == NULL)  /*ÒÔ¶ÁµÄ·½Ê½´ò¿ªÖ¸¶¨ÎÄ¼ş*/
+	if((fp=fopen("D:\\vvip.dat", "rb")) == NULL)  /*ÒÔ¶ÁµÄ·½Ê½´ò¿ªÖ¸¶¨ÎÄ¼ş*/
 	{
 	    printf("file does not exist,create it first:\n");  /*Èç¹û´ò¿ªÊ§°ÜÊä³öÌáÊ¾ĞÅÏ¢*/
 	    return 0;                              /*È»ºó·µ»Ø0*/
@@ -40,7 +40,7 @@ int readFile(Vvip vip[ ] )                     /*½«ÎÄ¼şÖĞµÄÄÚÈİ¶Á³öÖÃÓÚ½á¹¹ÌåÊı×
 void saveFile(Vvip vip[],int n)                  /*½«½á¹¹ÌåÊı×éµÄÄÚÈİĞ´ÈëÎÄ¼ş*/
 {   			
   	FILE *fp;	
-   	if((fp=fopen("D:\\È«²¿¸Ä¹ıµÄ - ¸±±¾\\vvip.dat", "wb")) == NULL) /*ÒÔĞ´µÄ·½Ê½´ò¿ªÖ¸¶¨ÎÄ¼ş*/
+   	if((fp=fopen("D:\\vvip.dat", "wb")) == NULL) /*ÒÔĞ´µÄ·½Ê½´ò¿ªÖ¸¶¨ÎÄ¼ş*/
 	{
 		printf("can not open file !\n");           /*Èç¹û´ò¿ªÊ§°Ü£¬Êä³öÌáÊ¾ĞÅÏ¢*/
 		exit(0);                            /*È»ºóÍË³ö*/
