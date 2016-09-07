@@ -29,7 +29,7 @@ void menuScore( )     /*2、药品进出库管理菜单函数*/
 
 void menuSearch()    /*4、根据条件查询菜单函数*/
 {
-		printf("######## 1. 按药品类型查询   ########\n");
+		printf("######## 1. 按药品编码查询   ########\n");
 		printf("######## 2. 按药品名称查询   ########\n");
 		printf("######## 3. 按入库时间查询   ########\n");
 		printf("######## 0. 返回上层菜单     ########\n");
@@ -87,14 +87,14 @@ Medcine s;
 			scanf("%d",&choice);
 			switch(choice)
 			{
-				case 1:   printf("输入待查询药品的类型:\n");
+				case 1:   printf("输入待查询药品的编码:\n");
 				      scanf("%ld",&s.cod);         /*输入待查询学生的学号*/
 					  break;
 				case 2:   printf("输入待查询药品的名称:\n");
 				      scanf("%s",s.name);	          /*输入待查询药品的名称*/		  
 				      break;   
 				case 3:   printf("输入待查询药品的入库时间:\n");
-				      scanf("%d",&s.intime);          /*输入待查询学生的名次*/
+				      scanf("%d",&s.intime);          /*输入待查询药品入库时间*/
 					  break;
 				case 0:   break;
 			}
