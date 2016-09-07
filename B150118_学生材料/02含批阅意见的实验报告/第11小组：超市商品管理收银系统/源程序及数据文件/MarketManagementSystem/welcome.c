@@ -3,6 +3,51 @@
 #include<string.h>
 #include<stdlib.h>
 #include"welcome.h"
+<<<<<<< HEAD
+=======
+// 管理员函数
+void adminabc()
+{
+    int a;
+    char b;
+    do
+    {
+        printf("       ******************************\n");
+        printf("            欢迎进入管理员页面\n");
+        printf("       ******************************\n");
+        printf("  \t**    1商品信息录入       **\n  \t**    2商品库存情况列表   **\n  \t**    3总体利润报表       **\n  \t**    4返回登录页面       **\n");
+        printf("        ****************************\n\n\n");
+        printf("\t**请输入命令：");
+        scanf("%d",&a);
+        if(a!=1&&a!=2&&a!=3&&a!=4)
+        {
+            printf("输入有误，请重新输入!\n\n\n");
+        }
+    }
+    while(a!=1&&a!=2&&a!=3&&a!=4);
+
+    switch (a)
+    {
+    case 1:
+        inputgoods();
+        break;
+    case 2:
+       showgoods();
+        break;
+    case 3:
+        printf("总体利润是:%.2f",totalprofit());
+         printf("按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        adminabc();
+        break;
+    case 4:
+        system("cls");
+        login();
+        break    ;
+    }
+>>>>>>> pr/59
 
 
 
@@ -46,6 +91,10 @@ int login()
         }
         else
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> pr/59
             printf("\n\t\t\t用户名或密码错误,请按回车重新登录\n");
             getchar();
             getchar();
@@ -56,9 +105,14 @@ int login()
     return 0;
 }
 //收银员函数
+<<<<<<< HEAD
 void checkabc(int id,double total,double profit)
 {
     int command;
+=======
+void checkabc(int id,double total,double profit){
+ int command;
+>>>>>>> pr/59
     printf("\t\t\t    欢迎进入收银员系统\n");
     printf("\t\t\t************************\n\n\n");
     printf("\t\t        1收银\n\t\t        2本日收银报表\n\t\t        3返回主界面\n\n\n");
@@ -79,6 +133,7 @@ void checkabc(int id,double total,double profit)
     }
     else
     {
+<<<<<<< HEAD
         if(command==3)
         {
             system("cls");
@@ -87,6 +142,72 @@ void checkabc(int id,double total,double profit)
         else
         {
             //本次订单的报表
+=======
+
+
+        if(command==3)
+        {
+        system("cls");
+        login();
+        }
+        else
+        {
+        system("cls");
+        printf("\t\t\t\t**********************\n");
+        printf("\t\t\t\t 欢迎查看本日营销报表\n\t\t\t\t**********************\n本次订单号：%d\n 总价格：%.2f%\n  利润：%.2f\n",id,total,profit);
+         printf("\n\n\n按任意键返回上一层");
+         getchar();
+         getchar();
+         system("cls");
+        checkabc(id,total,profit);
+        }
+    }
+    return 0;
+}
+
+
+// 录入函数
+void inputgoods()
+{
+    system("cls");
+    char code[20];
+    char name[20],num[20],price[20],chengben[20],end[20] = "end";
+    int s;
+
+    do
+    {
+        printf("\n\n*************************************************************\n");
+        printf("\t请分别输入货品信息(以空格隔开，输入end结束输入)\n");
+        printf("*************************************************************\n\n");
+        printf("\t****条码***商品名称***价格***成本***库存****\n\n");
+        printf("\t");
+        scanf("%s",code);
+        if(!strcmp(code,end)){
+                system("cls");
+            adminabc();
+        }
+        scanf("%s%s%s%s",name,price,chengben,num);
+        if(!checknum(num) && !checknum(code) && !checknum(chengben) && !checknum(price))
+            {
+             printf("\n\t\t\t***********************");
+             printf("\n\t\t\t      条码:%s\n\t\t\t      名称:%s\n\t\t\t      价格:%s       \n\t\t\t      成本:%s       \n\t\t\t      库存:%s\n",code,name,price,chengben,num);
+              printf("\t\t\t***********************\n");
+            }
+        else{
+            printf("您的输入有误，请重新输入。\n");
+             s = 1;
+            continue;
+
+            }
+       if(addgoods(code,name,price,chengben,num))
+            printf("\t**添加成功**");
+       else
+            printf("添加失败");
+        printf("\n是否继续 1是 or 2否\n\n");
+        scanf("%d",&s);
+        if(s==2)
+       {
+>>>>>>> pr/59
             system("cls");
             printf("欢迎查看本日营销报表\n本次订单号：%d总价格：%.2f%利润：%.2f\n",id,total,profit);  //输出本次的营销报表
             printf("按任意键返回上一层");
@@ -108,6 +229,7 @@ void checkcode()
     int i=0,c=1,d=0,e = 0;
     double total=0.0,numdouble,intnum[100];
     order profit;
+<<<<<<< HEAD
     printf("欢迎进入收银系统\n请输入商品条形码以及你需要的数量(输入q结束,输入d进入删除模式)：\n");
     do
     {
@@ -193,11 +315,26 @@ void checkcode()
             printf("您的输入有误，请重新输入");
             continue;
         }
+=======
+     printf("\t\t\t        *****************\n");
+   printf("\t\t\t\t欢迎进入收银系统\n\t\t\t        *****************\n请输入商品条形码(输入end结束):");
+    do
+    {
+        scanf("%s",code);
+                if(!strcmp(code,endcode))
+            break;
+        if(checknum(code)){
+            printf("您的输入有误，请重新输入");
+            continue;
+        }
+
+>>>>>>> pr/59
         if(ifexist(code))
         {
             good[i++] = readcode(code);
             if(good[i-1].num>0)
             {
+<<<<<<< HEAD
                 c=1;
                 for(; c<=numdouble; c++)
                 {
@@ -208,6 +345,13 @@ void checkcode()
                     flag = 1; //列表里已经有商品了。
                 } //库存减一
                 printf("商品名称：%10s 价格：%10.2f元 购买数量:%10.0f \n总价:%10.2f元\n",good[i-1].name,good[i-1].price,numdouble,total);
+=======
+                total = total+good[i-1].price;
+                profit.profit = profit.profit + good[i-1].price-good[i-1].chengben;
+                profit.total = total;
+               sale(good[i-1].code); //库存减一
+                printf("\n\n\t\t\t\t商品名称：%s \n\t\t\t\t 价格：%2f元 \n\t\t\t\t 存量:%d \n\t\t\t\t 总价:%2f元\n",good[i-1].name,good[i-1].price,good[i-1].num-1,total);
+>>>>>>> pr/59
             }
             else
             {
@@ -272,6 +416,7 @@ void adminabc()
 
 }
 
+<<<<<<< HEAD
 // 管理员录入函数
 void inputgoods()
 {
@@ -332,4 +477,22 @@ int checknum(const char*num)
 
     return 0;
 
+=======
+//检查一维码是否合格函数
+int checknum(const char*num)
+{
+    int i;
+     for(i=0;i<20;i++)
+            {
+                if(num[i]=='\0') break;
+                if(!(num[i]>='0'&&num[i]<='9'||num[i]=='.'))
+                   {//printf("%s",num);
+                    return 1;
+                    break;
+                   }
+            }
+
+     return 0;
+
+>>>>>>> pr/59
 }
