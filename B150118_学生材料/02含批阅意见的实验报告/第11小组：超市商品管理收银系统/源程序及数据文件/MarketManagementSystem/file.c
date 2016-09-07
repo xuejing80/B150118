@@ -8,7 +8,7 @@ int ifexist(char code[])
     int a = 0;
     goods read;
     FILE *fp;
-    if(fp = fopen(".\\1.txt","r")) //文件打开
+    if(fp = fopen(".\\goods.txt","r")) //文件打开
     {
         while(!feof(fp))
         {
@@ -35,7 +35,7 @@ double totalprofit()
     int id;
     double total=0,profit=0,abc=0;
     FILE *fp;
-    if(fp = fopen(".\\2.txt","r"))//文件打开
+    if(fp = fopen(".\\order.txt","r"))//文件打开
     {
         while(!feof(fp))
         {
@@ -58,7 +58,7 @@ struct goods readcode(char code[])
 {
     goods read;
     FILE *fp;
-    if(fp = fopen(".\\1.txt","r"))
+    if(fp = fopen(".\\goods.txt","r"))
     {
         while(!feof(fp))
         {
@@ -83,7 +83,7 @@ void showgoods()
     system("cls");
     goods read;
     FILE *fp;
-    if(fp = fopen(".\\1.txt","r")) //文件打开
+    if(fp = fopen(".\\goods.txt","r")) //文件打开
     {
         printf("\n\n\n\n***************************************************************\n");
         printf("   **条码**     **名称**   **售价**   **成本**      **存量**   \n");
@@ -109,7 +109,7 @@ void showgoods()
 int addgoods(char code[],char name[],char price[],char chengben[],char num[])
 {
     FILE *fp;
-    if(fp = fopen(".\\1.txt","a+")) //打开文件
+    if(fp = fopen(".\\goods.txt","a+")) //打开文件
     {
         fprintf(fp,"\n%s %s %s %s %s",code,name,price,chengben,num); //按照一定的格式来写入文件
         fclose(fp);
@@ -132,7 +132,7 @@ void createorder(double price,double profit)
     add.profit = profit;
     printf("订单创建完成\n");
     FILE *fp;
-    if(fp = fopen(".\\2.txt","a+"))
+    if(fp = fopen(".\\order.txt","a+"))
     {
         id = neworder();
         fprintf(fp,"\n%d %.2f %.2f",id,add.total,add.profit);//写入文件并显示本次订单价格
@@ -155,7 +155,7 @@ void sale(char code[])
     FILE *fp;
     char c,d[20],e[20];
     int i=-2;
-    if(fp = fopen(".\\1.txt","r+"))//打开文件
+    if(fp = fopen(".\\goods.txt","r+"))//打开文件
     {
         while(!feof(fp))
         {
@@ -188,7 +188,7 @@ void saleadd(char code[])
     FILE *fp;
     char c,d[20],e[20];
     int i=-2;
-    if(fp = fopen(".\\1.txt","r+"))
+    if(fp = fopen(".\\goods.txt","r+"))
     {
         while(!feof(fp))
         {
