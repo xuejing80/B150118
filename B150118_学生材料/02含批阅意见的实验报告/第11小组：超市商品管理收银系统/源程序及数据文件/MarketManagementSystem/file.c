@@ -9,7 +9,11 @@ int ifexist(char code[])
     goods read;
     FILE *fp;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(fp = fopen(".\\1.txt","r")) //文件打开
+=======
+    if(fp = fopen(".\\goods.txt","r")) //文件打开
+>>>>>>> pr/60
     {
         while(!feof(fp))
         {
@@ -48,7 +52,11 @@ double totalprofit()
     double total=0,profit=0,abc=0;
     FILE *fp;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(fp = fopen(".\\2.txt","r"))//文件打开
+=======
+    if(fp = fopen(".\\order.txt","r"))//文件打开
+>>>>>>> pr/60
     {
         while(!feof(fp))
         {
@@ -78,7 +86,7 @@ struct goods readcode(char code[])
 {
     goods read;
     FILE *fp;
-    if(fp = fopen(".\\1.txt","r"))
+    if(fp = fopen(".\\goods.txt","r"))
     {
         while(!feof(fp))
         {
@@ -104,10 +112,14 @@ void showgoods()
     goods read;
     FILE *fp;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(fp = fopen(".\\1.txt","r")) //文件打开
 =======
     if(fp = fopen(".\\1.txt","r"))
 >>>>>>> pr/59
+=======
+    if(fp = fopen(".\\goods.txt","r")) //文件打开
+>>>>>>> pr/60
     {
         printf("\n\n\n\n***************************************************************\n");
         printf("   **条码**     **名称**   **售价**   **成本**      **存量**   \n");
@@ -134,7 +146,11 @@ int addgoods(char code[],char name[],char price[],char chengben[],char num[])
 {
     FILE *fp;
 <<<<<<< HEAD
+<<<<<<< HEAD
     if(fp = fopen(".\\1.txt","a+")) //打开文件
+=======
+    if(fp = fopen(".\\goods.txt","a+")) //打开文件
+>>>>>>> pr/60
     {
         fprintf(fp,"\n%s %s %s %s %s",code,name,price,chengben,num); //按照一定的格式来写入文件
 =======
@@ -165,7 +181,7 @@ void createorder(double price,double profit)
     add.profit = profit;
     printf("订单创建完成\n");
     FILE *fp;
-    if(fp = fopen(".\\2.txt","a+"))
+    if(fp = fopen(".\\order.txt","a+"))
     {
 <<<<<<< HEAD
         id = neworder();
@@ -194,7 +210,7 @@ void sale(char code[])
     FILE *fp;
     char c,d[20],e[20];
     int i=-2;
-    if(fp = fopen(".\\1.txt","r+"))//打开文件
+    if(fp = fopen(".\\goods.txt","r+"))//打开文件
     {
         while(!feof(fp))
         {
@@ -229,7 +245,7 @@ void saleadd(char code[])
     FILE *fp;
     char c,d[20],e[20];
     int i=-2;
-    if(fp = fopen(".\\1.txt","r+"))
+    if(fp = fopen(".\\goods.txt","r+"))
     {
         while(!feof(fp))
         {
