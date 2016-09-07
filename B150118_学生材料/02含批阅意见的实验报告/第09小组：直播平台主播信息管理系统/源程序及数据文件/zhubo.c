@@ -103,21 +103,21 @@ void calcuMark(double m[7][3],zhubo zhu[],int n) /*求七天的最长、最短、平均*/
 
 {
 	int i,j;
-	for (i=0;i<20;i++)
+	for (i=0;i<7;i++)
 	{
 		m[i][0]=zhu[0].time[i];
 		for (j=1;j<n;j++)
 			if (m[i][0]<zhu[j].time[i])
 				m[i][0]=zhu[j].time[i];
 	}
-	for (i=0;i<20;i++)
+	for (i=0;i<7;i++)
 	{
 		m[i][1]=zhu[0].time[i];
 		for (j=1;j<n;j++)
 			if (m[i][1]>zhu[j].time[i])
 				m[i][1]=zhu[j].time[i];
 	}
-	for (i=0;i<20;i++)
+	for (i=0;i<7;i++)
 		m[i][2]=zhu[0].time[i];
 		for (j=1;j<n;j++)
 			m[i][2]+=zhu[j].time[i];

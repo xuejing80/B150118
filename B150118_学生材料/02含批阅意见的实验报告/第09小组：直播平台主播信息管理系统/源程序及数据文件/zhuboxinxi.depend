@@ -116,3 +116,21 @@
 1473144229 c:\users\administrator\desktop\作业\程序设计\18  09\zhubo.h
 	<string.h>
 
+1473156152 source:c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：直播平台主播信息管理系统\源程序及数据文件\main.c
+	<stdio.h>
+	<stdlib.h>
+	"file.h"
+	"zhubo.h"
+
+1473061734 c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：直播平台主播信息管理系统\源程序及数据文件\file.h
+	<stdio.h>
+	<stdlib.h>
+	"zhubo.h"
+
+1473144229 c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：直播平台主播信息管理系统\源程序及数据文件\zhubo.h
+	<string.h>
+
+1473215956 source:c:\users\administrator\desktop\作业\程序设计\模板\b150118_学生材料\02含批阅意见的实验报告\第09小组：直播平台主播信息管理系统\源程序及数据文件\zhubo.c
+	"zhubo.h"
+	<stdio.h>
+
