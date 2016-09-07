@@ -27,3 +27,4 @@ int neworder();
 void sale();
 double totalprofit();
 int checknum();
+void showorder();
