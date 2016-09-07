@@ -1,133 +1,134 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include"zhibo.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include"file.h"
+#include"zhubo.h"
 
-FILE *fp;
-
-void printHead( )
+void printHead( )      /*´òÓ¡Ö÷²¥ĞÅÏ¢µÄ±íÍ·*/
 {
-printf("%8s%8s%8d%10s%8d%8d%6s\n","ĞÕÃû","ĞÔ±ğ","·¿¼äºÅ","Ö±²¥Ê±¼ä","×ÜÈËÊı","×ÜÊ±¼ä","ÓÎÏ·");
+printf("%8s%8s%8s%8s%8s\n","ĞÕÃû","ĞÔ±ğ","·¿¼äºÅ","ÀàĞÍ","×ÜÊ±¼ä");
 }
 
-void menu( )
+void menu( )         /*¶¥²ã²Ëµ¥º¯Êı*/
 {
 		printf("******** 1. ÏÔÊ¾»ù±¾ĞÅÏ¢ ********\n");
 		printf("******** 2. »ù±¾ĞÅÏ¢¹ÜÀí ********\n");
 		printf("******** 3. Ö÷²¥ĞÅÏ¢¹ÜÀí ********\n");
-		printf("******** 4. ¿¼ÊÔ³É¼¨Í³¼Æ ********\n");
-     printf("******** 5. ¸ù¾İÌõ¼ş²éÑ¯ ********\n");
+		printf("******** 4. Ö÷²¥ĞÅÏ¢Í³¼Æ ********\n");
+        printf("******** 5. ¸ù¾İÌõ¼ş²éÑ¯ ********\n");
 		printf("******** 0. ÍË³ö         ********\n");
 }
 
-void menuBase( )
+void menuBase( )     /*2¡¢»ù±¾ĞÅÏ¢¹ÜÀí²Ëµ¥º¯Êı*/
 {
+		printf("%%%%%%%% 1. ²åÈëÖ÷²¥¼ÇÂ¼ %%%%%%%%\n");
 		printf("%%%%%%%% 2. É¾³ıÖ÷²¥¼ÇÂ¼ %%%%%%%%\n");
 		printf("%%%%%%%% 3. ĞŞ¸ÄÖ÷²¥¼ÇÂ¼ %%%%%%%%\n");
 		printf("%%%%%%%% 0. ·µ»ØÉÏ²ã²Ëµ¥ %%%%%%%%\n");
 }
 
-void menuScore( )
+void menuScore( )     /*3¡¢Ö÷²¥ĞÅÏ¢¹ÜÀí²Ëµ¥º¯Êı*/
 {
-		printf("@@@@@@@@ 1. ¼ÆËãÖ±²¥Ê±¼ä @@@@@@@@\n");
-		printf("@@@@@@@@ 2. ¸ù¾İÊ±¼äÅÅÃû @@@@@@@@\n");
+		printf("@@@@@@@@ 1. ¼ÆËã×ÜÖ±²¥Ê±¼ä @@@@@@@@\n");
+		printf("@@@@@@@@ 2. ¸ù¾İ×ÜÊ±¼äÅÅÃû @@@@@@@@\n");
 		printf("@@@@@@@@ 0. ·µ»ØÉÏ²ã²Ëµ¥ @@@@@@@@\n");
 }
 
-void menuCount( )
+void menuCount( )    /*4¡¢Ö÷²¥ĞÅÏ¢Í³¼Æ²Ëµ¥º¯Êı*/
 {
-    	printf("&&&&&&&& 1. ÇóÖ±²¥×î³¤ &&&&&&&&\n");
-		printf("&&&&&&&& 2. ÇóÈËÊı×î¶à &&&&&&&&\n");
-		printf("&&&&&&&& 3. ÇóÖ±²¥Æ½¾ù &&&&&&&&\n");
+		printf("&&&&&&&& 1. ÇóÖ±²¥×î³¤Ê±¼ä &&&&&&&&\n");
+		printf("&&&&&&&& 2. ÇóÖ±²¥×î¶ÌÊ±¼ä &&&&&&&&\n");
+		printf("&&&&&&&& 3. ÇóÖ±²¥Æ½¾ùÊ±¼ä &&&&&&&&\n");
 		printf("&&&&&&&& 0. ·µ»ØÉÏ²ã²Ëµ¥ &&&&&&&&\n");
 }
 
-void menuSearch()
+void menuSearch()    /*5¡¢¸ù¾İÌõ¼ş²éÑ¯²Ëµ¥º¯Êı*/
 {
-		printf("######## 1. °´ĞÕÃû²éÑ¯   ########\n");
-		printf("######## 2. °´·¿¼ä²éÑ¯   ########\n");
-		printf("######## 3. °´ÓÎÏ·²éÑ¯   ########\n");
+		printf("######## 1. °´·¿¼äºÅ²éÑ¯   ########\n");
+		printf("######## 2. °´ĞÕÃû²éÑ¯   ########\n");
 		printf("######## 0. ·µ»ØÉÏ²ã²Ëµ¥ ########\n");
 }
 
-
-int baseManage(zhubo zhu[],int n)
+int baseManage(zhubo zhu[],int n)    	     /*¸Ãº¯ÊıÍê³É»ù±¾ĞÅÏ¢¹ÜÀí*/
+/*°´·¿¼äºÅ½øĞĞ²åÈëÉ¾³ıĞŞ¸Ä£¬Ñ§ºÅ²»ÄÜÖØ¸´*/
 {
 		int choice,t,find[NUM];
      zhubo z;
 do
 	    {
-menuBase( );
+menuBase( );                  /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
 printf("choose one operation you want to do:\n");
-		     scanf("%d",&choice);
-		    switch(choice)
+		     scanf("%d",&choice);	          /*¶ÁÈëÑ¡Ïî*/
+		     switch(choice)
 		     {
-			   case 1:	 readzhu(&z,1);
-					 n=insertzhu(zhu,n,z);
+			   case 1:	 readzhu(&z,1);       /*¶ÁÈëÒ»Ìõ´ı²åÈëµÄÖ÷²¥¼ÇÂ¼*/
+					 n=insertzhu(zhu,n,z);   /*µ÷ÓÃº¯Êı²åÈëÖ÷²¥¼ÇÂ¼*/
 					 break;
 			   case 2:  printf("Input the number deleted\n");
-					 scanf("%ld",&z.num);
-					 n=deletezhu(zhu,n,z);
+					 scanf("%ld",&z.num);  /*¶ÁÈëÒ»¸ö´ıÉ¾³ıµÄÖ÷²¥Ñ§ºÅ*/
+					 n=deletezhu(zhu,n,z);   /*µ÷ÓÃº¯ÊıÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÖ÷²¥¼ÇÂ¼*/
 					 break;
 			   case 3:  printf("Input the number modified\n");
-					 scanf("%ld",&z.num);
-				      t=searchStu(zhu,n,z,1,find) ;
-				      if (t)
+					 scanf("%ld",&z.num);  /*¶ÁÈëÒ»¸ö´ıĞŞ¸ÄµÄÖ÷²¥·¿¼äºÅ*/
+				      t=searchzhu(zhu,n,z,1,find) ; /*µ÷ÓÃº¯Êı²éÕÒÖ¸¶¨Ö÷²¥µÄĞÅÏ¢¼ÇÂ¼*/
+				      if (t)                 /*Èç¹û¸ÃÖ÷²¥µÄ¼ÇÂ¼´æÔÚ*/
 					 {
-						  readzhu(&z,1);
-					      zhu[find[0]]=z;
+						  readzhu(&z,1);   /*¶ÁÈëÒ»ÌõÍêÕûµÄÖ÷²¥¼ÇÂ¼ĞÅÏ¢*/
+					      zhu[find[0]]=z;    /*½«¸Õ¶ÁÈëµÄ¼ÇÂ¼¸³Öµ¸øĞèÒªĞŞ¸ÄµÄÊı×é¼ÇÂ¼*/
 					  }
-					 else
- printf("this zhubo is not in,can not be modified.\n");
+					 else                 /*Èç¹û¸ÃÖ÷²¥µÄ¼ÇÂ¼²»´æÔÚ*/
+ printf("this student is not in,can not be modified.\n"); /*Êä³öÌáÊ¾ĞÅÏ¢*/
 					 break;
 			    case 0: break;
 		    }
 	}while(choice);
-return n;
+return n;                             /*·µ»Øµ±Ç°²Ù×÷½áÊøºóµÄÊµ¼Ê¼ÇÂ¼ÌõÊı*/
 }
 
-void scoreManage(zhubo zhu[],int n)
+void scoreManage(zhubo zhu[],int n)          /*¸Ãº¯ÊıÍê³ÉÖ÷²¥ĞÅÏ¢¹ÜÀí¹¦ÄÜ*/
 {
-
-    int choice;
+	int choice;
 	do
 	{
-		menuScore( );
+		menuScore( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
 		printf("choose one operation you want to do:\n");
-		scanf("%d",&choice);
+		scanf("%d",&choice);	                 /*¶ÁÈë¶ş¼¶Ñ¡Ïî*/
 		switch(choice)
 		{
-			case 1:   calcuTotal(zhu,n);
+			case 1:   calcuTotal(zhu,n);         /*ÇóËùÓĞÖ÷²¥µÄ×Ü·Ö*/
 					  break;
-			case 2:   calcuRank(zhu,n);
+			case 2:   calcuRank(zhu,n);         /*¸ù¾İËùÓĞÖ÷²¥µÄ×ÜÊ±¼äÅÅÃû´Î*/
 				      break;
 			case 0:   break;
 		}
 	}while(choice);
 }
 
+void printMarkCourse(char *s,double m[7][3],int k)   /*´òÓ¡·ÖÊıÍ¨ÓÃº¯Êı£¬±»countManage µ÷ÓÃ*/
+{                 /*ĞÎÊ½²ÎÊık´ú±íÊä³ö²»Í¬µÄÄÚÈİ£¬0¡¢1¡¢2·Ö±ğ¶ÔÓ¦×î³¤¡¢×î¶Ì¡¢Æ½¾ù*/
+int i;
+    printf(s);                                  /*ÕâÀïµÄs´«ÈëµÄÊÇÊä³ö·ÖÊıµÄÌáÊ¾ĞÅÏ¢*/
+    for (i=0;i<3;i++)                           /*i¿ØÖÆÄÄÌì*/
+		  printf("%10.2lf",m[i][k]);
+	   printf("\n");
+}
 
-
-void countManage(zhubo zhu[],int n)               /*¸Ãº¯ÊıÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ*/
+void countManage(zhubo zhu[],int n)               /*¸Ãº¯ÊıÍê³ÉÖ÷²¥ĞÅÏ¢Í³¼Æ¹¦ÄÜ*/
 {
 		int choice;
-		int max,pj,most;
+		double mark[7][3];
 		do
 		{
 			menuCount( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
-
-			int calcumost(most, zhu , n) ;                 /*µ÷ÓÃ´Ëº¯ÊıÇóÖ÷²¥µÄÊ±¼ä×î³¤×î¸ß¡¢ÈËÆø×î¸ß¡¢Ö±²¥Æ½¾ùÖµ*/
-			int calcupj(pj, zhu  , n);  /*ÇóÖ±²¥Æ½¾ùÊ±¼ä*/
-			int calcumax(max,  zhu , n) ; /*ÇóÖ±²¥Ê±¼ä×î³¤*/
+			calcuMark(mark,zhu,n);                 /*µ÷ÓÃ´Ëº¯ÊıÇóÆßÌìµÄ×î³¤¡¢×î¶Ì¡¢Æ½¾ùÖµ*/
 			printf("choose one operation you want to do:\n");
-
 			scanf("%d",&choice);
 			switch(choice)
 			{
-				case 1:   printMarkCourse("Ö±²¥Ê±¼ä×î³¤µÄÊÇ:\n",max,0);  /*Êä³öÖ±²¥Ê±¼ä×î³¤*/
+				case 1:   printMarkCourse("Ö±²¥Ê±¼ä×î³¤µÄÊÇ:\n",mark,0);  /*Êä³ö×î³¤*/
 				      break;
-				case 2:   printMarkCourse("Ö±²¥ÈËÆø×î¸ßµÄÊÇ:\n",most,1);  /*Êä³öÈËÆø×î¸ß*/
+				case 2:   printMarkCourse("Ö±²¥Ê±¼ä×î¶ÌµÄÊÇ:\n",mark,1);  /*Êä³ö×î¶Ì*/
 				      break;
-				case 3:   printMarkCourse("Ö±²¥µÄÆ½¾ùÊ±¼äÊÇ:\n",pj,2);  /*Êä³öÆ½¾ùÊ±¼ä*/
+				case 3:   printMarkCourse("Ö±²¥µÄÆ½¾ùÊ±¼äÊÇ:\n",mark,2);  /*Êä³öÆ½¾ù*/
 				      break;
 				case 0:   break;
 			}
@@ -137,7 +138,7 @@ void countManage(zhubo zhu[],int n)               /*¸Ãº¯ÊıÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ*/
 void searchManage(zhubo zhu[],int n)               /*¸Ãº¯ÊıÍê³É¸ù¾İÌõ¼ş²éÑ¯¹¦ÄÜ*/
 {
     int i,choice,findnum,f[NUM];
-    zhubo z;
+zhubo z;
 	   do
 {
 			menuSearch( );                         /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
@@ -146,14 +147,12 @@ void searchManage(zhubo zhu[],int n)               /*¸Ãº¯ÊıÍê³É¸ù¾İÌõ¼ş²éÑ¯¹¦ÄÜ*
 			switch(choice)
 			{
 				case 1:   printf("Input a zhubo\'s num will be searched:\n");
-				      scanf("%ld",&z.num);         /*ÊäÈë´ı²éÑ¯Ö÷²¥µÄ·¿¼äºÅ*/
+				      scanf("%ld",&z.num);         /*ÊäÈë´ı²éÑ¯Ö÷²¥µÄÑ§ºÅ*/
 					  break;
 				case 2:   printf("Input a zhubo\'s name will be searched:\n");
 				      scanf("%s",z.name);	          /*ÊäÈë´ı²éÑ¯Ö÷²¥µÄĞÕÃû*/
 				      break;
-				case 3:   printf("Input a game will be searched:\n");
-				      scanf("%d",&z.game);          /*ÊäÈë´ıÖ÷²¥µÄÓÎÏ·*/
-					  break;
+
 				case 0:   break;
 			}
 		 	if (choice>=1&&choice<=3)
@@ -183,7 +182,7 @@ int runMain(zhubo zhu[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹¦Ä
 			   	     break;
 			case 3: scoreManage(zhu,n);     /* 3. Ö÷²¥ĞÅÏ¢¹ÜÀí*/
 					break;
-			case 4: countManage(zhu,n);     /* 4. Ö±²¥ĞÅÏ¢Í³¼Æ*/
+			case 4: countManage(zhu,n);     /* 4. Ö÷²¥ĞÅÏ¢Í³¼Æ*/
 					break;
 			case 5: searchManage(zhu,n);     /* 5. ¸ù¾İÌõ¼ş²éÑ¯*/
 				     break;
@@ -211,7 +210,7 @@ int main( )
 	         else
 		          printf("error input,please input your choice again!\n");
 	} while (choice);
-	sortzhu(zhu,n,1);                   /*´æÈëÎÄ¼şÇ°°´Ñ§ºÅÓÉĞ¡µ½´óÅÅĞò*/
+	sortzhu(zhu,n,1);                   /*´æÈëÎÄ¼şÇ°°´×ÜÊ±¼äÓÉĞ¡µ½´óÅÅĞò*/
 	     saveFile(zhu,n);                   /*½«½á¹û´æÈëÎÄ¼ş*/
       return 0;
 }
