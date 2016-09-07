@@ -12,39 +12,25 @@ printf("%4s%10s%6s%6s%10s%6s%10s%10s%8s%10s\n","±àÂë","Ò©Æ·Ãû³Æ","ÀàĞÍ","¹æ¸ñ","
 void menu( )         /*¶¥²ã²Ëµ¥º¯Êı*/
 {
 		printf("******** 1. Ò©Æ·¿â´æĞÅÏ¢   ********\n");
-		printf("******** 2. Ò©Æ·½ø³ö¿â¼ÇÂ¼ ********\n");
-		printf("******** 3. Ò©Æ·½ø³ö¿â¹ÜÀí ********\n");
-		printf("******** 4. ÆäËûĞÅÏ¢       ********\n");
-        printf("******** 5. ¸ù¾İÌõ¼ş²éÑ¯   ********\n");
+		printf("******** 2. Ò©Æ·½ø³ö¿â¹ÜÀí ********\n");
+		printf("******** 3. ¼´½«µ½ÆÚÒ©Æ·   ********\n");
+        printf("******** 4. ¸ù¾İÌõ¼ş²éÑ¯   ********\n");
 		printf("******** 0. ÍË³ö           ********\n");
 }
 
-void menuBase( )     /*2¡¢Ò©Æ·½ø³ö¿â¼ÇÂ¼²Ëµ¥º¯Êı*/
-{
-		printf("%%%%%%%% 1. Ò©Æ·Èë¿â¼ÇÂ¼ %%%%%%%%\n");
-		printf("%%%%%%%% 2. Ò©Æ·³ö¿â¼ÇÂ¼ %%%%%%%%\n");
-		printf("%%%%%%%% 0. ·µ»ØÉÏ²ã²Ëµ¥ %%%%%%%%\n");
-}
-
-void menuScore( )     /*3¡¢Ò©Æ·½ø³ö¿â¹ÜÀí²Ëµ¥º¯Êı*/
+void menuScore( )     /*2¡¢Ò©Æ·½ø³ö¿â¹ÜÀí²Ëµ¥º¯Êı*/
 {
 		printf("@@@@@@@@ 1. Ò©Æ·½ø³ö¿â     @@@@@@@@\n");
         printf("@@@@@@@@ 2. ĞŞ¸Ä¿â´æĞÅÏ¢ @@@@@@@@\n");
         printf("@@@@@@@@ 3. É¾³ıÒ©Æ·     @@@@@@@@\n");
 		printf("@@@@@@@@ 0. ·µ»ØÉÏ²ã²Ëµ¥ @@@@@@@@\n");
 }
- 
-void menuCount( )    /*4¡¢ÆäËûĞÅÏ¢²Ëµ¥º¯Êı*/
-{
-		printf("&&&&&&&& 1. Ò©Æ·×Ü¼Û &&&&&&&&\n");
-		printf("&&&&&&&& 2. ¼´½«µ½ÆÚÒ©Æ· &&&&&&&&\n");
-		printf("&&&&&&&& 0. ·µ»ØÉÏ²ã²Ëµ¥ &&&&&&&&\n");
-}
 
-void menuSearch()    /*5¡¢¸ù¾İÌõ¼ş²éÑ¯²Ëµ¥º¯Êı*/
+
+void menuSearch()    /*4¡¢¸ù¾İÌõ¼ş²éÑ¯²Ëµ¥º¯Êı*/
 {
-		printf("######## 1. °´Ò©Æ·Ãû³Æ²éÑ¯   ########\n");
-		printf("######## 2. °´Ò©Æ·ÀàĞÍ²éÑ¯   ########\n");
+		printf("######## 1. °´Ò©Æ·ÀàĞÍ²éÑ¯   ########\n");
+		printf("######## 2. °´Ò©Æ·Ãû³Æ²éÑ¯   ########\n");
 		printf("######## 3. °´Èë¿âÊ±¼ä²éÑ¯   ########\n");
 		printf("######## 0. ·µ»ØÉÏ²ã²Ëµ¥     ########\n");
 }
@@ -87,56 +73,8 @@ int scoreManage(Medcine med[],int n)    	     /*¸Ãº¯ÊıÍê³É»ù±¾ĞÅÏ¢¹ÜÀí*/
 	return n;                             /*·µ»Øµ±Ç°²Ù×÷½áÊøºóµÄÊµ¼Ê¼ÇÂ¼ÌõÊı*/
 }
 
-void baseManage(Medcine med[],int n)          /*¸Ãº¯ÊıÍê³ÉÑ§Éú³É¼¨¹ÜÀí¹¦ÄÜ*/
-{  
-	int choice;
-	do
-	{
-		menuBase( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
-		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:\n");
-		scanf("%d",&choice);	                 /*¶ÁÈë¶ş¼¶Ñ¡Ïî*/
-		switch(choice)
-		{
-			case 1:   readMed(med,n);         /*ÇóËùÓĞÑ§ÉúµÄ×Ü·Ö*/
-			          break;
-			case 2:   readMed(med,n);         /*¸ù¾İËùÓĞÑ§ÉúµÄ×Ü·ÖÅÅÃû´Î*/
-				      break;		
-			case 0:   break;
-		}
-	}while(choice);
-}
 
-void printMarkCourse(char *s,double m[3][3],int k)   /*´òÓ¡·ÖÊıÍ¨ÓÃº¯Êı£¬±»countManage µ÷ÓÃ*/
-{                 /*ĞÎÊ½²ÎÊık´ú±íÊä³ö²»Í¬µÄÄÚÈİ£¬0¡¢1¡¢2·Ö±ğ¶ÔÓ¦×î¸ß·Ö¡¢×îµÍ·Ö¡¢Æ½¾ù·Ö*/
-int i;
-    printf(s);                                  /*ÕâÀïµÄs´«ÈëµÄÊÇÊä³ö·ÖÊıµÄÌáÊ¾ĞÅÏ¢*/
-    for (i=0;i<3;i++)                           /*i¿ØÖÆÄÄÒ»ÃÅ¿Î*/
-		  printf("%10.2lf",m[i][k]);
-	   printf("\n");
-}
 
-void countManage(Medcine med[],int n)               /*¸Ãº¯ÊıÍê³É¿¼ÊÔ³É¼¨Í³¼Æ¹¦ÄÜ*/
-{
-		int choice;
-		double mark[3][3];
-		do
-		{
-			menuCount( );                        /*ÏÔÊ¾¶ÔÓ¦µÄ¶ş¼¶²Ëµ¥*/
-			calcuMark(mark,med,n);                 /*µ÷ÓÃ´Ëº¯ÊıÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ùÖµ*/
-			printf("ÇëÊäÈëÄãµÄÑ¡Ôñ:\n");
-			scanf("%d",&choice);
-			switch(choice)
-			{
-				case 1:   printMarkCourse("ÈıÃÅ¿ÎµÄ×î¸ß·Ö·Ö±ğÊÇ:\n",mark,0);  /*Êä³ö×î¸ß·Ö*/
-				      break;
-				case 2:   printMarkCourse("ÈıÃÅ¿ÎµÄ×îµÍ·Ö·Ö±ğÊÇ:\n",mark,1);  /*Êä³ö×îµÍ·Ö*/
-				      break;
-				case 3:   printMarkCourse("ÈıÃÅ¿ÎµÄÆ½¾ù·Ö·Ö±ğÊÇ:\n",mark,2);  /*Êä³öÆ½¾ù·Ö*/
-				      break;
-				case 0:   break;
-			}
-		}while (choice);
-}
 
 void searchManage(Medcine med[],int n)               /*¸Ãº¯ÊıÍê³É¸ù¾İÌõ¼ş²éÑ¯¹¦ÄÜ*/
 {
@@ -149,13 +87,13 @@ Medcine s;
 			scanf("%d",&choice);
 			switch(choice)
 			{
-				case 1:   printf("Input a student\'s num will be searched:\n");
+				case 1:   printf("ÊäÈë´ı²éÑ¯Ò©Æ·µÄÀàĞÍ:\n");
 				      scanf("%ld",&s.cod);         /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄÑ§ºÅ*/
 					  break;
-				case 2:   printf("Input a student\'s name will be searched:\n");
-				      scanf("%s",s.name);	          /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄĞÕÃû*/		  
+				case 2:   printf("ÊäÈë´ı²éÑ¯Ò©Æ·µÄÃû³Æ:\n");
+				      scanf("%s",s.name);	          /*ÊäÈë´ı²éÑ¯Ò©Æ·µÄÃû³Æ*/		  
 				      break;   
-				case 3:   printf("Input a rank will be searched:\n");
+				case 3:   printf("ÊäÈë´ı²éÑ¯Ò©Æ·µÄÈë¿âÊ±¼ä:\n");
 				      scanf("%d",&s.intime);          /*ÊäÈë´ı²éÑ¯Ñ§ÉúµÄÃû´Î*/
 					  break;
 				case 0:   break;
@@ -170,7 +108,7 @@ Medcine s;
 	      	 printMed(&med[f[i]],1);      /*Ã¿´ÎÊä³öÒ»Ìõ¼ÇÂ¼*/
 				}
 		    		else
-			    	    printf("this record does not exist!\n"); /*Èç¹û²éÕÒ²»µ½ÔªËØ£¬ÔòÊä³öÌáÊ¾ĞÅÏ¢*/
+			    	    printf("¸Ã¼ÇÂ¼²»´æÔÚ!\n"); /*Èç¹û²éÕÒ²»µ½ÔªËØ£¬ÔòÊä³öÌáÊ¾ĞÅÏ¢*/
 		     }		
 	    }while (choice);
 }
@@ -183,13 +121,13 @@ int runMain(Medcine med[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹
 			     	sortMed(med,n,1);         /*°´±àÂëÓÉĞ¡µ½´óµÄË³ĞòÅÅĞò¼ÇÂ¼*/ 
           	        printMed(med,n);          /*°´±àÂëÓÉĞ¡µ½´óµÄË³ĞòÊä³öËùÓĞ¼ÇÂ¼*/
 		 			break;
-			case 2: baseManage(med,n);    /* 2. ¼ÇÂ¼¹ÜÀí*/
-					break;	
-			case 3: n=scoreManage(med,n);   /* 3. Ò©Æ·½ø³ö¿â¹ÜÀí*/ 
+			case 2: n=scoreManage(med,n);   /* 2. Ò©Æ·½ø³ö¿â¹ÜÀí*/ 
 			   	     break;
-			case 4: countManage(med,n);     /* 4. ÆäËûĞÅÏ¢Í³¼Æ*/
+			case 3: sortMed(med,n,3);
+					printHead( );                  /*´òÓ¡±íÍ·*/
+					printMed(med,n);      /* 3. ÆäËûĞÅÏ¢Í³¼Æ*/
 					break;
-			case 5: searchManage(med,n);     /* 5. ¸ù¾İÌõ¼ş²éÑ¯*/
+			case 4: searchManage(med,n);     /* 4. ¸ù¾İÌõ¼ş²éÑ¯*/
 				     break;
           case 0: break;
 		}
@@ -198,7 +136,7 @@ int runMain(Medcine med[],int n,int choice)    /*Ö÷¿ØÄ£¿é£¬¶ÔÓ¦ÓÚÒ»¼¶²Ëµ¥ÆäÏÂ¸÷¹
 
 int main( )
 {
-		Medcine med[COD];                /*¶¨ÒåÊµ²ÎÒ»Î¬Êı×é´æ´¢Ñ§Éú¼ÇÂ¼*/
+		Medcine med[COD];                /*¶¨ÒåÊµ²ÎÒ»Î¬Êı×é´æ´¢Ò©Æ·¼ÇÂ¼*/
       int choice,n;
 	 n=readFile(med);                  /*Ê×ÏÈ¶ÁÈ¡ÎÄ¼ş£¬¼ÇÂ¼ÌõÊı·µ»Ø¸³Öµ¸øn*/
 	 if (!n)                          /*Èç¹ûÔ­À´µÄÎÄ¼şÎª¿Õ*/
@@ -215,7 +153,7 @@ int main( )
 	         else 
 		          printf("ÊäÈë´íÎó,ÇëÖØĞÂÊäÈëÄãµÄÑ¡Ôñ!\n");
 	} while (choice);
-	sortMed(med,n,1);                   /*´æÈëÎÄ¼şÇ°°´Ñ§ºÅÓÉĞ¡µ½´óÅÅĞò*/ 
+	sortMed(med,n,1);                   /*´æÈëÎÄ¼şÇ°°´Ò©Æ·±àÂëÓÉĞ¡µ½´óÅÅĞò*/ 
 	     saveFile(med,n);                   /*½«½á¹û´æÈëÎÄ¼ş*/
       return 0;
 }
@@ -236,9 +174,9 @@ int main( )
 #include "medcine.h"
 #include <stdio.h>
 
-int readMed(Medcine  *med , int n)          /*¶ÁÈëÑ§Éú¼ÇÂ¼Öµ£¬Ñ§ºÅÎª0»ò¶ÁÂú¹æ¶¨ÌõÊı¼ÇÂ¼Ê±Í£Ö¹*/
+int readMed(Medcine  *med , int n)          /*¶ÁÈëÒ©Æ·¼ÇÂ¼Öµ£¬±àÂëÎª0»ò¶ÁÂú¹æ¶¨ÌõÊı¼ÇÂ¼Ê±Í£Ö¹*/
 {
-	int i,j;
+	int i;
 	for (i=0;i<n;i++)
 	{
 		printf("ÊäÈëÒ©Æ·ĞÅÏ¢\n");
@@ -267,9 +205,9 @@ int readMed(Medcine  *med , int n)          /*¶ÁÈëÑ§Éú¼ÇÂ¼Öµ£¬Ñ§ºÅÎª0»ò¶ÁÂú¹æ¶¨Ì
 	return i;                         /*·µ»ØÊµ¼Ê¶ÁÈëµÄ¼ÇÂ¼ÌõÊı*/
 }
 
-void printMed ( Medcine  *med , int n)       /*Êä³öËùÓĞÑ§Éú¼ÇÂ¼µÄÖµ*/
+void printMed ( Medcine  *med , int n)       /*Êä³öËùÓĞÒ©Æ·¼ÇÂ¼µÄÖµ*/
 {
-    int i,j;
+    int i;
 	for (i=0;i<n;i++)
 	{
 		printf("%2ld", med[i].cod);
@@ -285,28 +223,30 @@ void printMed ( Medcine  *med , int n)       /*Êä³öËùÓĞÑ§Éú¼ÇÂ¼µÄÖµ*/
 	}
 }
 
-int equal(Medcine s1,Medcine s2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öStudent¼ÇÂ¼ÏàµÈ*/
+int equal(Medcine s1,Medcine s2,int condition)  /*ÈçºÎÅĞ¶ÏÁ½¸öMedcine¼ÇÂ¼ÏàµÈ*/
 {
-	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½ÏÑ§ºÅ*/
+	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½Ï±àÂë*/
 		return s1.cod==s2.cod;
-	else if (condition==2)                /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½ÏĞÕÃû*/
+	else if (condition==2)                /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½ÏÃû³Æ*/
      {
 	     if (strcmp(s1.name,s2.name)==0) 	return 1;
 		else return 0;
      }
- else if (condition==3)                /*Èç¹û²ÎÊıconditionµÄÖµÎª3£¬Ôò±È½ÏÃû´Î*/
+ else if (condition==3)                /*Èç¹û²ÎÊıconditionµÄÖµÎª3£¬Ôò±È½ÏÈë¿âÊ±¼ä*/
 	     return s1.intime==s2.intime;
- else if (condition==4)                /*Èç¹û²ÎÊıconditionµÄÖµÎª4£¬Ôò±È½Ï×Ü·Ö*/
+ else if (condition==4)                /*Èç¹û²ÎÊıconditionµÄÖµÎª4£¬Ôò±È½ÏÊıÁ¿*/
 		return s1.num==s2.num;
 	else return 1;                       /*ÆäÓàÇé¿ö·µ»Ø1*/
 } 
 
-int larger(Medcine s1,Medcine s2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öStudent¼ÇÂ¼µÄ´óĞ¡*/
+int larger(Medcine s1,Medcine s2,int condition)  /*¸ù¾İconditionÌõ¼ş±È½ÏÁ½¸öÒ©Æ·¼ÇÂ¼µÄ´óĞ¡*/
 {
-	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½ÏÑ§ºÅ*/
+	if (condition==1)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª1£¬Ôò±È½Ï±àÂë*/
 		return s1.cod>s2.cod;
-	if (condition==2)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½Ï×Ü·Ö*/
-		return s1.num>s2.num;	
+	if (condition==2)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½ÏÊıÁ¿*/
+		return s1.num>s2.num;
+	if (condition==3)                    /*Èç¹û²ÎÊıconditionµÄÖµÎª2£¬Ôò±È½ÏÓĞĞ§ÆÚµ½ÆÚÊ±¼ä*/
+		return s1.outterm>s2.outterm;
 	else return 1; /*ÆäÓàÇé¿ö·µ»Ø1*/
 }
 
@@ -322,58 +262,7 @@ void reverse(Medcine med[],int n)             /*Êı×éÔªËØÄæÖÃ*/
 	}
 }
 
-void calcuNum(Medcine med[],int n)         /*¼ÆËãËùÓĞÑ§ÉúµÄ×Ü·Ö*/
-{
-	int i,j;
-	for (i=0;i<n;i++)                    /*Íâ²ãÑ­»·¿ØÖÆËùÓĞÑ§Éú¼ÇÂ¼*/
-	{
-		med[i].cod =0;
-		for (j=0;j<3;j++)               /*ÄÚ²ãÑ­»·¿ØÖÆÈıÃÅ¹¦¿Î*/
-			med[i].cod +=med[i].spec[j];
-	}	
-}
 
-void calcuIntime(Medcine med[],int n)          /*¸ù¾İ×Ü·Ö¼ÆËãËùÓĞÑ§ÉúµÄÅÅÃû£¬³É¼¨ÏàÍ¬ÕßÃû´ÎÏàÍ¬*/
-{
-	int i ;                       
-	sortMed(med,n,2);                     /*ÏÈµ÷ÓÃsortStuËã·¨£¬°´×Ü·ÖÓÉĞ¡µ½´óÅÅĞò*/
-	reverse(med,n);                      /*ÔÙÄæÖÃ£¬Ôò°´×Ü·ÖÓÉ´óµ½Ğ¡ÅÅĞòÁË*/
-	med[0].intime=1;                      /*µÚÒ»Ìõ¼ÇÂ¼µÄÃû´ÎÒ»¶¨ÊÇ1*/
-	for (i=1;i<n;i++)                     /*´ÓµÚ¶şÌõ¼ÇÂ¼Ò»Ö±µ½×îºóÒ»Ìõ½øĞĞÑ­»·*/
-	{
-		if (equal(med[i],med[i-1],4))         /*µ±Ç°¼ÇÂ¼ÓëÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Èç¹û×Ü·ÖÏàµÈ*/
-			med[i].intime=med[i-1].intime;     /*µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏàÁÚµÄÇ°Ò»Ìõ¼ÇÂ¼Ãû´Î*/ 
-	    else
-			med[i].intime=i+1;             /*²»ÏàµÈÊ±µ±Ç°¼ÇÂ¼Ãû´ÎµÈÓÚÆäÏÂ±êºÅ+1*/
-	}
-}
-
-void calcuMark(double m[3][3],Medcine med[],int n) /*ÇóÈıÃÅ¿ÎµÄ×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
-/*ÆäÖĞĞÎÊ½²ÎÊı¶şÎ¬Êı×émµÄµÚÒ»Î¬´ú±íÈıÃÅ¿Î£¬µÚ¶şÎ¬´ú±í×î¸ß¡¢×îµÍ¡¢Æ½¾ù·Ö*/
-{
-	int i,j;
-	for (i=0;i<3;i++)                 /*ÇóÈıÃÅ¿ÎµÄ×î¸ß·Ö*/		
-	{ 
-		m[i][0]=med[0].spec[i];     
-		for (j=1;j<n;j++)
-			if (m[i][0]<med[j].spec[i])
-				m[i][0]=med[j].spec[i];
-	}
-	for (i=0;i<3;i++)                  /*ÇóÈıÃÅ¿ÎµÄ×îµÍ·Ö*/
-	{ 
-		m[i][1]=med[0].spec[i];      
-		for (j=1;j<n;j++)
-			if (m[i][1]>med[j].spec[i])
-				m[i][1]=med[j].spec[i];
-	}
-	for (i=0;i<3;i++)                 /*ÇóÈıÃÅ¿ÎµÄÆ½¾ù·Ö*/
-	{ 
-		m[i][2]=med[0].spec[i];     
-		for (j=1;j<n;j++)
-			m[i][2]+=med[j].spec[i];
-		m[i][2]/=n;
-	}
-}
 
 void sortMed(Medcine med[],int n,int condition)  /*Ñ¡Ôñ·¨ÅÅĞò£¬°´conditionÌõ¼şÓÉĞ¡µ½´óÅÅĞò*/
 {
@@ -394,7 +283,7 @@ void sortMed(Medcine med[],int n,int condition)  /*Ñ¡Ôñ·¨ÅÅĞò£¬°´conditionÌõ¼şÓÉ
 	}
 }
 
-int searchMed(Medcine med[],int n,Medcine s,int condition,int f[ ])  /*ÔÚstuÊı×éÖĞÒÀconditionÌõ¼ş²éÕÒ*/
+int searchMed(Medcine med[],int n,Medcine s,int condition,int f[ ])  /*ÔÚmedÊı×éÖĞÒÀconditionÌõ¼ş²éÕÒ*/
 /*ÓësÏàÍ¬µÄÔªËØ£¬ÓÉÓÚ²»Ö¹Ò»Ìõ¼ÇÂ¼·ûºÏÌõ¼ş£¬Òò´Ë½«ÕâĞ©ÔªËØµÄÏÂ±êÖÃÓÚ fÊı×éÖĞ*/
 {
 	int i,j=0,find=0;
@@ -407,30 +296,30 @@ int searchMed(Medcine med[],int n,Medcine s,int condition,int f[ ])  /*ÔÚstuÊı×é
 	 return find;                                /*·µ»Øfind£¬ÆäÖµÎª0Ôò±íÊ¾Ã»ÕÒµ½*/ 
 }
 
-int insertMed(Medcine med[],int n,Medcine s)              /*ÏòstuÊı×éÖĞÒÀÑ§ºÅµİÔö²åÈëÒ»¸öÔªËØs*/
+int insertMed(Medcine med[],int n,Medcine s)              /*ÏòmedÊı×éÖĞÒÀ±àÂëµİÔö²åÈëÒ»¸öÔªËØs*/
 {
 	int i;
-	sortMed(med,n,1);                              /*ÏÈ°´Ñ§ºÅÅÅĞò*/
+	sortMed(med,n,1);                              /*ÏÈ°´±àÂëÅÅĞò*/
 	for (i=0;i<n;i++)
 	{
-		if (equal(med[i],s,1))                      /*Ñ§ºÅÏàÍ¬²»ÔÊĞí²åÈë£¬±£Ö¤Ñ§ºÅµÄÎ¨Ò»ĞÔ*/
+		if (equal(med[i],s,1))                      /*±àÂëÏàÍ¬²»ÔÊĞí²åÈë£¬±£Ö¤±àÂëµÄÎ¨Ò»ĞÔ*/
 		{
-		    printf("this record exist,can not insert again!\n");
+		    printf("¸ÃÒ©Æ·±àÂë´æÔÚ,²»ÄÜÖØ¸´Â¼Èë!\n");
 		    return n;
 		}
 	}
-	for (i=n-1;i>=0;i--)                          /*°´Ñ§ºÅ´ÓĞ¡µ½´óÓĞĞò*/
+	for (i=n-1;i>=0;i--)                          /*°´±àÂë´ÓĞ¡µ½´óÓĞĞò*/
 	{
-		if (!larger(med[i],s,1))                    /*Èç¹ûs´óÓÚµ±Ç°ÔªËØstu[i]£¬ÔòÍË³öÑ­»·*/
+		if (!larger(med[i],s,1))                    /*Èç¹ûs´óÓÚµ±Ç°ÔªËØmed[i]£¬ÔòÍË³öÑ­»·*/
 		break;
-		med[i+1]=med[i];                         /*·ñÔòÔªËØstu[i]ºóÒÆÒ»¸öÎ»ÖÃ*/
+		med[i+1]=med[i];                         /*·ñÔòÔªËØmed[i]ºóÒÆÒ»¸öÎ»ÖÃ*/
 	}
 	med[i+1]=s;                                /*ÔÚÏÂ±êi+1´¦²åÈëÔªËØs*/                                   
 	n++;                                     /*ÔªËØ¸öÊıÔö¼Ó1*/
 	return n;                                  /*·µ»ØÏÖÓĞÔªËØ¸öÊı*/
 }
 
-int deleteMed(Medcine med[],int n,Medcine s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨Ñ§ºÅµÄÒ»¸öÔªËØ*/
+int deleteMed(Medcine med[],int n,Medcine s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨±àÂëµÄÒ»¸öÔªËØ*/
 {
 	int i,j;
 	for (i=0;i<n;i++)                           /*Ñ°ÕÒ´ıÉ¾³ıµÄÔªËØ*/
@@ -440,7 +329,7 @@ int deleteMed(Medcine med[],int n,Medcine s)            /*´ÓÊı×éÖĞÉ¾³ıÖ¸¶¨Ñ§ºÅµÄ
 		printf("¸ÃÒ©Æ·±àÂë¼ÇÂ¼²»´æÔÚ£¡\n");    /*¸ø³öÌáÊ¾ĞÅÏ¢È»ºó·µ»Ø*/
 		return n;
 	}
-	for (j=i; j<n-1; j++)                        /*´Ë´¦Òşº¬Ìõ¼şÎªi<nÇÒequal(stu[i],s,1)³ÉÁ¢*/ 
+	for (j=i; j<n-1; j++)                        /*´Ë´¦Òşº¬Ìõ¼şÎªi<nÇÒequal(med[i],s,1)³ÉÁ¢*/ 
 		med[j]=med[j+1];                       /*Í¨¹ıÒÆ¶¯¸²¸ÇÉ¾³ıÏÂ±êÎªiµÄÔªËØ*/
                                                                             
 	n--;                                      /*ÔªËØ¸öÊı¼õÉÙ¼Ó1*/
