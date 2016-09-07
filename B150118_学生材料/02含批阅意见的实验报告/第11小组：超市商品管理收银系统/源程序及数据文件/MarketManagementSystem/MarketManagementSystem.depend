@@ -1,40 +1,18 @@
 # depslib dependency file v1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-1473210198 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\file.c
-=======
-1472784102 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\file.c
->>>>>>> pr/59
-=======
-1473214712 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\file.c
->>>>>>> pr/60
+1473243226 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\file.c
 	<stdio.h>
 	"welcome.h"
 	<stdlib.h>
 	<time.h>
 
-<<<<<<< HEAD
-1473083127 c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.h
+1473242013 c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.h
 
-1473081828 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\main.c
-=======
-1472703643 c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.h
-
-1472693576 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\main.c
->>>>>>> pr/59
+1473242044 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\main.c
 	<stdio.h>
 	<stdlib.h>
 	"welcome.h"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-1473210795 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.c
-=======
-1472784977 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.c
->>>>>>> pr/59
-=======
-1473213758 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.c
->>>>>>> pr/60
+1473243240 source:c:\b150118\b150118_学生材料\02含批阅意见的实验报告\第11小组：超市商品管理收银系统\源程序及数据文件\marketmanagementsystem\welcome.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>

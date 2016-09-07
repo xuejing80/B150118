@@ -27,7 +27,4 @@ int neworder();
 void sale();
 double totalprofit();
 int checknum();
-<<<<<<< HEAD
 void showorder();
-=======
->>>>>>> pr/59

@@ -8,23 +8,11 @@ int ifexist(char code[])
     int a = 0;
     goods read;
     FILE *fp;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if(fp = fopen(".\\1.txt","r")) //文件打开
-=======
     if(fp = fopen(".\\goods.txt","r")) //文件打开
->>>>>>> pr/60
     {
         while(!feof(fp))
         {
             fscanf(fp,"%s %s %lf %lf %d",read.code,read.name,&read.price,&read.chengben,&read.num);  //读取文件
-=======
-    if(fp = fopen(".\\1.txt","r"))
-    {
-        while(!feof(fp))
-        {
-            fscanf(fp,"%s %s %lf %lf %d",read.code,read.name,&read.price,&read.chengben,&read.num);
->>>>>>> pr/59
             if(!strcmp(code,read.code))
             {
                 fclose(fp);
@@ -41,33 +29,17 @@ int ifexist(char code[])
         printf("条码不存在，请重新输入\n");
     return a;
 }
-<<<<<<< HEAD
-//总利润计算
-=======
-//总利润
->>>>>>> pr/59
+
 double totalprofit()
 {
     int id;
     double total=0,profit=0,abc=0;
     FILE *fp;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if(fp = fopen(".\\2.txt","r"))//文件打开
-=======
     if(fp = fopen(".\\order.txt","r"))//文件打开
->>>>>>> pr/60
     {
         while(!feof(fp))
         {
             fscanf(fp,"%d %lf %lf\n",&id,&total,&profit);//读取所有订单信息，并计算总和利润
-=======
-    if(fp = fopen(".\\2.txt","r"))
-    {
-        while(!feof(fp))
-        {
-            fscanf(fp,"%d %lf %lf\n",&id,&total,&profit);
->>>>>>> pr/59
             abc = abc+profit;
         }
     }
@@ -111,15 +83,7 @@ void showgoods()
     system("cls");
     goods read;
     FILE *fp;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if(fp = fopen(".\\1.txt","r")) //文件打开
-=======
-    if(fp = fopen(".\\1.txt","r"))
->>>>>>> pr/59
-=======
     if(fp = fopen(".\\goods.txt","r")) //文件打开
->>>>>>> pr/60
     {
         printf("\n\n\n\n***************************************************************\n");
         printf("   **条码**     **名称**   **售价**   **成本**      **存量**   \n");
@@ -145,19 +109,9 @@ void showgoods()
 int addgoods(char code[],char name[],char price[],char chengben[],char num[])
 {
     FILE *fp;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if(fp = fopen(".\\1.txt","a+")) //打开文件
-=======
     if(fp = fopen(".\\goods.txt","a+")) //打开文件
->>>>>>> pr/60
     {
-        fprintf(fp,"\n%s %s %s %s %s",code,name,price,chengben,num); //按照一定的格式来写入文件
-=======
-    if(fp = fopen(".\\1.txt","a+"))
-    {
-        fprintf(fp,"\n%s %s %s %s %s",code,name,price,chengben,num);
->>>>>>> pr/59
+        fprintf(fp,"\n%s %s %s %s %s          \n          ",code,name,price,chengben,num); //按照一定的格式来写入文件
         fclose(fp);
         return 1;
     }
@@ -171,10 +125,7 @@ int addgoods(char code[],char name[],char price[],char chengben[],char num[])
 //写入条码信息，创建订单
 void createorder(double price,double profit)
 {
-<<<<<<< HEAD
     int id;
-=======
->>>>>>> pr/59
     order add;
     add.id = neworder();//调用随机函数产生订单号
     add.total = price;
@@ -183,15 +134,10 @@ void createorder(double price,double profit)
     FILE *fp;
     if(fp = fopen(".\\order.txt","a+"))
     {
-<<<<<<< HEAD
         id = neworder();
         fprintf(fp,"\n%d %.2f %.2f",id,add.total,add.profit);//写入文件并显示本次订单价格
         fclose(fp);
         printf("\n\n本次订单号：%d总价格：%.2f\n\n",id,add.total);
-=======
-        fprintf(fp,"\n%d %.2f %.2f",neworder(),add.total,add.profit);
-        fclose(fp);
->>>>>>> pr/59
         checkabc(add.id,add.total,add.profit);
         return 1;
     }
@@ -206,10 +152,8 @@ void createorder(double price,double profit)
 void sale(char code[])
 {
     goods read;
-<<<<<<< HEAD
     FILE *fp;
-    char c,d[20],e[20];
-    int i=-2;
+    char c = ' ',d[20],e[20];
     if(fp = fopen(".\\goods.txt","r+"))//打开文件
     {
         while(!feof(fp))
@@ -217,6 +161,14 @@ void sale(char code[])
             fscanf(fp,"%s %s %lf %lf %d",read.code,read.name,&read.price,&read.chengben,&read.num);//读取数据进入结构体变量
             if(!strcmp(code,read.code))
             {
+              while(c == ' ') //文件指针查找到第一个字符处
+                {
+                    fseek(fp,-1,1);
+                    c = fgetc(fp);
+                    fseek(fp,-1,1);
+                }
+                fseek(fp,1,1);//文件指针定位完成
+            c = '1';
                 while(c != ' ') //文件指针查找到第一个空格处
                 {
                     fseek(fp,-1,1);
@@ -224,7 +176,9 @@ void sale(char code[])
                     fseek(fp,-1,1);
                 }
                 fseek(fp,1,1);//文件指针定位完成
-                sprintf(e,"0%d\n",read.num-1);//加0复写，防止位数变化产生错误
+                fprintf(fp,"          ");
+                 fseek(fp,-10,1);
+                sprintf(e,"%d\n",read.num-1);//复写，防止位数变化产生错误
                 fputs(e,fp);
                 fclose(fp); //关闭文件
                 break;
@@ -240,32 +194,35 @@ void sale(char code[])
 void saleadd(char code[])
 {
     goods read;
-=======
->>>>>>> pr/59
     FILE *fp;
-    char c,d[20],e[20];
-    int i=-2;
-    if(fp = fopen(".\\goods.txt","r+"))
+    char c = ' ',d[20],e[20];
+    if(fp = fopen(".\\goods.txt","r+"))//打开文件
     {
         while(!feof(fp))
         {
-            fscanf(fp,"%s %s %lf %lf %d",read.code,read.name,&read.price,&read.chengben,&read.num);
+            fscanf(fp,"%s %s %lf %lf %d",read.code,read.name,&read.price,&read.chengben,&read.num);//读取数据进入结构体变量
             if(!strcmp(code,read.code))
             {
-                while(c != ' ')
+              while(c == ' ') //文件指针查找到第一个字符处
                 {
                     fseek(fp,-1,1);
                     c = fgetc(fp);
                     fseek(fp,-1,1);
                 }
-                fseek(fp,1,1);
-<<<<<<< HEAD
-                sprintf(e,"0%d\n",read.num+1);
-=======
-                sprintf(e,"0%d\n",read.num-1);
->>>>>>> pr/59
+                fseek(fp,1,1);//文件指针定位完成
+            c = '1';
+                while(c != ' ') //文件指针查找到第一个空格处
+                {
+                    fseek(fp,-1,1);
+                    c = fgetc(fp);
+                    fseek(fp,-1,1);
+                }
+                fseek(fp,1,1);//文件指针定位完成
+                fprintf(fp,"          ");
+                 fseek(fp,-10,1);
+                sprintf(e,"%d\n",read.num+1);//复写，防止位数变化产生错误
                 fputs(e,fp);
-                fclose(fp);
+                fclose(fp); //关闭文件
                 break;
             }
         }
@@ -275,10 +232,6 @@ void saleadd(char code[])
         printf("文件加载错误，请检查数据库文件");
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> pr/59
 
 
 //随机创建订单号
@@ -290,19 +243,3 @@ int neworder()
     id = rand()%(9999999-1000000+1)+1000000; //随机产生订单号
     return id;
 }
-<<<<<<< HEAD
-=======
-
-struct goods * readorder(char orderid[])
-{
-    FILE *fp;
-    if(fp = fopen(".\\2.txt","r"))
-    {
-
-    }
-    else
-    {
-        printf("文件加载错误，请检查数据库文件");
-    }
-};
->>>>>>> pr/59
