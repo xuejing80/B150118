@@ -2,7 +2,7 @@
 #ifndef _EMPLOYEE            /*条件编译，防止重复包含的错误*/
 #define _EMPLOYEE
 #include <string.h>
-#define NUM 5                /*定义员工人数常量，此处可以根据实际需要修改常量值*/
+#define NUM 20               /*定义员工人数常量，此处可以根据实际需要修改常量值*/
 struct Employee                   /*员工记录的数据域*/
 {
 		long num;
