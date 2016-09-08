@@ -5,7 +5,7 @@ int  createFile(Goods good[ ])
 {
 	FILE *fp;
 	int n;
-   	if((fp=fopen("d:\\ckglxt.dat", "wb")) == NULL) 
+   	if((fp=fopen("d:\\ckglxt.txt", "wb")) == NULL) 
 	{
 	    printf("无法打开文件 !\n");         
 	    exit(0);                           
@@ -21,7 +21,7 @@ int readFile(Goods good[ ] )
 {
    	FILE *fp;
 	int i=0;
-	if((fp=fopen("d:\\ckglxt.dat", "rb")) == NULL)  
+	if((fp=fopen("d:\\ckglxt.txt", "rb")) == NULL)  
 	{
 	    printf("文件不存在，请先创建文件:\n");  
 	    return 0;                              
@@ -39,7 +39,7 @@ int readFile(Goods good[ ] )
 void saveFile(Goods good[],int n)                  
 {   			
   	FILE *fp;	
-   	if((fp=fopen("d:\\ckglxt.dat", "wb")) == NULL) 
+   	if((fp=fopen("d:\\ckglxt.txt", "wb")) == NULL) 
 	{
 		printf("无法打开文件 !\n");          
 		exit(0);                           
